@@ -10,6 +10,13 @@ import { Test } from '../pages/test';
 import { Profile } from "../pages/profile";
 import { Business } from "../pages/business";
 import { Login2 } from "../pages/login2";
+import { Main2 } from "../pages/main2";
+import { Step } from "../pages/step";
+import { Online } from "../pages/online";
+import { Offline } from "../pages/offline";
+import { Community } from "../pages/community";
+import { Main3 } from "../pages/main3";
+import { Admin } from "../pages/admin";
 
 export const LoggedOutRouter = () => {
 
@@ -18,6 +25,21 @@ export const LoggedOutRouter = () => {
       <Switch>
         <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/admin">
+          <Admin />
+        </Route>
+        <Route path="/step">
+          <Step />
+        </Route>
+        <Route path="/online">
+          <Online />
+        </Route>
+        <Route path="/community">
+          <Community />
+        </Route>
+        <Route path="/offline">
+          <Offline />
         </Route>
         <Route path="/login2">
           <Login2 />
@@ -43,8 +65,11 @@ export const LoggedOutRouter = () => {
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route path="/">
-          <Main />
+        <Route path="/main2">
+          <Main2 />
+        </Route>
+        <Route path="/main3">
+          <Main3 />
         </Route>
       </Switch>
     </Router>

@@ -3,7 +3,7 @@ module.exports ={
     includes: ["./src/**/*.tsx"],
     tagName: "gql",
     service: {
-      name: 'reference-letter-backend',
+      name: 'mast-ventures-backend',
       url: 'http://localhost:4000/graphql'
     }
   }
