@@ -5,7 +5,7 @@ export const free_or_paid = makeVar('free');
 
 
 export const client = new ApolloClient({
-  uri: 'http://localhost:3000',
+  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost:3000',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
