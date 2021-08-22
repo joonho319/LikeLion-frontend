@@ -65,7 +65,7 @@ export const LoggedOutRouter = () => {
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route path="/main2">
+        <Route path="/">
           <Main2 />
         </Route>
         <Route path="/main3">
