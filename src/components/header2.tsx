@@ -2,12 +2,16 @@ import React from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Link } from 'react-router-dom';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export const Header2 = () =>{
+interface NavProps {
+  page: string;
+}
+export const Header2: React.FC<NavProps> = ({page}) =>{
   return (
     <>
       <div className="relative bg-indigo-600">
@@ -35,50 +39,46 @@ export const Header2 = () =>{
           </div>
         </div>
       </div>
-      <Disclosure as="nav" className="bg-white shadow">
+      <Disclosure as="nav" className="bg-white shadow py-3">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex">
                   <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt="컴퍼니빌더"
-                    />
+                    <Link to={'/'}>
+                      <img
+                        className="h-8 w-auto sm:h-10"
+                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        alt="마스트벤처스"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                     {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                     <a
-                      href="/main2"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                      href="/introduction"
+                      className={classNames(page ==='introduction' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      컴퍼니 빌더 소개
+                      마스트벤처스 소개
                     </a>
                     <a
-                      href="/online"
-                      className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                      href="/curriculum"
+                      className={classNames(page ==='curriculum' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      온라인 강의
+                      커리큘럼
                     </a>
                     <a
-                      href="/offline"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                      href="/apply"
+                      className={classNames(page ==='apply' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      오프라인 강의
+                      1기 신청
                     </a>
                     <a
-                      href="/community"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                      href="/review"
+                      className={classNames(page ==='review' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      커뮤니티
-                    </a>
-                    <a
-                      href="/step"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    >
-                      스타트업 소개
+                      프로그램 후기
                     </a>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export const Header2 = () =>{
                               href="/step"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
-                              Your Profile
+                              프로젝트 관리
                             </a>
                           )}
                         </Menu.Item>
@@ -126,7 +126,7 @@ export const Header2 = () =>{
                               href="#"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
-                              Settings
+                              설정
                             </a>
                           )}
                         </Menu.Item>
@@ -136,7 +136,7 @@ export const Header2 = () =>{
                               href="#"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
-                              Sign out
+                              로그아웃
                             </a>
                           )}
                         </Menu.Item>
@@ -157,40 +157,39 @@ export const Header2 = () =>{
                 </div>
               </div>
             </div>
-
             <Disclosure.Panel className="sm:hidden">
               <div className="pt-2 pb-3 space-y-1">
                 {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
                 <a
-                  href="/"
+                  href="/introduction"
                   className="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  컴퍼니빌더 소개
+                  마스트벤처스 소개
                 </a>
                 <a
-                  href="/online"
+                  href="/curriculum"
                   className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  온라인강의
+                  커리큘럼
                 </a>
                 <a
-                  href="/offline"
+                  href="/apply"
                   className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  오프라인강의
+                  1기신청
                 </a>
                 <a
-                  href="/community"
+                  href="/review"
                   className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  커뮤니티
+                  프로그램 후기
                 </a>
-                <a
+                {/* <a
                   href="/step"
                   className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
                   스타트업 소개
-                </a>
+                </a> */}
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="flex items-center px-4">
@@ -215,19 +214,19 @@ export const Header2 = () =>{
                     href="/step"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
-                    Your Profile
+                    프로젝트 관리
                   </a>
                   <a
                     href="#"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
-                    Settings
+                    설정
                   </a>
                   <a
                     href="/main2"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
-                    Sign out
+                    로그아웃
                   </a>
                 </div>
               </div>

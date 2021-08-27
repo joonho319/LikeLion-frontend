@@ -11,7 +11,7 @@ const people = [
 export const Community = () => {
   return (
     <>
-      <Header2 />
+      {/* <Header2 /> */}
       <div className="p-52">
         커뮤니티
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

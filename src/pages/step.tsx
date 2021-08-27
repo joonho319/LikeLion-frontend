@@ -29,7 +29,7 @@ export const Step = () => {
 
   return (
     <>
-      <Header2 />
+      <Header2  page={'step'}/>
       <nav aria-label="Progress" className="grid justify-items-center">
         <ol className="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0 mt-10 w-11/12">
           {steps.map((step, stepIdx) => (

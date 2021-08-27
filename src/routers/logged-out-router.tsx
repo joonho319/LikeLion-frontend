@@ -17,12 +17,20 @@ import { Offline } from "../pages/offline";
 import { Community } from "../pages/community";
 import { Main3 } from "../pages/main3";
 import { Admin } from "../pages/admin";
+import { Introduction } from "../pages/introduction";
+import { Review } from "../pages/review";
+import { Curriculum } from "../pages/curriculum";
+import { Apply } from "../pages/apply";
+import { Mall } from "../pages/mall";
 
 export const LoggedOutRouter = () => {
 
   return (
     <Router>
       <Switch>
+        <Route path="/sss">
+          <Mall />
+        </Route>
         <Route path="/signup">
           <SignUp />
         </Route>
@@ -32,11 +40,17 @@ export const LoggedOutRouter = () => {
         <Route path="/step">
           <Step />
         </Route>
-        <Route path="/online">
-          <Online />
+        <Route path="/introduction">
+          <Introduction />
         </Route>
-        <Route path="/community">
-          <Community />
+        <Route path="/curriculum">
+          <Curriculum />
+        </Route>
+        <Route path="/apply">
+          <Apply />
+        </Route>
+        <Route path="/review">
+          <Review />
         </Route>
         <Route path="/offline">
           <Offline />
@@ -47,17 +61,15 @@ export const LoggedOutRouter = () => {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/service">
-          <Service />
-        </Route>
         <Route path="/reference">
           <Reference />
         </Route>
+        {/* 추천서 */}
         <Route path="/sample">
           <Sample />
         </Route>
-        <Route path="/test">
-          <Test />
+        <Route path="/service">
+          <Service />
         </Route>
         <Route path="/business">
           <Business />
@@ -65,11 +77,11 @@ export const LoggedOutRouter = () => {
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route path="/">
-          <Main2 />
-        </Route>
         <Route path="/main3">
           <Main3 />
+        </Route>
+        <Route path="/">
+          <Main2 />
         </Route>
       </Switch>
     </Router>

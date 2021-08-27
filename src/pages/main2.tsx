@@ -1,9 +1,16 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { ChevronRightIcon } from '@heroicons/react/solid'
+import { useState } from 'react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {ReviewCarousel} from '../components/reviewCarousel';
+import Main from '../images/main_img.jpg';
+import Image from '../images/item.png';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from 'react-responsive-carousel';
+import { UserNotification } from '../components/userNotification'
+import { MainHeader } from '../components/mainHeader';
+import { VideoCard } from '../components/videoCard';
 
 const faqs = [
   {
@@ -29,294 +36,237 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navigation = [
-  { name: '컴퍼니 빌더 소개', href: '/main2' },
-  { name: '영상 강의', href: '/online' },
-  { name: '커뮤니티', href: '/login2' },
-  { name: '스타트업 소식', href: '/profile2' },
+
+const blogPosts = [
+  {
+    id: 1,
+    title: '만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Mar 16, 2020',
+    datetime: '2020-03-16',
+    category: { name: '아이디어 검증', href: '#' },
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+      imageUrl:
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      href: '#',
+    },
+  },
+  {
+    id: 2,
+    title: '만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Mar 10, 2020',
+    datetime: '2020-03-10',
+    category: { name: '사업화 전략', href: '#' },
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+      imageUrl:
+        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      href: '#',
+    },
+  },
+  {
+    id: 3,
+    title: '만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '마케팅', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '사업계획서 작성', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
+  {
+    id: 3,
+    title: '너무 만족했던 멘토링이었습니다.',
+    href: '#',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    category: { name: '아이디어 발견', href: '#' },
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    preview:
+      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
+    author: {
+      name: '(주)백프로 주성환 대표',
+    },
+  },
 ]
 
 export const Main2 = () => {
+  const [video, setVideo] =  useState<number>(0);
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   return (
     <>
-      <div className="relative bg-indigo-600">
-        <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-          <div className="pr-16 sm:text-center sm:px-16">
-            <p className="font-medium text-white">
-              <span className="md:hidden">오늘의 미션: 000에 대해 생각해보세요</span>
-              <span className="hidden md:inline">오늘의 미션: 000에 대해 생각해보세요</span>
-              {/* <span className="block sm:ml-2 sm:inline-block">
-                <a href="#" className="text-white font-bold underline">
-                  {' '}
-                  Learn more <span aria-hidden="true">&rarr;</span>
-                </a>
-              </span> */}
-            </p>
-          </div>
-          <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
-            <button
-              type="button"
-              className="flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white"
-            >
-              <span className="sr-only">Dismiss</span>
-              <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="relative bg-gray-800 overflow-hidden">
-        <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
-          <svg
-            className="absolute bottom-0 right-0 transform translate-x-1/2 mb-48 text-gray-700 lg:top-0 lg:mt-28 lg:mb-0 xl:transform-none xl:translate-x-0"
-            width={364}
-            height={384}
-            viewBox="0 0 364 384"
-            fill="none"
+      <UserNotification />
+      <MainHeader />
+      <p className="mt-10 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
+        영상
+      </p>
+      <div className="grid grid-cols-4 gap-12 mt-20">
+        <div className="col-span-4 grid justify-items-center">
+          <button
+            type="button"
+            className="bg-indigo-600 text-white items-center"
           >
-            <defs>
-              <pattern
-                id="eab71dd9-9d7a-47bd-8044-256344ee00d0"
-                x={0}
-                y={0}
-                width={20}
-                height={20}
-                patternUnits="userSpaceOnUse"
-              >
-                <rect x={0} y={0} width={4} height={4} fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width={364} height={384} fill="url(#eab71dd9-9d7a-47bd-8044-256344ee00d0)" />
-          </svg>
-        </div>
-        <div className="relative pt-6 pb-16 sm:pb-24">
-          <Popover>
-            <nav
-              className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
-              aria-label="Global"
-            >
-              <div className="flex items-center flex-1">
-                <div className="flex items-center justify-between w-full md:w-auto">
-                  <a href="#">
-                    <span className="sr-only">Workflow</span>
-                    <img
-                      className="h-8 w-auto sm:h-10"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="-mr-2 flex items-center md:hidden">
-                    <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
-                      <span className="sr-only">Open main menu</span>
-                      <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                    </Popover.Button>
-                  </div>
-                </div>
-                <div className="hidden space-x-10 md:flex md:ml-10">
-                  {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className="font-medium text-white hover:text-gray-300">
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden md:flex">
-                <a
-                  href="/login2"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
-                >
-                  로그인
-                </a>
-              </div>
-            </nav>
-
-            <Transition
-              as={Fragment}
-              enter="duration-150 ease-out"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="duration-100 ease-in"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Popover.Panel
-                focus
-                className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-              >
-                <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                  <div className="px-5 pt-4 flex items-center justify-between">
-                    <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">메뉴 닫기</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
-                      </Popover.Button>
-                    </div>
-                  </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <a
-                    href="/login2"
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
-                  >
-                    로그인
-                  </a>
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-
-          <main className="mt-16 sm:mt-24">
-            <div className="mx-auto max-w-7xl">
-              <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
-                  <div>
-                    {/* <a
-                      href="#"
-                      className="inline-flex items-center text-white bg-gray-900 rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200"
-                    >
-                      <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-indigo-500 rounded-full">
-                        We're hiring
-                      </span>
-                      <span className="ml-4 text-sm">Visit our careers page</span>
-                      <ChevronRightIcon className="ml-2 w-5 h-5 text-gray-500" aria-hidden="true" />
-                    </a> */}
-                    <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:text-3xl xl:text-4xl">
-                      <span className="md:block">이곳은 스타트업을 만들고 성장시켜보는 </span>{' '}
-                      <span className="text-indigo-400 md:block mt-4 lg:text-4xl xl:text-5xl">실천 중심형 학교입니다.</span>
-                    </h1>
-                    {/* <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                      Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                      amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.
-                    </p> */}
-                    {/* <p className="mt-8 text-sm text-white uppercase tracking-wide font-semibold sm:mt-10">Used by</p>
-                    <div className="mt-5 w-full sm:mx-auto sm:max-w-lg lg:ml-0">
-                      <div className="flex flex-wrap items-start justify-between">
-                        <div className="flex justify-center px-1">
-                          <img
-                            className="h-9 sm:h-10"
-                            src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                            alt="Tuple"
-                          />
-                        </div>
-                        <div className="flex justify-center px-1">
-                          <img
-                            className="h-9 sm:h-10"
-                            src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg"
-                            alt="Workcation"
-                          />
-                        </div>
-                        <div className="flex justify-center px-1">
-                          <img
-                            className="h-9 sm:h-10"
-                            src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                            alt="StaticKit"
-                          />
-                        </div>
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-                <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
-                  <div className="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
-                    <div className="px-4 py-8 sm:px-10">
-                      <div className="mt-2">
-                        <form action="#" method="POST" className="space-y-6">
-                          <div>
-                            <label htmlFor="name" className="sr-only">
-                              이름
-                            </label>
-                            <input
-                              type="text"
-                              name="name"
-                              id="name"
-                              autoComplete="name"
-                              placeholder="이름"
-                              required
-                              className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="mobile-or-email" className="sr-only">
-                              이메일
-                            </label>
-                            <input
-                              type="text"
-                              name="mobile-or-email"
-                              id="mobile-or-email"
-                              autoComplete="email"
-                              placeholder="이메일"
-                              required
-                              className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="password" className="sr-only">
-                              비밀번호
-                            </label>
-                            <input
-                              id="password"
-                              name="password"
-                              type="password"
-                              placeholder="비밀번호"
-                              autoComplete="current-password"
-                              required
-                              className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                            />
-                          </div>
-
-                          <div>
-                            <button
-                              type="submit"
-                              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                              회원가입하고 무료영상보기
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <div className="px-4 py-6 bg-gray-50 border-t-2 border-gray-200 sm:px-10">
-                      <p className="text-xs leading-5 text-gray-500">
-                        회원가입 시,{' '}
-                        <a href="#" className="font-medium text-gray-900 hover:underline">
-                          개인정보 수집
-                        </a>
-                        ,{' '}
-                        <a href="#" className="font-medium text-gray-900 hover:underline">
-                          마케팅 활용
-                        </a>
-                        에{' '}
-                        <a href="#" className="font-medium text-gray-500 hover:underline">
-                          동의하는 것으로 간주합니다
-                        </a>
-                        .
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
+            비디오1
+          </button>
+        
+          <button
+            type="button"
+            className="bg-indigo-600 text-white"
+          >
+            비디오1
+          </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32"
+          >
+            비디오1
+          </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32"
+          >
+            비디오1
+          </button>
         </div>
       </div>
-      <div className="bg-gray-50">
+      {/* <div className="mt-10">
+        <Carousel
+          showArrows={true}
+          showStatus={false}
+          showIndicators={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          width="50%"
+        >
+          <div>
+            <VideoCard videoId="mfAHjp9I_o8" />
+          </div>
+          <div>
+            <VideoCard videoId="mfAHjp9I_o8" />
+          </div>
+          <div>
+            <VideoCard videoId="mfAHjp9I_o8" />
+          </div>
+        </Carousel>
+      </div> */}
+      <ReviewCarousel reviewPosts={blogPosts} />
+      <div className="grid justify-items-center mt-20">
+        <button
+          type="button"
+          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          커리큘럼 다운로드
+        </button>
+      </div>
+      <div className="bg-gray-50 mt-20">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             <h2 className="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">자주하는 질문들</h2>
