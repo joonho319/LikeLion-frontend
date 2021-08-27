@@ -127,12 +127,11 @@ export const Introduction = () => {
         <div className="pb-16 lg:pb-0 lg:z-10 lg:relative">
           <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-7 lg:gap-8">
             <div className="relative lg:col-span-2">
-              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden" />
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
-                <div className="aspect-w-10 aspect-h-6 overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
+                <div className="overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                   
                   <img
-                    className="object-cover lg:h-90 lg:w-full"
+                    className="object-fit lg:object-cover w-full h-full lg:h-90 lg:w-full"
                     src={Shin}
                     alt=""
                   />
@@ -154,7 +153,7 @@ export const Introduction = () => {
                     >
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
-                    <p className="mt-3 text-lg font-medium text-black">
+                    <p className="mt-3 text-sm  lg:text-lg font-medium text-black">
                     안녕하세요 김기현 입니다 <br />
                     저는 매년 많은 창업팀의 사업계획서를 보고 있습니다.<br />
                     그리고 그 기업들이 어떤 시간을 보내고 있는지 확인하고 있습니다.<br />
@@ -163,7 +162,8 @@ export const Introduction = () => {
                     조금만…조금만…. 하면서 도움을 줄 새도 없이 사라지는 기업을 많이 보았습니다. <br />
                     아이템도 중요하지만 실행이 더 중요하고, 실행도 중요하지만 어떤 사람이 어떤 아이템으로 실행할 것인가가 <br />
                     더 중요하다는 스타트업 현장에서 살고 있고, 스타트업 현장을 보고 있습니다.<br />
-                    몇년이나 노력했다가 무너지는 사업이 더이상 생기지 않도록 시작할때도 좋은 시작할 수 있도록 하나씩 함께 만들어가고 싶습니다.
+                    몇년이나 노력했다가 무너지는 사업이 더이상 생기지 않도록 <br />
+                    시작할때도 좋은 시작할 수 있도록 하나씩 함께 만들어가고 싶습니다.
                     </p>
                   </div>
                   
@@ -177,11 +177,10 @@ export const Introduction = () => {
         <div className="pb-16 lg:pb-0 lg:z-10 lg:relative">
           <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-7 lg:gap-8">
             <div className="relative lg:col-span-2">
-              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden" />
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
                 <div className="aspect-w-10 aspect-h-6 overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                   <img
-                    className="object-cover lg:h-90 lg:w-full"
+                    className="object-cover lg:h-96 lg:w-96"
                     src={Shin}
                     alt=""
                   />
@@ -203,7 +202,7 @@ export const Introduction = () => {
                     >
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
-                    <p className="mt-3 text-lg font-medium text-black">
+                    <p className="mt-3 text-sm lg:text-lg font-medium text-black">
                     <p>인생에 한번은 창업을 해야 생존할 수 있는 시대가 온 것 같습니다.</p>
 
                     그래서 창업과 관련된 강의도 많아지고 여기저기 아이디어도 넘쳐나는 것을 목격하게 됩니다. <br />
@@ -231,11 +230,10 @@ export const Introduction = () => {
         <div className="pb-16 lg:pb-0 lg:z-10 lg:relative">
           <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-7 lg:gap-8">
             <div className="relative lg:col-span-2">
-              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden" />
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
                 <div className="aspect-w-10 aspect-h-6 overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                   <img
-                    className="object-cover lg:h-80 lg:w-80"
+                    className="object-fit lg:h-96 lg:w-80"
                     src={Lee}
                     alt=""
                   />
@@ -275,7 +273,6 @@ export const Introduction = () => {
         <div className="pb-16 lg:pb-0 lg:z-10 lg:relative">
           <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-7 lg:gap-8">
             <div className="relative lg:col-span-2">
-              <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden" />
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
                 <div className="aspect-w-10 aspect-h-6 overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                   <img
@@ -290,7 +287,7 @@ export const Introduction = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
                 <blockquote>
                   <div>
-                    <div className="text-4xl text-blue-900 mb-7 font-bold">제준호 강사님 
+                    <div className="mt-8 text-4xl text-blue-900 mb-7 font-bold">제준호 강사님 
                       <span className="ml-3 text-xl">( 사진 바꿀 예정 )</span>
                     </div>
                     <svg
