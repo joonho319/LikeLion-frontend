@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 
 interface ReviewCardProps {
@@ -57,6 +58,16 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="grid justify-items-center mt-20">
+            <Link to={'review'}>
+            <button
+              type="button"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              후기 더보러 가기
+            </button>
+            </Link>
           </div>
         </div>
       </div>

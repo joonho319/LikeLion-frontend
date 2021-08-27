@@ -11,6 +11,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { UserNotification } from '../components/userNotification'
 import { MainHeader } from '../components/mainHeader';
 import { VideoCard } from '../components/videoCard';
+import { Footer } from '../components/footer';
 
 const faqs = [
   {
@@ -206,35 +207,64 @@ export const Main2 = () => {
       <UserNotification />
       <MainHeader />
       <p className="mt-10 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
-        영상
+        마스트벤처스는 어떤 곳인가요?
       </p>
-      <div className="grid grid-cols-4 gap-12 mt-20">
-        <div className="col-span-4 grid justify-items-center">
-          <button
+      <div className="grid grid-cols-4 gap-12 mt-20 mb-10 justify-items-stretch md:hidden">
+        <div className="col-start-1 col-span-3">
+          {/* <button
             type="button"
-            className="bg-indigo-600 text-white items-center"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
           >
-            비디오1
-          </button>
-        
-          <button
-            type="button"
-            className="bg-indigo-600 text-white"
-          >
-            비디오1
+            김기현 대표
           </button>
           <button
             type="button"
-            className="bg-indigo-600 text-white p-2 w-32"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
           >
-            비디오1
+            신태순 대표
           </button>
           <button
             type="button"
-            className="bg-indigo-600 text-white p-2 w-32"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
           >
-            비디오1
+            이원엽 대표
           </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
+          >
+            제준호 대표
+          </button> */}
+          <VideoCard videoId="mfAHjp9I_o8" />
+        </div>
+      </div>
+      <div className="hidden md:overflow-hidden md:grid md:grid-cols-4 md:gap-12 mt-20 md:mb-10 md:justify-items-stretch">
+        <div className="col-start-2 col-span-3">
+          {/* <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
+          >
+            김기현 대표
+          </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
+          >
+            신태순 대표
+          </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
+          >
+            이원엽 대표
+          </button>
+          <button
+            type="button"
+            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
+          >
+            제준호 대표
+          </button> */}
+          <VideoCard videoId="mfAHjp9I_o8" />
         </div>
       </div>
       {/* <div className="mt-10">
@@ -258,6 +288,9 @@ export const Main2 = () => {
         </Carousel>
       </div> */}
       <ReviewCarousel reviewPosts={blogPosts} />
+      <p className="mt-20 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
+        마스트벤처스 커리큘럼
+      </p>
       <div className="grid justify-items-center mt-20">
         <button
           type="button"
@@ -297,6 +330,7 @@ export const Main2 = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

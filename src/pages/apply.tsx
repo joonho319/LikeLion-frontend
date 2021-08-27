@@ -4,11 +4,11 @@ export const Apply = () => {
   return (
     <>
       <Header2 page={'apply'} />
-      <div className="max-w-2xl mx-auto p-4 my-28 grid justify-items-center border-2 rounded-md">
+      <div className="max-w-2xl mx-auto p-4 my-28 grid justify-items-center shadow-lg rounded-md" style={{ border: "solid 1px #eeeeee"}}>
         <form className="">
           <div className="space-y-8 sm:space-y-5">
             <div>
-              <h3 className="text-lg font-medium text-gray-900 text-center">1기 수강신청</h3>
+              <h3 className="text-2xl mt-10 font-bold text-center text-indigo-700">1기 수강신청</h3>
             </div>
             <div className="pt-8 sm:pt-10 sm:space-y-5">
               <div className=" sm:space-y-5">
@@ -215,7 +215,7 @@ export const Apply = () => {
               </div>
             </div>
           </div>
-          <div className="pt-5">
+          <div className="pt-12 mb-10">
             <div className="flex justify-center">
               <button
                 type="submit"

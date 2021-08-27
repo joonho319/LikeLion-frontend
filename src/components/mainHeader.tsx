@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { url } from 'inspector';
 
 const navigation = [
-  { name: '마스트벤처스 소개', href: '/introduction' },
+  { name: '강사 소개', href: '/introduction' },
   { name: '커리큘럼', href: '/curriculum' },
   { name: '1기 신청', href: '/apply' },
   { name: '프로그램 후기', href: '/review' },
@@ -12,7 +13,7 @@ const navigation = [
 export const MainHeader = () => {
   return (
     <div className="relative bg-gray-800 overflow-hidden">
-        <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
+        {/* <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
           <svg
             className="absolute bottom-0 right-0 transform translate-x-1/2 mb-48 text-gray-700 lg:top-0 lg:mt-28 lg:mb-0 xl:transform-none xl:translate-x-0"
             width={364}
@@ -34,7 +35,7 @@ export const MainHeader = () => {
             </defs>
             <rect width={364} height={384} fill="url(#eab71dd9-9d7a-47bd-8044-256344ee00d0)" />
           </svg>
-        </div>
+        </div> */}
         <div className="relative pt-6 pb-16 sm:pb-24">
           <Popover>
             <nav

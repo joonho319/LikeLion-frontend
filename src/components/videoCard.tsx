@@ -19,16 +19,31 @@ export const VideoCard: React.FC<VideoProps> = ({
 
   
   const opts = {
-    height: '590',
-    width: '640',
+    height: '790',
+    width: '960',
     playerVars: {
       autoplay: autoplay,
     },
   };
   return (
-    <ReactPlayer 
-      url={`https://www.youtube.com/watch?v=${videoId}`} 
-      controls={true}
-    />
+    <>
+      <div className="mt-10 md:hidden">
+        <ReactPlayer 
+          url={`https://www.youtube.com/watch?v=${videoId}`} 
+          controls={true}
+          width="100vw"
+          height="66vw"
+        />
+      </div>
+      <div className="mt-10 hidden md:inline">
+        <ReactPlayer 
+          url={`https://www.youtube.com/watch?v=${videoId}`} 
+          controls={true}
+          width="50vw"
+          height="32vw"
+        />
+      </div>
+    
+    </>
   )
 }

@@ -60,7 +60,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                       href="/introduction"
                       className={classNames(page ==='introduction' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      마스트벤처스 소개
+                      강사 소개
                     </a>
                     <a
                       href="/curriculum"
@@ -164,7 +164,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                   href="/introduction"
                   className="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  마스트벤처스 소개
+                  강사 소개
                 </a>
                 <a
                   href="/curriculum"
