@@ -142,8 +142,8 @@ export const Introduction = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
                 <blockquote>
                   <div>
-                    <div className="text-4xl text-blue-900 mb-7 font-bold">김기현 강사님
-                      <span className="ml-3 text-xl"> (주) 인스텝스 대표</span>
+                    <div className="mt-5 text-2xl lg:text-4xl text-blue-900 mb-7 font-bold">김기현 강사님
+                      <span className="ml-3 text-sm lg:text-xl"> (주) 인스텝스 대표</span>
                     </div>
                     <svg
                       className="h-6 w-6 text-black opacity-100 mt-3"
@@ -153,7 +153,7 @@ export const Introduction = () => {
                     >
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
-                    <p className="mt-3 text-sm  lg:text-lg font-medium text-black">
+                    <p className="mt-3 text-lg  lg:text-lg font-medium text-black">
                     안녕하세요 김기현 입니다 <br />
                     저는 매년 많은 창업팀의 사업계획서를 보고 있습니다.<br />
                     그리고 그 기업들이 어떤 시간을 보내고 있는지 확인하고 있습니다.<br />
@@ -191,8 +191,8 @@ export const Introduction = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
                 <blockquote>
                   <div>
-                    <div className="text-4xl text-blue-900 mb-7 font-bold">신태순 강사님
-                      <span className="ml-3 text-xl"> (주) 버터플라이인베스트먼트 대표</span>
+                    <div className="mt-5 lg:mt-2 text-2xl lg:text-4xl text-blue-900 mb-7 font-bold">신태순 강사님
+                      <span className="ml-3 text-sm lg:text-xl"> (주) 버터플라이인베스트먼트 대표</span>
                     </div>
                     <svg
                       className="h-6 w-6 text-black opacity-100 mt-3"
@@ -202,7 +202,7 @@ export const Introduction = () => {
                     >
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
-                    <p className="mt-3 text-sm lg:text-lg font-medium text-black">
+                    <p className="mt-3 text-lg lg:text-lg font-medium text-black">
                     <p>인생에 한번은 창업을 해야 생존할 수 있는 시대가 온 것 같습니다.</p>
 
                     그래서 창업과 관련된 강의도 많아지고 여기저기 아이디어도 넘쳐나는 것을 목격하게 됩니다. <br />
@@ -244,11 +244,11 @@ export const Introduction = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
                 <blockquote>
                   <div>
-                    <div className="mt-10 text-4xl text-blue-900 mb-7 font-bold">이원엽 강사님
+                    <div className="lg:mt-10 mt-5 text-2xl lg:text-4xl text-blue-900 mb-7 font-bold">이원엽 강사님
                       <span className="ml-3 text-xl"> 먼슬리씽 대표</span>
                     </div>
                     <svg
-                      className="h-6 w-6 text-black opacity-100 mt-16"
+                      className="h-6 w-6 text-black opacity-100 mt-5 lg:mt-16"
                       fill="currentColor"
                       viewBox="0 0 32 32"
                       aria-hidden="true"
@@ -256,7 +256,7 @@ export const Introduction = () => {
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
                     <p className="mt-3 text-lg font-medium text-black">
-                    <p className="text-2xl mb-14">인생의 삽질을 전략적으로!</p>
+                    <p className="text-2xl mb-10 lg:mb-14">인생의 삽질을 전략적으로!</p>
                       우리는 누구나 시행착오라는 것을 하죠. 저의 언어로는 삽질을 통해 배운다고 말씀드리고 싶어요.<br />
                       하지만 한 삽을 뜰 때마다 모래성이 무너지지 않고 더욱 단단해진다면 어떨까요? <br />
                       수 많은 삽질로 단련된 실전 근육으로 모래성을 견고하고 오랫동안 보전하도록 함께 만들어봐요.<br />
@@ -287,8 +287,8 @@ export const Introduction = () => {
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
                 <blockquote>
                   <div>
-                    <div className="mt-8 text-4xl text-blue-900 mb-7 font-bold">제준호 강사님 
-                      <span className="ml-3 text-xl">( 사진 바꿀 예정 )</span>
+                    <div className="mt-5 lg:mt-8 text-2xl lg:text-4xl text-blue-900 mb-7 font-bold">제준호 강사님 
+                      <span className="w-full text-xl ml-3 lg:text-xl">( 사진 바꿀 예정 )</span>
                     </div>
                     <svg
                       className="h-6 w-6 text-black opacity-100 mt-3"
