@@ -12,6 +12,7 @@ import { UserNotification } from '../components/userNotification'
 import { MainHeader } from '../components/mainHeader';
 import { VideoCard } from '../components/videoCard';
 import { Footer } from '../components/footer';
+import { Link } from 'react-router-dom';
 
 const faqs = [
   {
@@ -273,7 +274,11 @@ export const Main2 = () => {
           type="button"
           className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          커리큘럼 다운로드
+          <a href={'https://drive.google.com/file/d/1qG06_4o5zuxjz1ExL1FaoTLm1mTtAyWh/view?usp=sharing'}
+            target="_blank"
+          >
+            커리큘럼 다운로드
+          </a>
         </button>
       </div>
       <div className="bg-gray-50 mt-20">
