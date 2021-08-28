@@ -38,7 +38,7 @@ function classNames(...classes: any[]) {
 }
 
 
-const blogPosts = [
+export const blogPosts = [
   {
     id: 1,
     title: '만족했던 멘토링이었습니다.',
@@ -211,30 +211,6 @@ export const Main2 = () => {
       </p>
       <div className="grid grid-cols-4 gap-12 mt-20 mb-10 justify-items-stretch md:hidden">
         <div className="col-start-1 col-span-3">
-          {/* <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            김기현 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            신태순 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            이원엽 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            제준호 대표
-          </button> */}
           <VideoCard videoId="mfAHjp9I_o8" />
         </div>
       </div>
@@ -287,7 +263,8 @@ export const Main2 = () => {
           </div>
         </Carousel>
       </div> */}
-      <ReviewCarousel reviewPosts={blogPosts} />
+      
+      <ReviewCarousel reviewPosts={blogPosts} showTitle={true} />
       <p className="mt-20 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
         마스트벤처스 커리큘럼
       </p>
