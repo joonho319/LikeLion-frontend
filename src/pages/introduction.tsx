@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronRightIcon, ExternalLinkIcon } from '@heroicons/react/solid'
 import { Header2 } from '../components/header2';
+import Kim from '../images/kim.png'
 import Shin from '../images/sintaesoon.png';
 import Lee from '../images/Leewonyeop.png';
 import Je from '../images/junhoje.png';
@@ -131,15 +132,15 @@ export const Introduction = () => {
                 <div className="overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                   
                   <img
-                    className="object-fit lg:object-cover w-full h-full lg:h-90 lg:w-full"
-                    src={Shin}
+                    className="object-fit lg:object-cover w-full h-full lg:h-90 lg:w-full lg:mt-5"
+                    src={Kim}
                     alt=""
                   />
                 </div>
               </div>
             </div>
             <div className=" lg:m-0 lg:col-span-5 lg:pl-8">
-              <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none">
+              <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:max-w-none lg:mt-28">
                 <blockquote>
                   <div>
                     <div className="mt-5 text-2xl lg:text-4xl text-blue-900 mb-7 font-bold">김기현 강사님

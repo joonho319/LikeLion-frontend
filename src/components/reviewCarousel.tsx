@@ -21,16 +21,20 @@ function classNames(...classes: any[]) {
 
 
 export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitle}) => {
+
+  const style = {
+    backgroundColor: showTitle ? "#1f2937" : "#eeeeee"
+  }
   return (
       <div className={classNames( showTitle ? 'bg-white mt-10' : '', '')}> 
-        <div className={classNames( showTitle ? 'py-16 lg:py-32 sm:py-24' : '', 'relative bg-gray-50 ')}>
+        <div className={classNames( showTitle ? 'py-16 lg:py-32 sm:py-24' : '', 'relative')} style={style}>
           <div className="relative">
             {showTitle ?
               <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-                <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                <p className="mt-2 text-3xl font-bold text-white text-opacity-70 tracking-tight sm:text-4xl">
                 멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
                 </p>
-                <p className="mt-5 mx-auto max-w-prose text-xl text-gray-500">
+                <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
                   멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
                 </p>
               </div> :
@@ -53,7 +57,7 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitl
           
           <div className={classNames( showTitle ? 'mt-12' : '', 'mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl')}>
             {reviewPosts.filter((v,i) => (i < 8)).map((post,i ) => (
-              <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden hover:w-28">
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-cyan-600">
@@ -94,7 +98,7 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitl
               </button>
               </Link>
             </div> :
-            <></>
+            <div className=" h-16"></div>
           }
         </div>
       </div>

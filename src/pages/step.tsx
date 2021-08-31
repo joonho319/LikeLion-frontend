@@ -30,7 +30,7 @@ export const Step = () => {
   return (
     <>
       <Header2  page={'step'}/>
-      <div className="grid justify-items-center">
+      <div className="r">
         <nav aria-label="Progress" className="">
           <ol className="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0 mt-10">
             {steps.map((step, stepIdx) => (

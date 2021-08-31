@@ -28,22 +28,36 @@ export const Apply = () => {
                   </div>
                 </div>
                 <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 sm:mt-px p-1">
-                    이메일
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 sm:mt-px p-1">
+                    연락처
                   </label>
                   <div className="mt-1 sm:mt-0 sm:col-span-2">
                     <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      placeholder="이메일을 입력해주세요"
+                      id="phone"
+                      name="phone"
+                      type="phone"
+                      autoComplete="phone"
+                      placeholder="휴대폰 번호를 입력해주세요"
                       className="block max-w-lg w-full border-2 p-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                 </div>
-
                 <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
+                  <label htmlFor="region" className="block text-sm font-medium text-gray-700 sm:mt-px p-1">
+                    지역
+                  </label>
+                  <div className="mt-1 sm:mt-0 sm:col-span-2">
+                    <input
+                      id="region"
+                      name="region"
+                      type="region"
+                      autoComplete="region"
+                      placeholder="지역를 입력해주세요."
+                      className="block max-w-lg w-full border-2 p-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+                {/* <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
                   <label htmlFor="country" className="block text-sm font-medium text-gray-700 sm:mt-px">
                     지역
                   </label>
@@ -61,21 +75,47 @@ export const Apply = () => {
                       <option>강원도</option>
                     </select>
                   </div>
-                </div>
-                
-                <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
-                    <label htmlFor="about" className="block text-sm font-medium text-gray-700 sm:mt-px">
-                      간단한 자기소개
-                    </label>
-                    <div className="mt-3 sm:mt-0 sm:col-span-2">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
-                        className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                        defaultValue={''}
-                      />
+                </div> */}
+                <div className="pt-6 sm:pt-5">
+                  <div role="group" aria-labelledby="label-notifications">
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                      <div>
+                        <div
+                          className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
+                          id="label-notifications"
+                        >
+                          아이디어 유무
+                        </div>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <div className="max-w-lg">
+                          <p className="text-sm text-gray-500">현재 가지고 있는 창업 아이디어가 있으신가요?</p>
+                          <div className="mt-4 space-y-4">
+                            <div className="flex items-center">
+                              <input
+                                id="idea"
+                                name="idea"
+                                type="radio"
+                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                              />
+                              <label htmlFor="idea" className="ml-3 block text-sm font-medium text-gray-700">
+                                아이디어 있음
+                              </label>
+                            </div>
+                            <div className="flex items-center">
+                              <input
+                                id="no-idea"
+                                name="idea"
+                                type="radio"
+                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                              />
+                              <label htmlFor="no-idea" className="ml-3 block text-sm font-medium text-gray-700">
+                                아이디어 없음
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -124,7 +164,23 @@ export const Apply = () => {
                 </div>
               </div>
             </div>
-            <div className="divide-y divide-gray-200 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+            <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
+                <label htmlFor="about" className="block text-sm font-medium text-gray-700 sm:mt-px">
+                  남기고 싶은 말
+                </label>
+                <div className="mt-3 sm:mt-0 sm:col-span-2">
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows={6}
+                    className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                    defaultValue={''}
+                  />
+                </div>
+              </div>
+            </div>
+            {/* <div className="divide-y divide-gray-200 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
               <div className="space-y-6 sm:space-y-5 divide-y divide-gray-200">
                 <div className="pt-6 sm:pt-5">
                   <div role="group" aria-labelledby="label-email">
@@ -213,7 +269,7 @@ export const Apply = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="pt-12 mb-10">
             <div className="flex justify-center">

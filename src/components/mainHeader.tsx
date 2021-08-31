@@ -234,15 +234,25 @@ export const MainHeader = () => {
                               type="submit"
                               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
-                              회원가입하고 무료영상보기
+                              회원가입
                             </button>
                           </div>
                         </form>
                       </div>
                     </div>
                     <div className="px-4 py-6 bg-gray-50 border-t-2 border-gray-200 sm:px-10">
-                      <p className="text-xs leading-5 text-gray-500">
-                        회원가입 시,{' '}
+                      <div className="relative flex items-start">
+                        <div className="flex items-center h-5">
+                        <input
+                          id="comments"
+                          aria-describedby="comments-description"
+                          name="comments"
+                          type="checkbox"
+                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                        />
+                      </div>
+                      <p className="text-xs leading-5 text-gray-500 sm:ml-2">
+                        {' '}
                         <a href="#" className="font-medium text-gray-900 hover:underline">
                           개인정보 수집
                         </a>
@@ -252,7 +262,7 @@ export const MainHeader = () => {
                         </a>
                         에{' '}
                         <a href="#" className="font-medium text-gray-500 hover:underline">
-                          동의하는 것으로 간주합니다
+                          모두 동의합니다
                         </a>
                         .
                       </p>
@@ -261,8 +271,9 @@ export const MainHeader = () => {
                 </div>
               </div>
             </div>
-          </main>
-        </div>
+          </div>
+        </main>
       </div>
+    </div>
   )
 }
