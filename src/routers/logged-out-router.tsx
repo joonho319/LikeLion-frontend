@@ -23,17 +23,19 @@ import { Curriculum } from "../pages/curriculum";
 import { Apply } from "../pages/apply";
 import { Mall } from "../pages/mall";
 import { Program } from "../pages/program";
+import { SignUp2 } from "../pages/signup2";
+import { Agreement } from "../pages/agreement";
 
 export const LoggedOutRouter = () => {
 
   return (
     <Router>
       <Switch>
-        <Route path="/sss">
-          <Mall />
+        <Route path="/agreement">
+          <Agreement />
         </Route>
         <Route path="/signup">
-          <SignUp />
+          <SignUp2 />
         </Route>
         <Route path="/admin">
           <Admin />
@@ -59,12 +61,12 @@ export const LoggedOutRouter = () => {
         <Route path="/offline">
           <Offline />
         </Route>
-        <Route path="/login2">
+        <Route path="/login">
           <Login2 />
         </Route>
-        <Route path="/login">
+        {/* <Route path="/login">
           <Login />
-        </Route>
+        </Route> */}
         <Route path="/reference">
           <Reference />
         </Route>

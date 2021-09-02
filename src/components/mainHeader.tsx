@@ -69,7 +69,7 @@ export const MainHeader = () => {
               </div>
               <div className="hidden md:flex">
                 <a
-                  href="/login2"
+                  href="/login"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
                 >
                   로그인
@@ -118,7 +118,7 @@ export const MainHeader = () => {
                     ))}
                   </div>
                   <a
-                    href="/login2"
+                    href="/login"
                     className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
                   >
                     로그인

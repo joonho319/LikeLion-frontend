@@ -20,7 +20,7 @@ function classNames(...classes: any[]) {
 }
 
 
-export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitle}) => {
+export const mainReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitle}) => {
 
   const style = {
     backgroundColor: showTitle ? "#1f2937" : "#eeeeee"
@@ -55,9 +55,9 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitl
               </div>
             }
           
-          <div className={classNames( showTitle ? 'mt-12' : '', 'mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl')}>
+          <div className={classNames( showTitle ? 'mt-12' : '', 'mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl transition ease-in-out transform hover:-translate-y-1 hover:scale-125')}>
             {reviewPosts.filter((v,i) => (i < 4)).map((post,i ) => (
-              <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden hover:w-28">
+              <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-cyan-600">

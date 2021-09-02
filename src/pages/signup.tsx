@@ -9,60 +9,60 @@ import { signupMutation, signupMutationVariables } from '../__generated__/signup
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const SIGNUP_MUTATION = gql`
-  mutation signupMutation($email: String!, $password: String!, $name: String!) {
-    createAccount(input: {
-      email: $email,
-      password: $password,
-      name: $name,
-    }) {
-      ok,
-      error
-    } 
-  }
-`;
+// const SIGNUP_MUTATION = gql`
+//   mutation signupMutation($email: String!, $password: String!, $name: String!) {
+//     createAccount(input: {
+//       email: $email,
+//       password: $password,
+//       name: $name,
+//     }) {
+//       ok,
+//       error
+//     } 
+//   }
+// `;
 
-interface IForm {
-  email: string;
-  password: string;
-  name: string;
-}
+// interface IForm {
+//   email: string;
+//   password: string;
+//   name: string;
+// }
 
 export const SignUp = () => {
-  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
-  const history = useHistory();
-  const onCompleted = (data: signupMutation) => {
-    const {
-      signup: { ok },
-    } = data;
-    if (ok) {
-      alert("Account Created! Log in now!");
-      history.push("/");
-    }
-  };
-  const [signupMutation, { loading, data: createAccountMutationResult }] 
-    = useMutation<signupMutation,signupMutationVariables>(
-      SIGNUP_MUTATION, 
-      { onCompleted});
+  // const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+  // const history = useHistory();
+  // const onCompleted = (data: signupMutation) => {
+  //   const {
+  //     signup: { ok },
+  //   } = data;
+  //   if (ok) {
+  //     alert("Account Created! Log in now!");
+  //     history.push("/");
+  //   }
+  // };
+  // const [signupMutation, { loading, data: createAccountMutationResult }] 
+  //   = useMutation<signupMutation,signupMutationVariables>(
+  //     SIGNUP_MUTATION, 
+  //     { onCompleted});
   
-  const onSubmit = () => {
-    const { email,name, password } = getValues();
-    console.log(name)
-    signupMutation({
-      variables: {
-        email,
-        password,
-        name
-      }
-    });
-    console.log("d")
-  }
-  const inValid = () => {
-    console.log(errors)
-  }
+  // const onSubmit = () => {
+  //   const { email,name, password } = getValues();
+  //   console.log(name)
+  //   signupMutation({
+  //     variables: {
+  //       email,
+  //       password,
+  //       name
+  //     }
+  //   });
+  //   console.log("d")
+  // }
+  // const inValid = () => {
+  //   console.log(errors)
+  // }
   return (
     <div className="grid grid-cols-2">
-      <div className="col-span-1">
+      {/* <div className="col-span-1">
         <img src={loginImage} className="h-screen" alt="login Image" />
       </div>
       <div className="col-span-1 grid grid-cols-6 w-full h-screen justify-center max-w-screen-lg">
@@ -120,7 +120,7 @@ export const SignUp = () => {
         <div className="col-start-5">
           <Link to={'/'}><img src={logo}  className="mt-24 w-24"/></Link>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

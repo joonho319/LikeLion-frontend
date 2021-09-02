@@ -1,16 +1,70 @@
+import { gql, useMutation } from '@apollo/client'
 import logo from '../images/추천서로고.png';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
+import { signupMutation, signupMutationVariables } from '../__generated__/signupMutation';
 
-export const Login2 = () => {
+const SIGNUP_MUTATION = gql`
+  mutation signupMutation($email: String!, $password: String!, $name: String!) {
+    createAccount(input: {
+      email: $email,
+      password: $password,
+      name: $name,
+    }) {
+      ok,
+      error
+    } 
+  }
+`;
+
+
+interface IForm {
+  email: string;
+  password: string;
+  name: string;
+}
+
+export const SignUp2 = () => {
+  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+  const history = useHistory();
+  const onCompleted = (data: signupMutation) => {
+    const {
+      signup: { ok },
+    } = data;
+    if (ok) {
+      alert("Account Created! Log in now!");
+      history.push("/");
+    }
+  };
+  const [signupMutation, { loading, data: createAccountMutationResult }] 
+    = useMutation<signupMutation, signupMutationVariables>(
+      SIGNUP_MUTATION, 
+      { onCompleted});
+  
+  const onSubmit = () => {
+    const { email,name, password } = getValues();
+    console.log(name)
+    signupMutation({
+      variables: {
+        email,
+        password,
+        name
+      }
+    });
+    console.log("d")
+  }
+  const inValid = () => {
+    console.log(errors)
+  }
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* <Link to={'/'}><img src={logo}  className="mx-auto h-12 w-auto mb-24"/></Link> */}
        
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">로그인</h2>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">회원가입</h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -31,7 +85,21 @@ export const Login2 = () => {
                 />
               </div>
             </div>
-
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                이름
+              </label>
+              <div className="mt-1">
+                <input
+                  id="name"
+                  name="name"
+                  type="name"
+                  autoComplete="name"
+                  required
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 비밀번호
@@ -54,26 +122,20 @@ export const Login2 = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-2"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  아이디 저장
-                </label>
+                개인정보수집에 동의합니다 
               </div>
-
-              <div className="text-sm">
-                <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  회원가입
-                </a>
-              </div>
+              <a href={'/agreement'} target="_blank" className="border-2 px-1 border-gray-400">약관보기</a>
             </div>
-
+            
+          
             <div>
               <button
                 type="submit"
                 className="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                로그인
+                회원가입
               </button>
             </div>
           </form>

@@ -768,6 +768,10 @@ video {
   margin-right: 0.25rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -1134,6 +1138,10 @@ video {
   --tw-translate-x: -100%;
 }
 
+.hover\:-translate-y-1:hover {
+  --tw-translate-y: -0.25rem;
+}
+
 .rotate-0 {
   --tw-rotate: 0deg;
 }
@@ -1150,6 +1158,11 @@ video {
 .scale-100 {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
+}
+
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
 }
 
 @-webkit-keyframes spin {
