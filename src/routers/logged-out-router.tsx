@@ -22,6 +22,7 @@ import { Review } from "../pages/review";
 import { Curriculum } from "../pages/curriculum";
 import { Apply } from "../pages/apply";
 import { Mall } from "../pages/mall";
+import { Program } from "../pages/program";
 
 export const LoggedOutRouter = () => {
 
@@ -46,8 +47,11 @@ export const LoggedOutRouter = () => {
         <Route path="/curriculum">
           <Curriculum />
         </Route>
-        <Route path="/apply">
+        <Route path="/program/apply">
           <Apply />
+        </Route>
+        <Route path="/program">
+          <Program />
         </Route>
         <Route path="/review">
           <Review />

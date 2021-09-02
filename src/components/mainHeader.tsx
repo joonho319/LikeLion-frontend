@@ -6,7 +6,7 @@ import { url } from 'inspector';
 const navigation = [
   { name: '강사 소개', href: '/introduction' },
   { name: '커리큘럼', href: '/curriculum' },
-  { name: '1기 신청', href: '/apply' },
+  { name: '1기 신청', href: '/program' },
   { name: '프로그램 후기', href: '/review' },
 ]
 
