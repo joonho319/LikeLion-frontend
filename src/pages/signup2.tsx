@@ -64,7 +64,7 @@ export const SignUp2 = () => {
         name
       }
     });
-    console.log("d")
+    history.push('/');
   }
   const inValid = () => {
     console.log(errors)

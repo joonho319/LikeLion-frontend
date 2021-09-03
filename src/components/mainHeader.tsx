@@ -2,6 +2,9 @@ import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { url } from 'inspector';
+import { authTokenVar, isLoggedInVar } from '../apollo';
+import { useReactiveVar } from '@apollo/client';
+import { useHistory } from 'react-router';
 
 const navigation = [
   { name: '강사 소개', href: '/introduction' },
@@ -10,7 +13,16 @@ const navigation = [
   { name: '프로그램 후기', href: '/review' },
 ]
 
+
+
 export const MainHeader = () => {
+  const history = useHistory();
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
+  const logout = () => {
+    localStorage.removeItem('token');
+    isLoggedInVar(false)
+    history.push('/')
+  }
   return (
     <div className="relative bg-gray-800 overflow-hidden">
         {/* <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
@@ -68,12 +80,22 @@ export const MainHeader = () => {
                 </div>
               </div>
               <div className="hidden md:flex">
+                {isLoggedIn ?
+                <button onClick={logout}>
+                  <a
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
+                  >
+                    로그아웃
+                  </a> 
+                </button> :
                 <a
                   href="/login"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
                 >
                   로그인
                 </a>
+                }
+                
               </div>
             </nav>
 
@@ -117,12 +139,21 @@ export const MainHeader = () => {
                       </a>
                     ))}
                   </div>
+                  {isLoggedIn ?
+                  <a
+                    onClick={logout}
+                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                  >
+                    로그아웃
+                  </a> :
                   <a
                     href="/login"
                     className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
                   >
                     로그인
                   </a>
+                  }
+                  
                 </div>
               </Popover.Panel>
             </Transition>

@@ -2,9 +2,9 @@ import React from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useReactiveVar } from '@apollo/client';
-import { isLoggedInVar } from '../apollo';
+import { authTokenVar, isLoggedInVar } from '../apollo';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
@@ -13,7 +13,17 @@ function classNames(...classes: any[]) {
 interface NavProps {
   page: string;
 }
+
+
+
 export const Header2: React.FC<NavProps> = ({page}) =>{
+  const history = useHistory();
+  const logout = () => {
+    localStorage.removeItem('token');
+    isLoggedInVar(false)
+    history.push(window.location.pathname)
+  }
+
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
     <>
@@ -137,7 +147,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                           <Menu.Item>
                             {({ active }) => (
                               <a
-                                href="#"
+                                onClick={logout}
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                               >
                                 로그아웃
@@ -231,7 +241,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                       설정
                     </a>
                     <a
-                      href="/main2"
+                      onClick={logout}
                       className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                     >
                       로그아웃

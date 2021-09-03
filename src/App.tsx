@@ -5,7 +5,7 @@ import {LoggedInRouter} from './routers/logged-in-router';
 import { isLoggedInVar } from './apollo';
 
 function App() {
-  // const isLoggedIn = useReactiveVar(isLoggedInVar);
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
     <div>
       <LoggedOutRouter />
