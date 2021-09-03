@@ -4,7 +4,6 @@ import { Header2 } from '../components/header2';
 import Itemselect from '../images/사업아이템선정.png';
 import paidItems from '../images/refer_main.jpg';
 
-import { free_or_paid } from '../apollo';
 
 const free_products = [
   {
@@ -69,7 +68,6 @@ const paid_products = [
 ]
 
 export const Online = () => {
-  const isLoggedIn = useReactiveVar(free_or_paid);
   const [isFree, setIsFree] = useState<boolean>(false);
 
   return (

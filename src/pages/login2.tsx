@@ -1,10 +1,62 @@
 import logo from '../images/추천서로고.png';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
+import { Helmet} from 'react-helmet-async';
+import gql from 'graphql-tag';
+import { useForm } from 'react-hook-form';
+import { useMutation } from '@apollo/client';
+import { loginMutation, loginMutationVariables } from '../__generated__/loginMutation';
+import { isLoggedInVar, authTokenVar} from '../apollo';
+import { LOCALSTORAGE_TOKEN } from '../constant';
+
+const LOGIN_MUTATION = gql`
+  mutation loginMutation($loginInput: LoginInput!) {
+    login(input: $loginInput) {
+      ok,
+      token,
+      error
+    }
+  }
+`;
+
+interface IForm {
+  email: string;
+  password: string;
+}
 
 export const Login2 = () => {
+  const history = useHistory();
+  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+  const onCompleted = (data: loginMutation) => {
+    const {
+      login: { ok, token, error },
+    } = data;
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      authTokenVar(token);
+      isLoggedInVar(true);
+      history.push('/')
+    } 
+  };
+  const [ loginMutation, { data: loginMutationResult, loading } ] = useMutation<loginMutation, loginMutationVariables>(LOGIN_MUTATION, { onCompleted});
+  const onSubmit = () => {
+    if(!loading) {
+      const { email, password } = getValues();
+      loginMutation({
+        variables: {
+          loginInput: {
+            email,
+            password,
+          }
+        }
+      });
+    }
+  }
+  const inValid = () => {
+    console.log(errors)
+  }
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -15,14 +67,18 @@ export const Login2 = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit, inValid)}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 이메일
               </label>
               <div className="mt-1">
                 <input
-                  id="email"
+                  {...register("email", {
+                    required: "이메일을 입력해주세요",
+                    minLength: 10,
+                    validate: (email) =>email.includes("@")
+                  })}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -38,7 +94,9 @@ export const Login2 = () => {
               </label>
               <div className="mt-1">
                 <input
-                  id="password"
+                  {...register("password", {
+                    required: "비밀번호를 입력해주세요"
+                  })}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -47,7 +105,7 @@ export const Login2 = () => {
                 />
               </div>
             </div>
-
+            {loginMutationResult?.login.error && <div className="text-red-500 text-sm">{loginMutationResult.login.error}</div>}   
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -73,7 +131,7 @@ export const Login2 = () => {
                 type="submit"
                 className="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                로그인
+                {loading ? '로그인 중' : '로그인'}
               </button>
             </div>
           </form>

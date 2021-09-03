@@ -5,21 +5,20 @@ import loginImage from '../images/login_img_02.jpg';
 import logo from '../images/추천서로고.png';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
-import { loginMutation, loginMutationVariables } from '../__generated__/loginMutation';
 import { Link } from 'react-router-dom';
 
-const LOGIN_MUTATION = gql`
-  mutation loginMutation($email: String!, $password: String!) {
-    login(input: {
-      email: $email,
-      password: $password
-    }) {
-      ok,
-      token,
-      error
-    }
-  }
-`;
+// const LOGIN_MUTATION = gql`
+//   mutation loginMutation($email: String!, $password: String!) {
+//     login(input: {
+//       email: $email,
+//       password: $password
+//     }) {
+//       ok,
+//       token,
+//       error
+//     }
+//   }
+// `;
 
 interface IForm {
   email: string;
@@ -28,16 +27,16 @@ interface IForm {
 
 export const Login = () => {
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
-  const [loginMutation] = useMutation<loginMutation,loginMutationVariables>(LOGIN_MUTATION);
+  // const [loginMutation] = useMutation<loginMutation,loginMutationVariables>(LOGIN_MUTATION);
   
   const onSubmit = () => {
     const { email, password } = getValues();
-    loginMutation({
-      variables: {
-        email,
-        password
-      }
-    })
+    // loginMutation({
+    //   variables: {
+    //     email,
+    //     password
+    //   }
+    // })
   }
   const inValid = () => {
     console.log(errors)

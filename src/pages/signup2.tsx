@@ -1,14 +1,14 @@
 import { gql, useMutation } from '@apollo/client'
 import logo from '../images/추천서로고.png';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
-import { signupMutation, signupMutationVariables } from '../__generated__/signupMutation';
+import { createAccountMutation, createAccountMutationVariables } from '../__generated__/createAccountMutation';
 
-const SIGNUP_MUTATION = gql`
-  mutation signupMutation($email: String!, $password: String!, $name: String!) {
+const CREATEACCOUNT_MUTATION = gql`
+  mutation createAccountMutation($email: String!, $password: String!, $name: String!) {
     createAccount(input: {
       email: $email,
       password: $password,
@@ -24,30 +24,40 @@ const SIGNUP_MUTATION = gql`
 interface IForm {
   email: string;
   password: string;
+  passwordcheck: string;
   name: string;
+  agreement: boolean;
 }
 
 export const SignUp2 = () => {
-  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+  const [ passwordcheck, setPasswordcheck ] = useState(true);
+  const { register, getValues, handleSubmit, watch, formState: { errors } } = useForm<IForm>();
+  const password = useRef({});
+  password.current = watch("password", "");
   const history = useHistory();
-  const onCompleted = (data: signupMutation) => {
+  const onCompleted = (data: createAccountMutation) => {
     const {
-      signup: { ok },
+      createAccount: { ok },
     } = data;
     if (ok) {
       alert("Account Created! Log in now!");
       history.push("/");
     }
   };
-  const [signupMutation, { loading, data: createAccountMutationResult }] 
-    = useMutation<signupMutation, signupMutationVariables>(
-      SIGNUP_MUTATION, 
+  const [createAccountMutation, { loading, data: createAccountMutationResult }] 
+    = useMutation<createAccountMutation, createAccountMutationVariables>(
+      CREATEACCOUNT_MUTATION, 
       { onCompleted});
   
   const onSubmit = () => {
-    const { email,name, password } = getValues();
+    const { email,name, password, passwordcheck } = getValues();
     console.log(name)
-    signupMutation({
+    if(password !== passwordcheck) {
+      setPasswordcheck(false);
+      console.log("err")
+      return;
+    }
+    createAccountMutation({
       variables: {
         email,
         password,
@@ -69,14 +79,17 @@ export const SignUp2 = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit, inValid)}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 이메일
               </label>
               <div className="mt-1">
                 <input
-                  id="email"
+                  {...register("email", {
+                    required: "이메일을 입력해주세요",
+                    validate: (email) =>email.includes("@")
+                  })}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -91,7 +104,9 @@ export const SignUp2 = () => {
               </label>
               <div className="mt-1">
                 <input
-                  id="name"
+                  {...register("name", {
+                    required: "이름을 입력해주세요",
+                  })}
                   name="name"
                   type="name"
                   autoComplete="name"
@@ -106,7 +121,11 @@ export const SignUp2 = () => {
               </label>
               <div className="mt-1">
                 <input
-                  id="password"
+                  {...register("password", {
+                    required: "비밀번호를 입력해주세요",
+                    minLength: 10,
+                    // validate: (email) =>email.includes("gmail.com")
+                  })}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -115,20 +134,42 @@ export const SignUp2 = () => {
                 />
               </div>
             </div>
+            <div>
+              <label htmlFor="passwordcheck" className="block text-sm font-medium text-gray-700">
+                비밀번호 확인
+              </label>
+              <div className="mt-1">
+                <input
+                  {...register("passwordcheck", {
+                    required: "비밀번호를 입력해주세요",
+                    minLength: 10,
+                    validate: (passwordcheck) =>passwordcheck === password.current || '비밀번호가 일치하지않습니다.'
+                  })}
+                  name="passwordcheck"
+                  type="password"
+                  autoComplete="current-passwordcheck"
+                  required
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                {errors.passwordcheck && <div className="text-red-500 text-sm">비밀번호가 일치하지 않습니다.</div>}
+              </div>
+            </div>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
-                  id="remember-me"
-                  name="remember-me"
+                  {...register("agreement", {
+                    validate: (agreement) => agreement === true
+                  })}
+                  name="agreement"
                   type="checkbox"
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-2"
                 />
-                개인정보수집에 동의합니다 
+                (필수)개인정보수집에 동의합니다 
               </div>
               <a href={'/agreement'} target="_blank" className="border-2 px-1 border-gray-400">약관보기</a>
             </div>
-            
+            {errors.agreement && <div className="text-red-500 text-sm">개인정보수집에 동의해주세요.</div>}
           
             <div>
               <button

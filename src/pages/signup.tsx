@@ -5,7 +5,7 @@ import loginImage from '../images/login_img_02.jpg';
 import logo from '../images/추천서로고.png';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
-import { signupMutation, signupMutationVariables } from '../__generated__/signupMutation';
+// import { signupMutation, signupMutationVariables } from '../__generated__/signupMutation';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 

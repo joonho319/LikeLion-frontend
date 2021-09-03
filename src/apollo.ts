@@ -1,11 +1,29 @@
-import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client';
+import { ApolloClient, createHttpLink, InMemoryCache, makeVar } from '@apollo/client';
+import { setContext } from "@apollo/client/link/context";
+import { LOCALSTORAGE_TOKEN } from './constant';
 
-export const isLoggedInVar = makeVar(false);
-export const free_or_paid = makeVar('free');
+const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 
+export const isLoggedInVar = makeVar(Boolean(token));
+export const authTokenVar = makeVar(token);
+
+console.log(authTokenVar())
+const httpLink = createHttpLink({
+  uri: "http://localhost:4000/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      "x-jwt": authTokenVar() || "",
+    },
+  };
+});
 
 export const client = new ApolloClient({
-  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost:3000',
+  link: authLink.concat(httpLink),
+  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost4000/graphql',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
@@ -17,7 +35,7 @@ export const client = new ApolloClient({
           },
           token: {
             read() {
-              return free_or_paid();
+              return authTokenVar();
             },
           }
         }
