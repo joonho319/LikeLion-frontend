@@ -20,6 +20,7 @@ export const MainHeader = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     isLoggedInVar(false)
     history.push('/')
   }

@@ -1,6 +1,7 @@
 import { Footer } from "../components/footer"
 import { Header2 } from "../components/header2"
 import { ReviewCarousel } from "../components/reviewCarousel"
+import { ReviewPost } from "../components/reviewPost"
 
 export const reviewPosts = [
   {
@@ -165,7 +166,7 @@ export const Review = () => {
         <div className="max-w-7xl mx-auto px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="text-4xl font-bold">후기글 모음</div>
         </div>
-        <ReviewCarousel reviewPosts={reviewPosts} showTitle={false} />
+        <ReviewPost reviewPosts={reviewPosts} />
       </div>
       <Footer />
     </>

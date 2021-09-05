@@ -45,6 +45,7 @@ export const blogPosts = [
     title: '만족했던 멘토링이었습니다.',
     href: '#',
     date: 'Mar 16, 2020',
+    rating: 5,
     datetime: '2020-03-16',
     category: { name: '아이디어 검증', href: '#' },
     preview:
@@ -61,6 +62,7 @@ export const blogPosts = [
     title: '만족했던 멘토링이었습니다.',
     href: '#',
     date: 'Mar 10, 2020',
+    rating: 5,
     datetime: '2020-03-10',
     category: { name: '사업화 전략', href: '#' },
     preview:
@@ -79,6 +81,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '마케팅', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -94,6 +97,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -109,6 +113,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -124,6 +129,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -139,6 +145,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -154,6 +161,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -169,6 +177,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '사업계획서 작성', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -184,6 +193,7 @@ export const blogPosts = [
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
     category: { name: '아이디어 발견', href: '#' },
+    rating: 5,
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     preview:
@@ -265,7 +275,7 @@ export const Main2 = () => {
         </Carousel>
       </div> */}
       
-      <ReviewCarousel reviewPosts={blogPosts} showTitle={true} />
+      <ReviewCarousel reviewPosts={blogPosts} />
       <p className="mt-20 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
         마스트벤처스 커리큘럼
       </p>

@@ -16,6 +16,11 @@ const LOGIN_MUTATION = gql`
     login(input: $loginInput) {
       ok,
       token,
+      user {
+        role
+        email
+        name
+      },
       error
     }
   }
@@ -31,10 +36,12 @@ export const Login2 = () => {
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
   const onCompleted = (data: loginMutation) => {
     const {
-      login: { ok, token, error },
+      login: { ok, token, user, error },
     } = data;
     if (ok && token) {
       localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      console.log(user)
+      localStorage.setItem('role', String(user.role))
       authTokenVar(token);
       isLoggedInVar(true);
       history.push('/')

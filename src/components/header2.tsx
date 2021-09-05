@@ -20,6 +20,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
   const history = useHistory();
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     isLoggedInVar(false)
     history.push(window.location.pathname)
   }
@@ -31,14 +32,8 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="pr-16 sm:text-center sm:px-16">
             <p className="font-medium text-white">
-              <span className="md:hidden">오늘의 미션: 000에 대해 생각해보세요</span>
-              <span className="hidden md:inline">오늘의 미션: 000에 대해 생각해보세요</span>
-              {/* <span className="block sm:ml-2 sm:inline-block">
-                <a href="#" className="text-white font-bold underline">
-                  {' '}
-                  Learn more <span aria-hidden="true">&rarr;</span>
-                </a>
-              </span> */}
+              <span className="md:hidden">창업 아이템 선정 과정 1기 모집합니다.</span>
+              <span className="hidden md:inline">아이디어 선정과정 1기 모집합니다.</span>
             </p>
           </div>
           <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
