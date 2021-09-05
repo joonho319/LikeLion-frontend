@@ -7,9 +7,8 @@ const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
-console.log(authTokenVar())
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
