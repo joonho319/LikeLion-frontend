@@ -10,7 +10,6 @@ export const Business = () => {
     const { email,name, password } = getValues();
     console.log(name)
       
-    console.log("d")
   }
 
   return (

@@ -40,7 +40,6 @@ export const Apply = () => {
   const [ applyMutation, { data: applyMutationResult, loading } ] = useMutation<applyMutation, applyMutationVariables>(APPLY_MUTATION, { onCompleted});
   const onSubmit = () => {
       const { name, phone, region, idea, experience, comment } = getValues();
-      console.log("1")
       applyMutation({
         variables: {
           applyInput: {
