@@ -11,7 +11,7 @@ export const authTokenVar = makeVar(token);
 const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV === "production"
-      ? "wss://mast-ventures-backend.herokuapp.com/graphql"
+      ? "https://mast-ventures-backend.herokuapp.com/graphql"
       : "http://localhost:4000/graphql",
 });
 
