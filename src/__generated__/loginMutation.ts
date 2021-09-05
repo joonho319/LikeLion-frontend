@@ -20,7 +20,7 @@ export interface loginMutation_login {
   __typename: "LoginOutput";
   ok: boolean;
   token: string | null;
-  user: loginMutation_login_user;
+  user: loginMutation_login_user | null;
   error: string | null;
 }
 

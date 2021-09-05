@@ -8,7 +8,7 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
 const httpLink = createHttpLink({
-  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost4000/graphql',
+  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -22,7 +22,7 @@ const authLink = setContext((_, { headers }) => {
 
 export const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost4000/graphql',
+  uri: process.env.NODE_ENV === 'production' ?  'https://mast-ventures-backend.herokuapp.com/graphql' : 'http://localhost:4000/graphql',
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
