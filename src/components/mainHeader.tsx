@@ -21,6 +21,8 @@ export const MainHeader = () => {
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
     isLoggedInVar(false)
     history.push('/')
   }
@@ -89,12 +91,21 @@ export const MainHeader = () => {
                     로그아웃
                   </a> 
                 </button> :
-                <a
-                  href="/login"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
+                <>
+                  <a
+                    href="/login"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
+                  >
+                    로그인
+                  </a>
+                  <a
+                  href="/signup"
+                  className="inline-flex items-center ml-3 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
                 >
-                  로그인
+                  회원가입
                 </a>
+              
+                </>
                 }
                 
               </div>

@@ -40,8 +40,9 @@ export const Login2 = () => {
     } = data;
     if (ok && token) {
       localStorage.setItem(LOCALSTORAGE_TOKEN, token);
-      console.log(user)
       localStorage.setItem('role', String(user?.role))
+      localStorage.setItem('email', String(user?.email))
+      localStorage.setItem('name', String(user?.name))
       authTokenVar(token);
       isLoggedInVar(true);
       history.push('/')

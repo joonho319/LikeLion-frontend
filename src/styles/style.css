@@ -1251,6 +1251,10 @@ video {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .appearance-none {
   -webkit-appearance: none;
           appearance: none;
@@ -1663,11 +1667,6 @@ video {
   background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
 }
 
-.bg-blue-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
-}
-
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
@@ -1696,6 +1695,11 @@ video {
 .group:hover .group-hover\:bg-indigo-800 {
   --tw-bg-opacity: 1;
   background-color: rgba(55, 48, 163, var(--tw-bg-opacity));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-50:hover {
@@ -2310,6 +2314,11 @@ video {
   color: rgba(99, 102, 241, var(--tw-text-opacity));
 }
 
+.hover\:text-indigo-800:hover {
+  --tw-text-opacity: 1;
+  color: rgba(55, 48, 163, var(--tw-text-opacity));
+}
+
 .hover\:text-indigo-900:hover {
   --tw-text-opacity: 1;
   color: rgba(49, 46, 129, var(--tw-text-opacity));
@@ -2384,8 +2393,8 @@ video {
   opacity: 0;
 }
 
-.opacity-30 {
-  opacity: 0.3;
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .opacity-100 {
@@ -2394,6 +2403,14 @@ video {
 
 .group:hover .group-hover\:opacity-75 {
   opacity: 0.75;
+}
+
+.hover\:opacity-75:hover {
+  opacity: 0.75;
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
 }
 
 *, ::before, ::after {
@@ -2755,10 +2772,6 @@ video {
             column-gap: 1.5rem;
   }
 
-  .sm\:gap-y-10 {
-    row-gap: 2.5rem;
-  }
-
   .sm\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -2987,6 +3000,10 @@ video {
     max-width: 48rem;
   }
 
+  .md\:max-w-7xl {
+    max-width: 80rem;
+  }
+
   .md\:flex-1 {
     -webkit-flex: 1 1 0%;
             flex: 1 1 0%;
@@ -3013,6 +3030,10 @@ video {
   .md\:justify-center {
     -webkit-justify-content: center;
             justify-content: center;
+  }
+
+  .md\:justify-items-center {
+    justify-items: center;
   }
 
   .md\:justify-items-stretch {
@@ -3274,10 +3295,6 @@ video {
   .lg\:flex-grow-0 {
     -webkit-flex-grow: 0;
             flex-grow: 0;
-  }
-
-  .lg\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-4 {

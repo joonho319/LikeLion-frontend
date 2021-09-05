@@ -123,14 +123,33 @@ export const Introduction = () => {
     <>
       <Header2  page={'introduction'}/>
       
-      <div className="text-blue-900 text-4xl mt-20 lg:grid lg:justify-items-center lg:max-w-7xl">강사소개</div>
+      {/* <div className="text-blue-900 text-4xl mt-20 lg:grid lg:justify-items-center lg:max-w-7xl">강사소개</div> */}
       <div className="mt-24">
+          <div className="md:mx-auto md:grid md:justify-items-center md:max-w-7xl lg:text-lg">
+            <div>
+              <p className="lg:text-3xl mb-10 font-bold">마스트벤처스는 어떤 곳인가요?</p>
+              <p>창업을 권하는 사회라는 말에 이의를 제기할 순 없을 것 같습니다. </p>
+              <p>정부 지원은 폭발적으로 늘고있고, 창업 교육은 우후죽순으로 늘어 갑니다. </p>
+              <p>창업 후 성공했다는 스타트업 대표들이 사람들의 부러움을 사고 있습니다. </p>
+              <p>하지만 주변 창업자중에 이런 지원을 충분히 활용하면서 교육을 받으면서 건강하게 방향성을 조정하고, 행복하게 돈버는 사업가가 과연 얼마나 계신가요? </p>
+              <p>솔직히 찾기 힘든게 사실입니다. 왜 그런걸까요?</p>< br />
+              <p>자유롭고, 돈 많이 벌 수 있다는 창업에 대한 환상은 달콤하게 포장되어 있고 그 목표를 향해 가는 현실적인 가이드와 실질적인 피드백은 턱없이 부족하기 때문입니다.  </p>
+              <p>수십년전 경영이론에 기반해 주입식으로 이뤄지는 창업 교육은 창업자의 현실감각을 오히려 저해하고 창업을 지속하고자 하는 의욕을 갉아먹는 요인이 되기도 합니다.</p>
+              <p>어제의 정답이 오늘의 오답이 되는 빠른 변화의 세상에서 문제를 정확히 진단하고, 가설을 뾰족하게 세우고, 리즈너블한 해결책을 도출하는 능력을 갖춰가지 못하면 창업 후 벌어지는 예상못한 장애물들을 뛰어넘기 어렵습니다.</p><br />
+              <p>마스트벤처스의 파트너 강의들은 그런 문제를 해결하는데 초점이 맞춰져 있습니다. </p>
+              <p>-창업에 필요한 최소한의 이론과 오랜 창업 경험과 코칭 사례를 바탕으로 한 강의</p>
+              <p>-반복적인 수강생의 발표와 피드백을 통한 아이템 검증과 비즈니스 모델 고도화</p>
+              <p>-서비스 개발과 빌드업 과정에서 얻은 기술적 노하우 및 인간관계 노하우</p>< br />
+              <p>이 모든 것들을 수강생 입장에서 가장 잘 전달할 수 있는 파트너가 뭉쳤습니다.</p>
+              <p>지금 마스트벤처스를 통해 스스로 비판적인 생각을 하는 냉철함을 갖추고 좋은 인재를 내 편으로 만들 수 있는 설득력을 갖추고 적을 만들지 않는 매력을 갖춘 사업가가 되는 길을 준비해보세요.</p>
+             
+            </div>
+          </div>
         <div className="pb-16 lg:pb-0 lg:z-10 lg:relative">
           <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-7 lg:gap-8">
             <div className="relative lg:col-span-2">
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
                 <div className="overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-                  
                   <img
                     className="object-fit lg:object-cover w-full h-full lg:h-90 lg:w-full lg:mt-5"
                     src={Kim}
