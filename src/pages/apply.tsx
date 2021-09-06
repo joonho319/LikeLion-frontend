@@ -1,5 +1,7 @@
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { Header2 } from "../components/header2"
@@ -25,7 +27,45 @@ interface IForm {
   comment: string;
 }
 
+declare global {
+  interface Window {
+      IMP:any;
+  }
+}
+
 export const Apply = () => {
+
+  // var IMP = window.IMP; // 생략 가능
+  // IMP.init("{가맹점 식별코드}");
+
+  // const requestPay = () => {
+  //   // IMP.request_pay(param, callback) 결제창 호출
+  //   IMP.request_pay({ // param
+  //     pg: "html5_inicis",
+  //     pay_method: "card",
+  //     merchant_uid: "ORD20180131-0000011",
+  //     name: "노르웨이 회전 의자",
+  //     amount: 64900,
+  //     buyer_email: "gildong@gmail.com",
+  //     buyer_name: "홍길동",
+  //     buyer_tel: "010-4242-4242",
+  //     buyer_addr: "서울특별시 강남구 신사동",
+  //     buyer_postcode: "01181"
+  //   }, (rsp: any) => { // callback
+  //     if (rsp.success) {
+  //       console.log("success")
+  //     } else {
+  //       console.log("fail")
+  //     }
+  //   });
+  // }
+  useEffect(() => {
+    if(!localStorage.getItem('email')) {
+      alert('간단 회원가입 후 신청해주세요')
+      history.push('/signup')
+    }
+  },[]);
+
   const history = useHistory();
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
   const onCompleted = (data: applyMutation) => {
@@ -52,7 +92,6 @@ export const Apply = () => {
           }
         }
       });
-    
   }
   const inValid = () => {
     console.log(errors)
@@ -60,6 +99,10 @@ export const Apply = () => {
 
   return (
     <>
+      <Helmet>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+      </Helmet>
       <Header2 page={'program'} />
       <div className="max-w-2xl mx-auto p-4 my-28 grid justify-items-center shadow-lg rounded-md" style={{ border: "solid 1px #eeeeee"}}>
         <form className="" onSubmit={handleSubmit(onSubmit, inValid)}>
@@ -69,6 +112,22 @@ export const Apply = () => {
             </div>
             <div className="pt-8 sm:pt-10 sm:space-y-5">
               <div className=" sm:space-y-5">
+              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
+                  <label htmlFor="name" className="block text-md font-medium text-gray-700 sm:mt-px p-1">
+                    강의명 
+                  </label>
+                  <div className="mt-1 sm:mt-0 sm:col-span-2">
+                    아이템 선정 한달 과정
+                  </div>
+                </div>
+                <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
+                  <label htmlFor="name" className="block text-md font-medium text-gray-700 sm:mt-px p-1">
+                    수강료 
+                  </label>
+                  <div className="mt-1 sm:mt-0 sm:col-span-2">
+                    30만원
+                  </div>
+                </div>
                 <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-gray-200 sm:pt-5">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 sm:mt-px p-1">
                     신청자명

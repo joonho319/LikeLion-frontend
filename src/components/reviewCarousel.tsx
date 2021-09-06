@@ -111,7 +111,7 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
             </div>
             <div className="mt-12 mx-auto max-w-md px-4 sm:max-w-lg lg:hidden">
               <StyledSlider {...small_settings}>
-                {reviewPosts.filter((v,i) => (i < 8)).map((post,i ) => {
+                {reviewPosts.filter((v,i) => (i < 10)).map((post,i ) => {
                   return <div key={post.id} className="rounded-lg shadow-lg overflow-hidden">
                     <div className=" bg-white p-6">
                       <div className="">

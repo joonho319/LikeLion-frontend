@@ -222,7 +222,7 @@ export const Main2 = () => {
       </p>
       <div className="grid grid-cols-4 gap-12 mt-20 mb-10 justify-items-stretch md:hidden">
         <div className="col-start-1 col-span-3">
-          <VideoCard videoId="mfAHjp9I_o8" />
+          <VideoCard videoId="s4PNxgvQGFQ" />
         </div>
       </div>
       <div className="hidden md:overflow-hidden md:grid md:grid-cols-4 md:gap-12 mt-20 md:mb-10 md:justify-items-stretch">
