@@ -25,6 +25,9 @@ import { Mall } from "../pages/mall";
 import { Program } from "../pages/program";
 import { SignUp2 } from "../pages/signup2";
 import { Agreement } from "../pages/agreement";
+import { Terms } from "../pages/terms";
+import { Privacy } from "../pages/privacy";
+import { Refund } from "../pages/refund";
 
 export const LoggedOutRouter = () => {
 
@@ -33,6 +36,15 @@ export const LoggedOutRouter = () => {
       <Switch>
         <Route path="/agreement">
           <Agreement />
+        </Route>
+        <Route path="/docs/terms">
+          <Terms />
+        </Route>
+        <Route path="/docs/privacy">
+          <Privacy />
+        </Route>
+        <Route path="/docs/refund">
+          <Refund />
         </Route>
         <Route path="/signup">
           <SignUp2 />

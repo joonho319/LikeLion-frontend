@@ -1,12 +1,10 @@
 /* This example requires Tailwind CSS v2.0+ */
 const navigation = {
   main: [
-    { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Accessibility', href: '#' },
-    { name: 'Partners', href: '#' },
+    { name: '소개', href: '/introduction' },
+    { name: '이용약관', href: '/docs/terms' },
+    { name: '개인정보 처리방침', href: '/docs/privacy' },
+    { name: '환불정책', href: '/docs/refund' },
   ],
   social: [
     {
@@ -77,6 +75,15 @@ export const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          {navigation.main.map((item) => (
+            <div key={item.name} className="px-5 py-2">
+              <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
+                {item.name}
+              </a>
+            </div>
+          ))}
+        </nav>
         <div className="mt-8 flex justify-center space-x-6">
           {navigation.social.map((item) => (
             <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
@@ -85,15 +92,6 @@ export const Footer = () => {
             </a>
           ))}
         </div>
-        {/* <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="px-5 py-2">
-              <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
-                {item.name}
-              </a>
-            </div>
-          ))}
-        </nav> */}
         
         <p className="mt-8 text-center text-base text-gray-400">(주)인스텝스 | 대표 김기현 | 서울특별시 구로구 디지털로 31길 38-21, 3층 305호 | 사업자등록번호 : 113-86-77264 | 전화번호: 070-5100-5577</p>
         <p className="mt-8 text-center text-base text-gray-400">&copy; 2021 Workflow, Inc. All rights reserved.</p>
