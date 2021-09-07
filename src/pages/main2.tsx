@@ -250,7 +250,7 @@ export const Main2 = () => {
           >
             제준호 대표
           </button> */}
-          <VideoCard videoId="mfAHjp9I_o8" />
+          <VideoCard videoId="s4PNxgvQGFQ" />
         </div>
       </div>
       {/* <div className="mt-10">
