@@ -56,7 +56,7 @@ export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
             </select>   */}
           </div>
           <div className='mx-auto max-w-md px-4 py-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl'>
-            {data?.getReview.review?.filter((v: any,i: number) => v.area === area  ).map((post: any, i) => (
+            {data?.getReview.review?.map((post: any, i) => (
               <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden hover:w-28">
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
@@ -66,7 +66,7 @@ export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
                       </a>
                     </p>
                     <a href={post.href} className=" mt-2 flex justify-center">
-                      <p className="mt-3 text-base text-gray-500">{(post.review.length > 110) ? post.review.substring(0,100) + '..' : post.review}</p>
+                      <p className="mt-3 text-base text-gray-500 ">{(post.review.length > 110) ? post.review.substring(0,100) + '..' : post.review}</p>
                     </a>
                   </div>
                   <div className="mt-6  items-center">
