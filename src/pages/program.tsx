@@ -4,6 +4,7 @@ import IdeamCurriculum from '../images/ideaprocess-001.png';
 import RegularCurriculum from '../images/regularprocess-001.png';
 import BusinessPlan from '../images/business_plan-001.png';
 import styled from "styled-components";
+import { Footer } from "../components/footer";
 /*
   This example requires Tailwind CSS v2.0+ 
   
@@ -98,6 +99,7 @@ export const Program = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

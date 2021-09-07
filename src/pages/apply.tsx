@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
+import { Footer } from "../components/footer";
 import { Header2 } from "../components/header2"
 import { applyMutation, applyMutationVariables } from "../__generated__/applyMutation";
 
@@ -310,6 +311,7 @@ export const Apply = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </>
   )
 }
