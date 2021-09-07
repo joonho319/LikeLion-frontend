@@ -79,24 +79,31 @@ export const area = (area: any) => {
   }
 }
 
+interface ReviewCarouselProps {
+  ismain: boolean;
+}
 
-export const ReviewCarousel = () => {
+
+export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
   const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
-    backgroundColor: "#1f2937" 
+    backgroundColor: ismain ?  "#1f2937" : "#eeeeee"
   }
   return (
     <div className="'bg-white mt-10"> 
       <div className=" py-16 lg:py-32 sm:py-24" style={style}>
         <div className="">
-          <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-            <p className="mt-2 text-3xl font-bold text-white text-opacity-70 tracking-tight sm:text-4xl">
-            멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
-            </p>
-            <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
+          {ismain ?
+            <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
+              <p className="mt-2 text-3xl font-bold text-white text-opacity-70 tracking-tight sm:text-4xl">
               멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
-            </p>
-          </div>
+              </p>
+              <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
+                멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
+              </p>
+            </div> :
+            <></>
+          }
           <div className="mt-12 mx-auto max-w-full px-4 lg:max-w-7xl hidden lg:block lg:visible ">
             <StyledSlider {...settings}>
               {data?.getReview.review?.filter((v: any,i: number) => (i < 10)).map((post: any,i: number ) => {
@@ -183,16 +190,18 @@ export const ReviewCarousel = () => {
               </StyledSlider>
             </div>
           </div>
-        <div className="grid justify-items-center mt-20">
-          <Link to={'review'}>
-          <button
-            type="button"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            후기 더보러 가기
-          </button>
-          </Link>
-        </div>
+          {ismain && 
+          <div className="grid justify-items-center mt-20">
+            <Link to={'review'}>
+            <button
+              type="button"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              후기 더보러 가기
+            </button>
+            </Link>
+          </div>
+          }
       </div>
     </div>
   )

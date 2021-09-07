@@ -275,7 +275,7 @@ export const Main2 = () => {
         </Carousel>
       </div> */}
       
-      <ReviewCarousel />
+      <ReviewCarousel ismain={true} />
       <p className="mt-20 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
         마스트벤처스 커리큘럼
       </p>

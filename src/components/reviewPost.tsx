@@ -5,7 +5,7 @@ import { StarIcon } from '@heroicons/react/solid';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { getReview } from '../__generated__/getReview';
-import {GET_REVIEW_QUERY, area} from './reviewCarousel';
+import {GET_REVIEW_QUERY, area, ReviewCarousel} from './reviewCarousel';
 interface ReviewCardProps {
   reviewPosts: any[];
 }
@@ -23,16 +23,10 @@ function classNames(...classes: any[]) {
 }
 
 
-export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
-  const [ area, setArea ] = useState('idea')
+export const ReviewPost = () => {
   const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
     backgroundColor: "#eeeeee"
-  }
-
-  const changeArea = (event: any) => {
-    event.preventDefault();
-    setArea(event.tartget.value)
   }
 
   return (
@@ -55,14 +49,15 @@ export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
               <option value="investment">투자전략</option>
             </select>   */}
           </div>
+          <div className='mx-auto max-w-md px-4 py-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl'>최신후기</div>
           <div className='mx-auto max-w-md px-4 py-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl'>
-            {data?.getReview.review?.map((post: any, i) => (
+            {data?.getReview.review?.filter((v: any,i: number) => (i < 4)).map((post: any, i) => (
               <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden hover:w-28">
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-md font-medium text-cyan-600">
                       <a className="hover:underline flex justify-center">
-                        {post.area}
+                        {area(post.area)}
                       </a>
                     </p>
                     <a href={post.href} className=" mt-2 flex justify-center">
@@ -95,6 +90,7 @@ export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
               </div>
             ))}
           </div>
+          {/* <div className='mx-auto max-w-md px-4 py-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl'>최신후기</div> */}
         </div>
         <div className=" h-16"></div>
       </div>
