@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Login } from '../pages/login';
-import { Main } from "../pages/main";
 import { SignUp } from '../pages/signup';
 import { Service } from '../pages/service';
 import { Reference } from '../pages/reference';
@@ -15,13 +14,11 @@ import { Step } from "../pages/step";
 import { Online } from "../pages/online";
 import { Offline } from "../pages/offline";
 import { Community } from "../pages/community";
-import { Main3 } from "../pages/main3";
 import { Admin } from "../pages/admin";
 import { Introduction } from "../pages/introduction";
 import { Review } from "../pages/review";
 import { Curriculum } from "../pages/curriculum";
 import { Apply } from "../pages/apply";
-import { Mall } from "../pages/mall";
 import { Program } from "../pages/program";
 import { SignUp2 } from "../pages/signup2";
 import { Agreement } from "../pages/agreement";
@@ -94,9 +91,6 @@ export const LoggedOutRouter = () => {
         </Route>
         <Route path="/profile">
           <Profile />
-        </Route>
-        <Route path="/main3">
-          <Main3 />
         </Route>
         <Route path="/">
           <Main2 />

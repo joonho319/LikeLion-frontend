@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../components/header';
+// import { Header } from '../components/header';
 import RadarChart from 'react-svg-radar-chart';
 import ReactApexChart from 'react-apexcharts';
 import 'react-svg-radar-chart/build/css/index.css'
@@ -60,7 +60,7 @@ export const Sample = () =>{
 
   return (
     <div className="h-screen" >
-      <Header />
+      {/* <Header /> */}
       <div className="grid grid-cols-10 gap-4">
         <div className="col-start-2 col-span-4 ...">
           <h1 className="font-bold py-24 text-3xl">평판열람시 이런 데이터를 받게 됩니다.</h1>

@@ -303,11 +303,11 @@ export const MainHeader = () => {
                         </div>
                         <p className="text-xs leading-5 text-gray-500 sm:ml-2">
                           {' '}
-                          <a href="#" className="font-medium text-gray-900 hover:underline">
+                          <a href="/docs/privacy" className="font-medium text-gray-900 hover:underline">
                             개인정보 수집
                           </a>
                           ,{' '}
-                          <a href="#" className="font-medium text-gray-900 hover:underline">
+                          <a href="/docs/privacy" className="font-medium text-gray-900 hover:underline">
                             마케팅 활용
                           </a>
                           에{' '}

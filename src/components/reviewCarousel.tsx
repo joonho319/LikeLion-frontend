@@ -87,10 +87,10 @@ interface ReviewCarouselProps {
 export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
   const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
-    backgroundColor: ismain ?  "#1f2937" : "#eeeeee"
+    backgroundColor: ismain ?  "#1f2937" : "#cccccc"
   }
   return (
-    <div className="'bg-white mt-10"> 
+    <div className="'bg-white"> 
       <div className=" py-16 lg:py-32 sm:py-24" style={style}>
         <div className="">
           {ismain ?
@@ -102,7 +102,7 @@ export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
                 멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
               </p>
             </div> :
-            <></>
+            <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl text-2xl">후기글</div>
           }
           <div className="mt-12 mx-auto max-w-full px-4 lg:max-w-7xl hidden lg:block lg:visible ">
             <StyledSlider {...settings}>

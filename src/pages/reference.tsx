@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Header } from '../components/header';
+// import { Header } from '../components/header';
 
 export const Reference = () =>{
   const { register, getValues, handleSubmit, formState: { errors } } = useForm();
@@ -14,7 +14,7 @@ export const Reference = () =>{
 
   return (
     <div className="h-screen bg-gray-200" >
-      <Header />
+      {/* <Header /> */}
       <div className="grid justify-items-center mt-40 bg-gray-200 pb-40">
         <div className="sm:mt-0 ">
           <div className="md:grid md:grid-cols-4 md:gap-6">

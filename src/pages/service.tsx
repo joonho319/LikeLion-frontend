@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/footer';
-import { Header } from '../components/header';
+// import { Header } from '../components/header';
 
 export const Service = () =>{
   return (
     <div className="h-screen" >
-      <Header />
+      {/* <Header /> */}
       <div className="grid grid-cols-10 gap-4">
         <div className="col-start-2 col-span-4 ...">
           <h1 className="font-bold py-24 text-3xl">활용 방법</h1>
