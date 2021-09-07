@@ -29,7 +29,7 @@ export const VideoCard: React.FC<VideoProps> = ({
     <>
       <div className="mt-10 md:hidden">
         <ReactPlayer 
-          url={`https://www.youtube.com/watch?v=${videoId}?t=463`} 
+          url={`https://www.youtube.com/watch?v=${videoId}`} 
           controls={true}
           width="100vw"
           height="66vw"
@@ -39,8 +39,8 @@ export const VideoCard: React.FC<VideoProps> = ({
         <ReactPlayer 
           url={`https://www.youtube.com/watch?v=${videoId}`} 
           controls={true}
-          width="50vw"
-          height="32vw"
+          width="30vw"
+          height="20vw"
         />
       </div>
     

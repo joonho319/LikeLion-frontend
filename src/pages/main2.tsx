@@ -221,36 +221,17 @@ export const Main2 = () => {
       </p>
       <div className="grid grid-cols-4 gap-12 mt-20 mb-10 justify-items-stretch md:hidden">
         <div className="col-start-1 col-span-3">
-          <VideoCard videoId="s4PNxgvQGFQ" />
+          <VideoCard videoId="s4PNxgvQGFQ?t=463" />
+          <VideoCard videoId="obNXXizoLug" />
         </div>
+        
       </div>
-      <div className="hidden md:overflow-hidden md:grid md:grid-cols-4 md:gap-12 mt-20 md:mb-10 md:justify-items-stretch">
-        <div className="col-start-2 col-span-3">
-          {/* <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            김기현 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            신태순 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            이원엽 대표
-          </button>
-          <button
-            type="button"
-            className="bg-indigo-600 text-white p-2 w-32 rounded-md"
-          >
-            제준호 대표
-          </button> */}
-          <VideoCard videoId="s4PNxgvQGFQ" />
+      <div className="hidden md:overflow-hidden md:grid md:grid-cols-10 md:gap-5 mt-20 md:mb-24 md:justify-items-stretch ">
+        <div className="col-start-3 col-span-2">
+          <VideoCard videoId="s4PNxgvQGFQ?t=463" />
+        </div>
+        <div className="col-start-6 col-span-2">
+          <VideoCard videoId="obNXXizoLug" />
         </div>
       </div>
       {/* <div className="mt-10">

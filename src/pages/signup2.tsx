@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import kakaoLogin from '../images/kakao_login.jpeg';
 import naverLogin from '../images/naver_login.jpeg';
 import { createAccountMutation, createAccountMutationVariables } from '../__generated__/createAccountMutation';
+import { LOCALSTORAGE_TOKEN } from '../constant';
+import { authTokenVar, isLoggedInVar } from '../apollo';
 
 const CREATEACCOUNT_MUTATION = gql`
   mutation createAccountMutation($email: String!, $password: String!, $name: String!) {
@@ -15,6 +17,12 @@ const CREATEACCOUNT_MUTATION = gql`
       name: $name,
     }) {
       ok,
+      token,
+      user {
+        role
+        email
+        name
+      },
       error
     } 
   }
@@ -37,12 +45,17 @@ export const SignUp2 = () => {
   const history = useHistory();
   const onCompleted = (data: createAccountMutation) => {
     const {
-      createAccount: { ok },
+      createAccount: { ok, token, user, error },
     } = data;
-    if (ok) {
-      alert("Account Created! Log in now!");
-      history.push("/");
-    }
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      localStorage.setItem('role', String(user?.role))
+      localStorage.setItem('email', String(user?.email))
+      localStorage.setItem('name', String(user?.name))
+      authTokenVar(token);
+      isLoggedInVar(true);
+      history.push('/')
+    } 
   };
   const [createAccountMutation, { loading, data: createAccountMutationResult }] 
     = useMutation<createAccountMutation, createAccountMutationVariables>(
