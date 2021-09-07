@@ -6,10 +6,9 @@ import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { StarIcon } from '@heroicons/react/solid';
-
-interface ReviewCardProps {
-  reviewPosts: any[];
-}
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import { getReview } from '../__generated__/getReview';
 
 var settings = {
   infinite: true,
@@ -44,13 +43,45 @@ const StyledSlider = styled(Slider)`
     }
 `;
 
+export const GET_REVIEW_QUERY = gql`
+  query getReview {
+    getReview {
+      ok
+      error
+      review {
+        id
+        area
+        review
+        company
+        name
+        title
+        rating
+      }
+    }
+  }
+`;
+
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+export const area = (area: any) => {
+  if(area === 'idea') {
+    return '아이디어'
+  } else if(area === 'business_plan') {
+    return '사업계획서'
+  } else if(area === 'bm') {
+    return '비즈니스모델'
+  } else if(area === 'strategy') {
+    return '사업화전략'
+  } else {
+    return '투자전략'
+  }
+}
 
-export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
 
+export const ReviewCarousel = () => {
+  const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
     backgroundColor: "#1f2937" 
   }
@@ -68,18 +99,18 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
           </div>
           <div className="mt-12 mx-auto max-w-full px-4 lg:max-w-7xl hidden lg:block lg:visible ">
             <StyledSlider {...settings}>
-              {reviewPosts.filter((v,i) => (i < 8)).map((post,i ) => {
+              {data?.getReview.review?.filter((v: any,i: number) => (i < 10)).map((post: any,i: number ) => {
                 return <div key={post.id} className="rounded-lg shadow-lg overflow-hidden">
                   <div className=" bg-white p-6">
                     <div className="">
                       <p className="text-md font-medium text-cyan-600">
-                        <a href={post.category.href} className="hover:underline">
-                          {post.category.name}
+                        <a className="hover:underline">
+                          {area(post.area)}
                         </a>
                       </p>
-                      <a href={post.href} className="block mt-2">
+                      <a className="block mt-2">
                         {/* <p className="text-xl font-semibold text-gray-900 h-10">{post.title}</p> */}
-                        <p className="mt-3 text-base text-gray-500">{(post.preview.length > 110) ? post.preview.substring(0,100) + '..' : post.preview}</p>
+                        <p className="mt-3 text-base text-gray-500">{(post.review.length > 110) ? post.review.substring(0,100) + '..' : post.review}</p>
                       </a>
                     </div>
                     <div className="mt-6  items-center">
@@ -97,8 +128,8 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
                           ))}
                         </div>
                         <p className="text-sm font-medium text-gray-900">
-                          <a href={post.author.href} className="hover:underline">
-                            {post.author.name}
+                          <a className="hover:underline">
+                            {post.company} {post.name} {post.title}
                           </a>
                         </p>
                        
@@ -111,18 +142,18 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
             </div>
             <div className="mt-12 mx-auto max-w-md px-4 sm:max-w-lg lg:hidden">
               <StyledSlider {...small_settings}>
-                {reviewPosts.filter((v,i) => (i < 10)).map((post,i ) => {
+                {data?.getReview.review?.filter((v: any,i: number) => (i < 10)).map((post: any,i: number ) => {
                   return <div key={post.id} className="rounded-lg shadow-lg overflow-hidden">
-                    <div className=" bg-white p-6">
+                    <div className="bg-white p-6">
                       <div className="">
                         <p className="text-md font-medium text-cyan-600">
-                          <a href={post.category.href} className="hover:underline">
-                            {post.category.name}
+                          <a className="hover:underline">
+                            {area(post.area)}
                           </a>
                         </p>
-                        <a href={post.href} className="block mt-2">
+                        <a className="block mt-2">
                           {/* <p className="text-xl font-semibold text-gray-900">{post.title}</p> */}
-                          <p className="mt-3 text-base text-gray-500">{(post.preview.length > 110) ? post.preview.substring(0,100) + '..' : post.preview}</p>
+                          <p className="mt-3 text-base text-gray-500">{(post.review.length > 110) ? post.review.substring(0,100) + '..' : post.review}</p>
                         </a>
                       </div>
                       <div className="mt-6  items-center">
@@ -140,8 +171,8 @@ export const ReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts}) => {
                             ))}
                           </div>
                           <p className="text-sm font-medium text-gray-900">
-                            <a href={post.author.href} className="hover:underline">
-                              {post.author.name}
+                            <a className="hover:underline">
+                              {post.company} {post.name} {post.title}
                             </a>
                           </p>
                         </div>
