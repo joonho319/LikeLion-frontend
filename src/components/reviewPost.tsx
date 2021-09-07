@@ -62,7 +62,7 @@ export const ReviewPost: React.FC<ReviewCardProps> = ({reviewPosts}) => {
                   <div className="flex-1">
                     <p className="text-md font-medium text-cyan-600">
                       <a className="hover:underline flex justify-center">
-                        {area}
+                        {post.area}
                       </a>
                     </p>
                     <a href={post.href} className=" mt-2 flex justify-center">
