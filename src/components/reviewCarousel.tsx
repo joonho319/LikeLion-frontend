@@ -96,11 +96,11 @@ export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
           {ismain ?
             <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
               <p className="mt-2 text-3xl font-bold text-white text-opacity-70 tracking-tight sm:text-4xl">
-              멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
+                Program Epilogue
               </p>
-              <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
-                멘토링을 직접 받은 회사대표님들이 직접 써주신 후기글
-              </p>
+              {/* <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
+                Program Epilogue
+              </p> */}
             </div> :
             <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl text-2xl">후기글</div>
           }

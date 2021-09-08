@@ -15,6 +15,18 @@ import { Link } from 'react-router-dom';
 
 const faqs = [
   {
+    question: "어떤 것을 배우나요?",
+    answer:
+      `기초과정과 정규과정이 다릅니다. 
+        기초과정은 자신이 가지고 있는 아이디어를 구체화시키는 모든 활동을 배우게 됩니다. 
+        또는 아이디어가 없다면 어떻게 찾을 수 있는지 방법을 배우게 됩니다. 
+        
+        정규과정은 스타트업을 개설하는 것 부터 국가지원사업, 투자기관등 스타트업에서 
+        배우고 실천해야 하는 모든 과정을 배우고, 실천하게 됩니다. 
+        지원금을 받는것을 목표로하지않고, 소비자를 만나는 것을 목표로 합니다. 
+        한명의 행복한 스타트업 대표를 만드는 것이 목표입니다.`,
+  },
+  {
     question: "오프라인은 언제 어디서 얼마나 열리나요?",
     answer:
       "오프라인은 광주, 부산, 대전, 대구에서 각 지역마다 최소 한달에 한번씩 모임을 진행합니다. ",
@@ -38,170 +50,6 @@ function classNames(...classes: any[]) {
 }
 
 
-export const blogPosts = [
-  {
-    id: 1,
-    title: '만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Mar 16, 2020',
-    rating: 5,
-    datetime: '2020-03-16',
-    category: { name: '아이디어 검증', href: '#' },
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-      imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      href: '#',
-    },
-  },
-  {
-    id: 2,
-    title: '만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Mar 10, 2020',
-    rating: 5,
-    datetime: '2020-03-10',
-    category: { name: '사업화 전략', href: '#' },
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-      imageUrl:
-        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      href: '#',
-    },
-  },
-  {
-    id: 3,
-    title: '만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '마케팅', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '사업계획서 작성', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-  {
-    id: 3,
-    title: '너무 만족했던 멘토링이었습니다.',
-    href: '#',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    category: { name: '아이디어 발견', href: '#' },
-    rating: 5,
-    imageUrl:
-      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
-    preview:
-      '후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기후기',
-    author: {
-      name: '(주)백프로 주성환 대표',
-    },
-  },
-]
 
 export const Main2 = () => {
   const [video, setVideo] =  useState<number>(0);
@@ -217,7 +65,7 @@ export const Main2 = () => {
       <UserNotification />
       <MainHeader />
       <p className="mt-10 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
-        마스트벤처스는 어떤 곳인가요?
+        마스트벤처스 미리보기
       </p>
       <div className="grid grid-cols-4 gap-12 mt-20 mb-10 justify-items-stretch md:hidden">
         <div className="col-start-1 col-span-3">
@@ -276,7 +124,7 @@ export const Main2 = () => {
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             <h2 className="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">자주하는 질문들</h2>
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-              {faqs.map((faq) => (
+              {faqs.map((faq, i) => (
                 <Disclosure as="div" key={faq.question} className="pt-6">
                   {({ open }) => (
                     <>
@@ -292,7 +140,19 @@ export const Main2 = () => {
                         </Disclosure.Button>
                       </dt>
                       <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                        <p className="text-base text-gray-500">{faq.answer}</p>
+                        {i === 0 ?
+                         <p className="text-base text-gray-500">
+                            기초과정과 정규과정이 다릅니다. <br />
+                            기초과정은 자신이 가지고 있는 아이디어를 구체화시키는 모든 활동을 배우게 됩니다<br />
+                            또는 아이디어가 없다면 어떻게 찾을 수 있는지 방법을 배우게 됩니다<br /><br />
+                            
+                            정규과정은 스타트업을 개설하는 것 부터 국가지원사업, 투자기관등 스타트업에서 <br />
+                            배우고 실천해야 하는 모든 과정을 배우고, 실천하게 됩니다<br />
+                            지원금을 받는것을 목표로하지않고, 소비자를 만나는 것을 목표로 합니다<br />
+                            한명의 행복한 스타트업 대표를 만드는 것이 목표입니다<br />
+                          </p> :
+                          <p className="text-base text-gray-500">{faq.answer}</p>
+                        }
                       </Disclosure.Panel>
                     </>
                   )}

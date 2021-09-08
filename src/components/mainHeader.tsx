@@ -7,9 +7,9 @@ import { useReactiveVar } from '@apollo/client';
 import { useHistory } from 'react-router';
 
 const navigation = [
-  { name: '강사 소개', href: '/introduction' },
+  { name: '메이커 소개', href: '/introduction' },
   { name: '커리큘럼', href: '/curriculum' },
-  { name: '1기 신청', href: '/program' },
+  { name: '정규수업(apply)', href: '/program' },
   { name: '프로그램 후기', href: '/review' },
 ]
 
@@ -187,8 +187,8 @@ export const MainHeader = () => {
                     <ChevronRightIcon className="ml-2 w-5 h-5 text-gray-500" aria-hidden="true" />
                   </a> */}
                   <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:text-3xl xl:text-4xl">
-                    <span className="md:block">이곳은 스타트업을 만들고 성장시켜보는 </span>{' '}
-                    <span className="text-indigo-400 md:block mt-4 lg:text-4xl xl:text-5xl">실천 중심형 학교입니다.</span>
+                    <span className="md:block">우리는 스타트업을 만들고 성장시키는데 </span>{' '}
+                    <span className="text-indigo-400 md:block mt-4 lg:text-4xl xl:text-5xl">목적을 둔 실천중심 교육입니다.</span>
                   </h1>
                   {/* <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                     Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt

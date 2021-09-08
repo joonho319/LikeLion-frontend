@@ -70,7 +70,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                       href="/introduction"
                       className={classNames(page ==='introduction' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      강사 소개
+                      메이커 소개
                     </a>
                     <a
                       href="/curriculum"
@@ -82,7 +82,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                       href="/program"
                       className={classNames(page ==='program' ? 'border-indigo-500 text-gray-900' :  'border-transparent text-gray-500'  ,' hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-md font-medium')}
                     >
-                      1기 신청
+                      정규수업(apply)
                     </a>
                     <a
                       href="/review"
@@ -193,7 +193,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                   href="/introduction"
                   className="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  강사 소개
+                  메이커 소개
                 </a>
                 <a
                   href="/curriculum"
@@ -205,7 +205,7 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
                   href="/program"
                   className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  1기신청
+                  정규수업(apply)
                 </a>
                 <a
                   href="/review"

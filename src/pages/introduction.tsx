@@ -127,7 +127,7 @@ export const Introduction = () => {
       <div className="mt-24">
           <div className="md:mx-auto md:grid md:justify-items-center md:max-w-7xl lg:text-lg">
             <div>
-              <p className="lg:text-3xl mb-10 font-bold">마스트벤처스는 어떤 곳인가요?</p>
+              <p className="lg:text-3xl mb-10 font-bold">마스트벤처스 미리보기</p>
               <p>창업을 권하는 사회라는 말에 이의를 제기할 순 없을 것 같습니다. </p>
               <p>정부 지원은 폭발적으로 늘고있고, 창업 교육은 우후죽순으로 늘어 갑니다. </p>
               <p>창업 후 성공했다는 스타트업 대표들이 사람들의 부러움을 사고 있습니다. </p>
