@@ -25,6 +25,7 @@ import { Agreement } from "../pages/agreement";
 import { Terms } from "../pages/terms";
 import { Privacy } from "../pages/privacy";
 import { Refund } from "../pages/refund";
+import { SubmiteReview } from "../pages/SubmiteReview";
 
 export const LoggedOutRouter = () => {
 
@@ -49,6 +50,9 @@ export const LoggedOutRouter = () => {
         <Route path="/admin">
           <Admin />
         </Route>
+        <Route path="/submitReview">
+          <SubmiteReview />
+        </Route>
         <Route path="/step">
           <Step />
         </Route>
@@ -67,9 +71,9 @@ export const LoggedOutRouter = () => {
         <Route path="/review">
           <Review />
         </Route>
-        <Route path="/offline">
+        {/* <Route path="/offline">
           <Offline />
-        </Route>
+        </Route> */}
         <Route path="/login">
           <Login2 />
         </Route>
@@ -80,18 +84,18 @@ export const LoggedOutRouter = () => {
           <Reference />
         </Route>
         {/* 추천서 */}
-        <Route path="/sample">
+        {/* <Route path="/sample">
           <Sample />
         </Route>
         <Route path="/service">
           <Service />
-        </Route>
-        <Route path="/business">
+        </Route> */}
+        {/* <Route path="/business">
           <Business />
         </Route>
         <Route path="/profile">
           <Profile />
-        </Route>
+        </Route> */}
         <Route path="/">
           <Main2 />
         </Route>

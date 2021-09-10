@@ -29,8 +29,8 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
 
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
-    <>
-      <div className="relative bg-indigo-600">
+    <div className="sticky w-screen top-0 z-30">
+      <div className="bg-indigo-600">
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="pr-16 sm:text-center sm:px-16">
             <p className="font-medium text-white">
@@ -43,13 +43,11 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
               type="button"
               className="flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white"
             >
-              <span className="sr-only">Dismiss</span>
-              <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
         </div>
       </div>
-      <Disclosure as="nav" className="bg-white shadow py-3">
+      <Disclosure as="nav" className="bg-white shadow py-3 ">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,6 +276,6 @@ export const Header2: React.FC<NavProps> = ({page}) =>{
           </>
         )}
       </Disclosure>
-    </>
+    </div>
   )
 }
