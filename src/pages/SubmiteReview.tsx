@@ -13,7 +13,7 @@ export const SubmiteReview = () => {
 
   return (
     <>
-      <Header2 page={'review'} />
+      <Header2 page={'createReview'} />
       <CreateReview />
     </>
   )
