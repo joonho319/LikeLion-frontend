@@ -7,7 +7,9 @@ import { useHistory } from "react-router";
 import { Footer } from "../components/footer";
 import { Header2 } from "../components/header2"
 import { applyMutation, applyMutationVariables } from "../__generated__/applyMutation";
-
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { CheckIcon } from '@heroicons/react/outline';
 
 
 const APPLY_MUTATION = gql`
@@ -35,7 +37,7 @@ declare global {
 }
 
 export const Apply = () => {
-
+  const [open, setOpen] = useState(true);
   // var IMP = window.IMP; // 생략 가능
   // IMP.init("{가맹점 식별코드}");
 

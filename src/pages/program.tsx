@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { Header2 } from "../components/header2"
 import IdeamCurriculum from '../images/ideaprocess-001.png';
 import RegularCurriculum from '../images/regularprocess-001.png';
@@ -66,6 +66,10 @@ const Image = styled.img`
 `;
 
 export const Program = () => {
+  const history = useHistory();
+  const goToApplyPage = (page: any) => {
+    history.push(page);
+  }
   return (
     <>
       <Header2 page={'program'} />
@@ -74,27 +78,18 @@ export const Program = () => {
           <div className="grid justify-items-center">
             <h2 className="text-4xl font-bold text-gray-900">프로그램 과정</h2>
           </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <div key={products[0].id} className="relative group">
-              <button className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden " >
-                <Link to={products[0].href} className="hover:text-indigo-800">
-                  <Image src={IdeamCurriculum} alt={products[0].imageAlt} className="object-center object-cover hover:opacity-75" />
-                  <button className="font-bold">[모집중] 아이디어 선정 과정</button>
-                </Link>
-              </button>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 ">
+            <div  key={products[0].id} style={{backgroundImage: `url(${IdeamCurriculum})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat", height:"360px"}} 
+              className="relative group transform hover:scale-105 border-4 border-indigo-500 rounded-lg border-opacity-0 hover:border-opacity-100"
+              onClick={() => goToApplyPage('/program/apply')}  
+            >
             </div>
-            <div key={products[1].id} className="relative group hover:opacity-100">
-              <button className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden cursor-not-allowed hover:bg-black">
-                  <img src={BusinessPlan} alt={products[1].imageAlt} className="object-center object-cover opacity-60 " />
-                  <button>[모집예정] 사업계획서 작성 과정 </button>
-              </button>
-              
+            <div key={products[1].id} style={{backgroundImage: `url(${BusinessPlan})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat"}} 
+              className="transform hover:scale-105 border-4 border-indigo-500 rounded-lg border-opacity-0 hover:border-opacity-100 hover:bg-black"
+            >
             </div>
-            <div key={products[1].id} className="relative group">
-              <button className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden cursor-not-allowed hover:bg-black">
-                <img src={RegularCurriculum} alt={products[1].imageAlt} className="object-center object-cover opacity-60 " />
-                <button >[모집예정] 스타트업 정규 과정</button>
-              </button>
+            <div style={{backgroundImage: `url(${RegularCurriculum})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat"}} 
+              key={products[2].id} className="transform hover:scale-105 border-4 border-indigo-500 rounded-lg border-opacity-0 hover:border-opacity-100">
             </div>
           </div>
         </div>

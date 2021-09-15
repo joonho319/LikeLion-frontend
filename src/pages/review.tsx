@@ -1,6 +1,7 @@
 import { Footer } from "../components/footer"
 import { Header2 } from "../components/header2"
 import { LectureCarousel } from "../components/lectureCarousel"
+import { MainReviewCarousel } from "../components/mainReviewCarousel"
 import { ReviewCarousel } from "../components/reviewCarousel"
 import { ReviewPost } from "../components/reviewPost"
 
@@ -168,8 +169,8 @@ export const Review = () => {
           <div className="text-4xl font-bold">후기글 모음</div>
         </div>
         <LectureCarousel />
-        
-        <ReviewCarousel ismain={false} />
+        <MainReviewCarousel showTitle={false} />
+        {/* <ReviewCarousel ismain={true} /> */}
       </div>
       <Footer />
     </>

@@ -1,9 +1,12 @@
+import { useQuery } from '@apollo/client';
+import { StarIcon } from '@heroicons/react/outline';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import { getReview } from '../__generated__/getReview';
+import { area, GET_REVIEW_QUERY } from './reviewCarousel';
 
 interface ReviewCardProps {
-  reviewPosts: any[];
   showTitle: boolean;
 }
 
@@ -20,8 +23,8 @@ function classNames(...classes: any[]) {
 }
 
 
-export const mainReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, showTitle}) => {
-
+export const MainReviewCarousel: React.FC<ReviewCardProps> = ({showTitle}) => {
+  const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
     backgroundColor: showTitle ? "#1f2937" : "#eeeeee"
   }
@@ -55,35 +58,45 @@ export const mainReviewCarousel: React.FC<ReviewCardProps> = ({reviewPosts, show
               </div>
             }
           
-          <div className={classNames( showTitle ? 'mt-12' : '', 'mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl transition ease-in-out transform hover:-translate-y-1 hover:scale-125')}>
-            {reviewPosts.filter((v,i) => (i < 4)).map((post,i ) => (
-              <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-cyan-600">
-                      <a href={post.category.href} className="hover:underline">
-                        {post.category.name}
+          <div className={classNames( showTitle ? 'mt-12' : '', 'mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-4 lg:max-w-7xl transition ease-in-out ')}>
+            {data?.getReview.review?.filter((v,i) => (i < 4)).map((post: any,i ) => (
+              <div key={post.id} className="rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 hover:scale-110">
+              <div className=" bg-white p-6 ">
+                <div className="">
+                  <p className="text-md font-medium text-cyan-600">
+                    <a className="hover:underline">
+                      {area(post.area)}
+                    </a>
+                  </p>
+                  <a className="block mt-2">
+                    {/* <p className="text-xl font-semibold text-gray-900 h-10">{post.title}</p> */}
+                    <p className="mt-3 text-base text-gray-500">{(post.review.length > 110) ? post.review.substring(0,100) + '..' : post.review}</p>
+                  </a>
+                </div>
+                <div className="mt-6  items-center">
+                  <div className="ml-3">
+                    <div className="flex justify-center">
+                      {[0, 1, 2, 3, 4].map((rating) => (
+                        <StarIcon
+                          key={rating}
+                          className={classNames(
+                            post.rating > rating ? 'text-yellow-400' : 'text-gray-200',
+                            'flex-shrink-0 h-5 w-5'
+                          )}
+                          aria-hidden="true"
+                        />
+                      ))}
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">
+                      <a className="hover:underline">
+                        {post.company} {post.name} {post.title}
                       </a>
                     </p>
-                    <a href={post.href} className="block mt-2">
-                      <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-                      <p className="mt-3 text-base text-gray-500">{(post.preview.length > 110) ? post.preview.substring(0,100) + '..' : post.preview}</p>
-                    </a>
-                  </div>
-                  <div className="mt-6 flex items-center">
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900">
-                        <a href={post.author.href} className="hover:underline">
-                          {post.author.name}
-                        </a>
-                      </p>
-                      <div className="flex space-x-1 text-sm text-gray-500">
-                        <time dateTime={post.datetime}>{post.date}</time>
-                        </div>
-                      </div>
-                    </div>
+                   
                   </div>
                 </div>
+              </div>
+            </div>
               ))}
             </div>
           </div>

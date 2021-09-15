@@ -90,12 +90,12 @@ export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
     backgroundColor: ismain ?  "#1f2937" : "#cccccc"
   }
   return (
-    <div className="'bg-white"> 
-      <div className=" py-16 lg:py-32 sm:py-24" style={style}>
+    <div className="'bg-white h-screen"> 
+      <div className="py-16 lg:py-52 sm:py-24" style={style}>
         <div className="">
           {ismain ?
             <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-              <p className="mt-2 text-3xl font-bold text-white text-opacity-70 tracking-tight sm:text-4xl">
+              <p className="mt-2 text-3xl font-bold text-white text-opacity-80 tracking-tight sm:text-4xl GmarketB">
                 Program Epilogue
               </p>
               {/* <p className="mt-5 mx-auto max-w-prose text-xl text-white text-opacity-80">
@@ -104,7 +104,7 @@ export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
             </div> :
             <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl text-2xl">후기글</div>
           }
-          <div className="mt-12 mx-auto max-w-full px-4 lg:max-w-7xl hidden lg:block lg:visible ">
+          <div className="mt-28 mx-auto max-w-full px-4 lg:max-w-7xl hidden lg:block lg:visible ">
             <StyledSlider {...settings}>
               {data?.getReview.review?.filter((v: any,i: number) => (i < 10)).map((post: any,i: number ) => {
                 return <div key={post.id} className="rounded-lg shadow-lg overflow-hidden">
@@ -202,7 +202,7 @@ export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
             </Link>
           </div>
           }
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
