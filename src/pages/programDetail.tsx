@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
@@ -19,7 +19,11 @@ function classNames(...classes: any[]) {
 
 
 export const ProgramDetail = () => {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[]);
 
   return (
     <>
