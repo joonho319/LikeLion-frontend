@@ -33,8 +33,6 @@ export const MainHeader:React.FC<MainHeaderProps> = ({ismain}) =>{
   }
   
   const changeNavBar = () => {
-    console.log(window.scrollY)
-    console.log(navBar)
     if(window.scrollY >= 30) {
       setNavBar(true);
     } else {

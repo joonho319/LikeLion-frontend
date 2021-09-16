@@ -64,10 +64,8 @@ export const SignUp2 = () => {
   
   const onSubmit = () => {
     const { email,name, password, passwordcheck } = getValues();
-    console.log(name)
     if(password !== passwordcheck) {
       setPasswordcheck(false);
-      console.log("err")
       return;
     }
     createAccountMutation({

@@ -31,39 +31,39 @@ export const ProgramDetail = () => {
       <MainHeader ismain={false}/>
       <div className="mt-40 max-w-7xl mx-auto grid md:grid-cols-5">
         <div className="px-5 md:col-span-2 md:mt-12">
-          <div className="text-5xl GmarketB">아이디어 해킹반</div>
-          <div className="text-lg GmarketL pt-12">아이디어는 머리속에만 존재해서는 안됩니다.</div>
-          <div className="text-lg GmarketL">아이디어가 세상에 나올 수 있도록</div>
-          <div className="text-lg GmarketL">배우고, 발표하고, 토론하고, 작성할겁니다.</div>
-          <div className="text-lg GmarketL">더 이상 잊어버리지 않도록</div>
+          <div className="text-4xl sm:text-5xl GmarketB">아이디어 해킹반</div>
+          <div className="text-md sm:text-lg GmarketL pt-12">아이디어는 머리속에만 존재해서는 안됩니다.</div>
+          <div className="text-md sm:text-lg GmarketL">아이디어가 세상에 나올 수 있도록</div>
+          <div className="text-md sm:text-lg GmarketL">배우고, 발표하고, 토론하고, 작성할겁니다.</div>
+          <div className="text-md sm:text-lg GmarketL">더 이상 잊어버리지 않도록</div>
           <button className="mt-7 text-white GmarketM text-sm px-6 py-3 shadow-lg rounded-3xl border bg-indigo-900 justify-center"><Link to={'/program/idea/apply'}>수강신청 하러가기</Link></button>
         </div>
-        <div className="pl-10 md:col-span-3 rounded-lg" style={{backgroundImage: `url(${Debate})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"370px"}}></div>
+        <div className="hidden sm:flex pl-10 md:col-span-3 rounded-lg" style={{backgroundImage: `url(${Debate})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"370px"}}></div>
       </div>
-      <div style={{backgroundColor: "#313131"}} className="w-screen h-40 mt-16 text-center text-white GmarketM text-3xl">
+      <div style={{backgroundColor: "#313131"}} className="w-screen h-40 sm:h-40 mt-16 text-center text-white GmarketM text-sm sm:text-3xl">
         <div className="pt-16">
-          <span className="px-2 py-4 bg-indigo-900 mr-3">4주간</span> 
+          <span className="px-2 py-4 bg-indigo-900 sm:mr-3">4주간</span> 
           <span>배우고 </span>
-          <span className="ml-10 px-2 py-4 bg-indigo-900 mr-3">4주간</span> 
-          <span className="mr-10">발표하고</span> 
-          <span className="px-2 py-4 bg-indigo-900 mr-3">4주간</span> 
+          <span className="sm:ml-10 px-2 py-4 bg-indigo-900 sm:mr-3">4주간</span> 
+          <span className="sm:mr-10">발표하고</span> 
+          <span className="px-2 py-4 bg-indigo-900 sm:mr-3">4주간</span> 
           <span>토론합니다.</span>
         </div>
       </div>
-      <p className="mt-52 pl-5 text-xl GmarketB font-extrabold tracking-tight sm:text-4xl max-w-4xl mx-auto">우리는 이렇게 배울거에요!</p>
+      <p className="mt-52 pl-5 text-2xl GmarketB font-extrabold tracking-tight sm:text-4xl max-w-4xl mx-auto">우리는 이렇게 배울거에요!</p>
       <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-12">
         <div className="md:col-span-1 grid justify-end">
-          <div className="border-4 border-indigo-900 md:text-2xl rounded-full w-14 h-14 flex items-center justify-center text-indigo-900 GmarketM">4주</div>
+          <div className="hidden sm:flex border-4 border-indigo-900 md:text-2xl rounded-full w-14 h-14 items-center justify-center text-indigo-900 GmarketM">4주</div>
         </div>
         <div className=" md:col-span-11 rounded-lg ml-4 GmarketM md:text-xl ">
-          <p className="mt-3 text-indigo-900 md:text-2xl">오전에는 이렇게 배워요.</p>
+          <p className="sm:mt-3 text-indigo-900 text-xl md:text-2xl">오전에는 이렇게 배워요.</p>
         </div>
         
       </div>
       <div className="max-w-4xl mx-auto grid sm:grid-cols-12">
         <div className="sm:col-span-1 grid justify-end">
           <div className="grid justify-center pr-7">
-            <div className="w-1 h-80 bg-indigo-900"></div>
+            <div className="hidden sm:flex w-1 h-80 bg-indigo-900"></div>
           </div>
         </div>
         <div className=" sm:col-span-11 rounded-lg ml-4 GmarketM sm:text-xl ">
@@ -76,10 +76,10 @@ export const ProgramDetail = () => {
       </div>
       <div className="max-w-4xl mx-auto grid sm:grid-cols-12">
         <div className="sm:col-span-1 grid justify-end">
-          <div className="border-4 border-indigo-900 sm:text-2xl rounded-full w-14 h-14 flex items-center justify-center text-indigo-900 GmarketM">4주</div>
+          <div className="border-4 border-indigo-900 sm:text-2xl rounded-full w-14 h-14 hidden sm:flex items-center justify-center text-indigo-900 GmarketM">4주</div>
         </div>
         <div className=" sm:col-span-11 rounded-lg ml-4 GmarketM md:text-xl ">
-          <p className="mt-3 text-indigo-900 md:text-2xl">오후에는 토론합니다.</p>
+          <p className="mt-10 sm:mt-3 text-indigo-900 text-xl md:text-2xl">오후에는 토론합니다.</p>
           <p className="mt-5 ">1. 3분간 자기소개를 합니다.</p>
           <p className="mt-2 ">2. 오전에 내준 숙제에 대한 사례를 찾아보고 발표합니다.</p>
           <p className="mt-2 ">3. 타인의 의견에 살을 붙이고, 토론합니다.</p>
