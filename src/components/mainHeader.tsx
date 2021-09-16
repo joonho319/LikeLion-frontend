@@ -13,9 +13,12 @@ const navigation = [
   { name: '프로그램 후기', href: '/review' },
 ]
 
+interface MainHeaderProps {
+  ismain: boolean;
+}
 
 
-export const MainHeader = () => {
+export const MainHeader:React.FC<MainHeaderProps> = ({ismain}) =>{
   const history = useHistory();
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [ navBar, setNavBar ] = useState(false);
@@ -57,7 +60,7 @@ export const MainHeader = () => {
           >
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
+                <a href="/">
                   <span className="sr-only">Workflow</span>
                   <img
                     className="h-8 w-auto sm:h-10"
@@ -71,7 +74,7 @@ export const MainHeader = () => {
                   </Popover.Button>
                 </div>
               </div>
-              <div className={classNames(navBar ? 'text-white': 'text-indigo-700', 'z-40 hidden space-x-10 md:flex md:ml-10')}>
+              <div className={classNames(navBar ? 'text-white': 'text-black', 'z-40 hidden space-x-10 md:flex md:ml-10')}>
                 {navigation.map((item) => (
                   <a key={item.name} href={item.href} className="font-medium hover:text-gray-300">
                     {item.name}

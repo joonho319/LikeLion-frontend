@@ -14,7 +14,7 @@ import { Footer } from '../components/footer';
 import { Link } from 'react-router-dom';
 import IdeamCurriculum from '../images/boat.gif';
 import { LectureCard } from '../components/lectureCard';
-import Temp from '../images/temp.png';
+import Debate from '../images/main.jpg';
 import Reason1 from '../images/reason1.png';
 import Reason2 from '../images/reason2.png';
 
@@ -68,7 +68,7 @@ export const Main2 = () => {
   return (
     <>
       {/* <UserNotification /> */}
-      <MainHeader />
+      <MainHeader ismain={true}/>
       <div style={{backgroundImage: `url(${IdeamCurriculum})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat"}} 
               className="relative group"
       >
@@ -81,9 +81,9 @@ export const Main2 = () => {
         </div>
       </div>
       <div className="my-52 max-w-7xl mx-auto grid md:grid-cols-5">
-        <div className="pl-10 md:col-start-1 md:col-span-3" style={{backgroundImage: `url(${Temp})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"360px"}} 
+        <div className="pl-10 md:col-start-1 md:col-span-3 rounded-lg" style={{backgroundImage: `url(${Debate})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"360px"}} 
         ></div>
-        <div className="px-5 md:col-start-4 md:col-span-2 md:mt-36">
+        <div className="px-5 md:col-start-4 md:col-span-2 md:mt-32">
           <div className="text-lg GmarketM">4주 스터디: 매주 토론, 토의</div>
           <div className="text-2xl GmarketB pt-6">아이디어가 머리 속에 있었다면</div>
           <div className="text-2xl GmarketB">이제는 구체화 해봅시다.</div>
@@ -172,7 +172,7 @@ export const Main2 = () => {
       </div> */}
       
       <ReviewCarousel ismain={true} />
-      <div className="h-4/6">
+      {/* <div className="h-4/6">
         <p className="mt-20 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl text-center">
           마스트벤처스 커리큘럼
         </p>
@@ -188,8 +188,8 @@ export const Main2 = () => {
             </a>
           </button>
         </div>
-      </div>
-      <div className="bg-gray-50 mt-20">
+      </div> */}
+      <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             <h2 className="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">자주하는 질문들</h2>

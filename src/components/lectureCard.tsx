@@ -20,7 +20,7 @@ export const LectureCard:React.FC<ProgramCardProps> = ({reviewPosts}) => {
       <div className="text-black GmarketL text-sm">- 더이상 별로다 라고 생각하지 않을껍니다.</div>
       <div className="text-black GmarketL text-sm">- 이것이 나의 아이템이라고 당당히 말합시다.</div>
       <div className="grid justify-items-center">
-        <button className="mt-10 text-white GmarketM text-sm px-6 py-2 shadow-lg rounded-3xl border bg-indigo-900 justify-center"><Link to={'/program'}>커리큘럼 상세보기</Link></button>
+        <button className="mt-10 text-white GmarketM text-sm px-6 py-2 shadow-lg rounded-3xl border bg-indigo-900 justify-center"><Link to={'/program/idea'}>커리큘럼 상세보기</Link></button>
       </div>
     </div>
   )

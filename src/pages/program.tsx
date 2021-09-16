@@ -5,6 +5,7 @@ import RegularCurriculum from '../images/regularprocess-001.png';
 import BusinessPlan from '../images/business_plan-001.png';
 import styled from "styled-components";
 import { Footer } from "../components/footer";
+import { LectureCard } from "../components/lectureCard";
 /*
   This example requires Tailwind CSS v2.0+ 
   
@@ -26,7 +27,7 @@ const products = [
     id: 1,
     name: 'Fusion',
     category: 'UI Kit',
-    href: '/program/apply',
+    href: '/program/idea/apply',
     price: '$49',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
     imageAlt:
@@ -78,7 +79,12 @@ export const Program = () => {
           <div className="grid justify-items-center">
             <h2 className="text-4xl font-bold text-gray-900">프로그램 과정</h2>
           </div>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 ">
+          <div className="max-w-6xl mt-20 grid-cols-1 md:grid-cols-2 mx-auto grid lg:grid-cols-3 gap-16 mb-52"> 
+            <LectureCard reviewPosts={''} />
+            <LectureCard reviewPosts={''} />
+            <LectureCard reviewPosts={''} />
+          </div>
+          {/* <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 ">
             <div  key={products[0].id} style={{backgroundImage: `url(${IdeamCurriculum})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat", height:"360px"}} 
               className="relative group transform hover:scale-105 border-4 border-indigo-500 rounded-lg border-opacity-0 hover:border-opacity-100"
               onClick={() => goToApplyPage('/program/apply')}  
@@ -91,7 +97,7 @@ export const Program = () => {
             <div style={{backgroundImage: `url(${RegularCurriculum})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat"}} 
               key={products[2].id} className="transform hover:scale-105 border-4 border-indigo-500 rounded-lg border-opacity-0 hover:border-opacity-100">
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

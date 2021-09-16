@@ -16,7 +16,7 @@ export const Curriculum = () => {
       setPaidstudent(true);
     } else {
       alert('결제한 수강생에 의해 보여집니다.')
-      history.push('/program/apply')
+      history.push('/program/idea/apply')
     }
   }
   return (

@@ -46,7 +46,7 @@ export const LoggedInRouter = () => {
         <Route path="/curriculum">
           <Curriculum />
         </Route>
-        <Route path="/program/apply">
+        <Route path="/program/idea/apply">
           <Apply />
         </Route>
         <Route path="/program">

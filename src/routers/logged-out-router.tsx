@@ -7,13 +7,10 @@ import { Reference } from '../pages/reference';
 import { Sample } from "../pages/sample";
 import { Test } from '../pages/test';
 import { Profile } from "../pages/profile";
-import { Business } from "../pages/business";
+import { ProgramDetail } from "../pages/programDetail";
 import { Login2 } from "../pages/login2";
 import { Main2 } from "../pages/main2";
 import { Step } from "../pages/step";
-import { Online } from "../pages/online";
-import { Offline } from "../pages/offline";
-import { Community } from "../pages/community";
 import { Admin } from "../pages/admin";
 import { Introduction } from "../pages/introduction";
 import { Review } from "../pages/review";
@@ -62,8 +59,11 @@ export const LoggedOutRouter = () => {
         <Route path="/curriculum">
           <Curriculum />
         </Route>
-        <Route path="/program/apply">
+        <Route path="/program/idea/apply">
           <Apply />
+        </Route>
+        <Route path="/program/idea">
+          <ProgramDetail />
         </Route>
         <Route path="/program">
           <Program />

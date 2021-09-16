@@ -87,7 +87,7 @@ interface ReviewCarouselProps {
 export const ReviewCarousel:React.FC<ReviewCarouselProps> = ({ismain}) =>{
   const { data } = useQuery<getReview>(GET_REVIEW_QUERY);
   const style = {
-    backgroundColor: ismain ?  "#1f2937" : "#cccccc"
+    backgroundColor: ismain ?  "#1f2937" : "white"
   }
   return (
     <div className="'bg-white h-screen"> 
