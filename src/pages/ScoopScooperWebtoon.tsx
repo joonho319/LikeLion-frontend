@@ -3,7 +3,7 @@ import { ScoopFooter } from '../components/ScoopFooter';
 import { ScoopHeader } from '../components/ScoopHeader';
 import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopScooperWebtoonCard } from '../components/ScoopScooperWebtoonCard';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const scooper1 = {
   src: '',
