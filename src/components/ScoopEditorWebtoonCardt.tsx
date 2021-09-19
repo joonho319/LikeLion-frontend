@@ -6,10 +6,15 @@ interface WebtoonCardProps {
   webtoon: any
 }
 
-export const ScoopEditorWebtoonCardt: React.FC<WebtoonCardProps> = ({
+export const ScoopWebtoonCard: React.FC<WebtoonCardProps> = ({
   webtoon
 }) => {
   return (
+    // <div className="w-1/2 relative rounded-3xl" style={{height:"200px"}}>
+    //   <div style={{backgroundImage: `url(${Webtoon})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"150px"}} 
+    //     className="absolute inset-x-0 top-0 " 
+    //   >s</div>
+    // </div>
     <div style={{backgroundImage: `url(${Webtoon})`, backgroundSize: '100% 70%', backgroundRepeat:"no-repeat", width:"100%", height:"200px"}} 
               className="group p-4 rounded-2xl border"
     >
