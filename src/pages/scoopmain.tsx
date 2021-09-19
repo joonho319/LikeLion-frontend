@@ -57,7 +57,7 @@ export const ScoopMain = () => {
   
   return (
     <div className="sm:max-w-md mx-auto sm:px-8">
-      <ScoopHeader />
+      <ScoopHeader title={'SCOOP'} />
       <div className="text-2xl font-bold mt-8 grid justify-center">
         <div>나에게 맞는 웹툰을</div>
         <div>AI가 추천해드려요.</div>

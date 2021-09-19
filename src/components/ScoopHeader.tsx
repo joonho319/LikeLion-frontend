@@ -1,13 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Disclosure } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(' ')
+
+interface TitleProps {
+  title: any
 }
 
-export const ScoopHeader = () => {
+
+export const ScoopHeader: React.FC<TitleProps> = ({
+  title
+}) => { 
   return (
     <Disclosure as="nav" className="bg-white shadow mx-auto max-w-lg">
       {({ open }) => (
@@ -26,7 +29,7 @@ export const ScoopHeader = () => {
               </div>
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-xl flex items-center font-bold">
-                 SCOOP
+                 {title}
                 </div>
               </div>
                 {/* Profile dropdown */}
