@@ -52,7 +52,7 @@ const TinderCardBackground = styled.div`
 const alreadyRemoved: any[] = []
 let charactersState = db // This fixes issues with updating characters state forcing it to use the current state and not the state that was active when the card was created.
 
-export const  ScoopWebtoonRecommend =  () => {
+export const  ScoopTodayWebtoonRecommend =  () => {
   const characters = db
   const [lastDirection, setLastDirection] = useState()
 
@@ -68,7 +68,7 @@ export const  ScoopWebtoonRecommend =  () => {
   return (
     <div className="max-w-11/12 mx-auto">
       <ScoopSubHeader />
-      <div className="text-center text-2xl mt-7 font-bold">웹툰 추천</div>
+        <div className="text-center text-2xl mt-7 font-bold">오늘의 웹툰</div>
         {db.map((character) =>
           <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
             <ScoopWebtoonRecommendCard webtoon={character} />
