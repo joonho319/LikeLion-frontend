@@ -4,6 +4,7 @@ import { ScoopHeader } from '../components/ScoopHeader';
 import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopScooperWebtoonCard } from '../components/ScoopScooperWebtoonCard';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const scooper1 = {
   src: '',
@@ -37,7 +38,9 @@ const webtoon2 = {
 
 
 export const ScoopScooperWebtoon = () => {
-  
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[]);
   return (
     <div className="sm:max-w-sm mx-auto sm:px-8">
       {/* <ScoopHeader title={'에디터 추천'} /> */}

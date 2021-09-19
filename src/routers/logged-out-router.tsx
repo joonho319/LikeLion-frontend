@@ -7,6 +7,8 @@ import { ScoopTodayWebtoonRecommend } from '../pages/ScoopTodayWebtoonRecommend'
 import { ScoopProfile } from '../pages/ScoopProfile';
 import { ScoopEditorWebtoon } from '../pages/ScoopEditorWebtoon';
 import { ScoopScooperWebtoon } from '../pages/ScoopScooperWebtoon';
+import { ScoopLogin } from '../pages/ScoopLogin';
+import { ScoopSignUp } from '../pages/ScoopSignUp';
 
 export const LoggedOutRouter = () => {
 
@@ -24,6 +26,12 @@ export const LoggedOutRouter = () => {
         </Route>
         <Route path="/scooperWebtoon">
           <ScoopScooperWebtoon />
+        </Route>
+        <Route path="/login">
+          <ScoopLogin />
+        </Route>
+        <Route path="/signup">
+          <ScoopSignUp />
         </Route>
         <Route path="/todayswebtoon">
           <ScoopTodayWebtoonRecommend />
