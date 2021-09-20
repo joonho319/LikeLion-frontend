@@ -55,6 +55,7 @@ let charactersState = db // This fixes issues with updating characters state for
 
 export const  ScoopWebtoonRecommend =  () => {
   const characters = db
+  let count = 1;
   const [lastDirection, setLastDirection] = useState()
   const [isStart, setIsStart] = useState(false);
   const start = () => {
@@ -64,6 +65,7 @@ export const  ScoopWebtoonRecommend =  () => {
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
+    count = count + 1;
   }
 
   const outOfFrame = (name: any) => {
@@ -73,20 +75,27 @@ export const  ScoopWebtoonRecommend =  () => {
   return (
     <div className="max-w-11/12 mx-auto">
       <ScoopSubHeader />
-      <div className="text-center text-xl mt-3 font-bold">웹툰을 평가하고 </div>
-      <div className="text-center text-xl font-bold">AI의 추천을 받으세요!</div>
-      <div className="text-center text-sm mt-3">*웹툰 추천 참여 방법</div>
+      {isStart &&
+        <div className="text-center mt-2 font-bold text-lg">
+          {count} / {db.length}
+        </div>
+      }
       {!isStart ? 
         <>
+          <div className="text-center text-xl mt-3 font-bold">웹툰을 평가하고 </div>
+          <div className="text-center text-xl font-bold">AI의 추천을 받으세요!</div>
+          <div className="text-center text-sm mt-3">*웹툰 추천 참여 방법</div>
           <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
           <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
         </> :
         <>
-          {db.map((character) =>
-            <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-              <ScoopWebtoonRecommendCard webtoon={character} />
-            
-            </SimpleTinderCard>
+
+          {db.map((character, i) =>
+            <>
+              <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+                <ScoopWebtoonRecommendCard webtoon={character} />
+              </SimpleTinderCard>
+            </>
           )}
         </>
       }
