@@ -57,6 +57,7 @@ export const  ScoopWebtoonRecommend =  () => {
   const characters = db
   const [lastDirection, setLastDirection] = useState()
   const [isStart, setIsStart] = useState(false);
+  const [isFinish, setIsFinish] = useState(false);
   const [count, setCount] = useState(1);
   const start = () => {
     setIsStart(true);
@@ -64,8 +65,11 @@ export const  ScoopWebtoonRecommend =  () => {
 
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
-    setLastDirection(direction)
+    setLastDirection(direction);
     setCount(count+1)
+    if(count === db.length+1) {
+      setIsFinish(true);
+    }
   }
 
   const outOfFrame = (name: any) => {
@@ -75,31 +79,36 @@ export const  ScoopWebtoonRecommend =  () => {
   return (
     <div className="max-w-11/12 mx-auto">
       <ScoopSubHeader />
-      {isStart &&
-        <div className="text-center mt-2 font-bold text-lg">
-          {count} / {db.length}
-        </div>
-      }
-      {!isStart ? 
+      {isFinish ?
         <>
-          <div className="text-center text-xl mt-3 font-bold">웹툰을 평가하고 </div>
-          <div className="text-center text-xl font-bold">AI의 추천을 받으세요!</div>
-          <div className="text-center text-sm mt-3">*웹툰 추천 참여 방법</div>
-          <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
-          <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
-        </> :
+          <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+        </> : 
         <>
-
-          {db.map((character, i) =>
+          {!isStart ? 
             <>
-              <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-                <ScoopWebtoonRecommendCard webtoon={character} />
-              </SimpleTinderCard>
+              <div className="text-center text-xl mt-3 font-bold">웹툰을 평가하고 </div>
+              <div className="text-center text-xl font-bold">AI의 추천을 받으세요!</div>
+              <div className="text-center text-sm mt-3">*웹툰 추천 참여 방법</div>
+              <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
+              <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
+            </> :
+            <>
+              <div className="text-center mt-2 font-bold text-lg">
+                {count} / {db.length}
+              </div>
+              {db.map((character, i) =>
+                <>
+                  <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+                    <ScoopWebtoonRecommendCard webtoon={character} />
+                  </SimpleTinderCard>
+                </>
+              )}
             </>
-          )}
+          }
+          {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
         </>
       }
-      {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+      
       <ScoopFooter />
     </div>
   )
