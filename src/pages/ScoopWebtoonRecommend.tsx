@@ -55,9 +55,9 @@ let charactersState = db // This fixes issues with updating characters state for
 
 export const  ScoopWebtoonRecommend =  () => {
   const characters = db
-  let count = 1;
   const [lastDirection, setLastDirection] = useState()
   const [isStart, setIsStart] = useState(false);
+  const [count, setCount] = useState(1);
   const start = () => {
     setIsStart(true);
   }
@@ -65,7 +65,7 @@ export const  ScoopWebtoonRecommend =  () => {
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
-    count = count + 1;
+    setCount(count+1)
   }
 
   const outOfFrame = (name: any) => {
