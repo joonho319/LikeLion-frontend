@@ -58,6 +58,7 @@ export const  ScoopWebtoonRecommend =  () => {
   const [lastDirection, setLastDirection] = useState()
   const [isStart, setIsStart] = useState(false);
   const [isFinish, setIsFinish] = useState(false);
+  const [isResult, setIsResult ] = useState(false);
   const [count, setCount] = useState(1);
   const start = () => {
     setIsStart(true);
@@ -71,8 +72,15 @@ export const  ScoopWebtoonRecommend =  () => {
   useEffect(() => {
     if(count > 5) {
       setIsFinish(true);
+      setTimeout(() => {
+      console.log(isResult)
+      setIsResult(true);
+      console.log('짠')
+      console.log(isResult)
+      }, 3000);
     }
   },[count]);
+
 
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
@@ -92,7 +100,7 @@ export const  ScoopWebtoonRecommend =  () => {
       {isFinish ?
         <>
           <svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24"> </svg>
-          당신이 좋아할만한 웹툰을 찾고있습니다.
+          {isResult ? '짠': '당신이 좋아할만한 웹툰을 찾고있습니다.'}
         </> : 
         <>
           {!isStart ? 
