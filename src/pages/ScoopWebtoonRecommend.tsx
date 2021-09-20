@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
 import TestImage from '../images/독립일기.png';
@@ -63,13 +63,23 @@ export const  ScoopWebtoonRecommend =  () => {
     setIsStart(true);
   }
 
+  const handleIncrement = () => {
+    setCount(prevCount => prevCount + 1);
+
+  };
+
+  useEffect(() => {
+    if(count > 5) {
+      setIsFinish(true);
+    }
+  },[count]);
+
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction);
-    setCount(count+1)
-    if(count === db.length+1) {
-      setIsFinish(true);
-    }
+      handleIncrement();
+      console.log(count)
+    
   }
 
   const outOfFrame = (name: any) => {
@@ -81,7 +91,8 @@ export const  ScoopWebtoonRecommend =  () => {
       <ScoopSubHeader />
       {isFinish ?
         <>
-          <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+          <svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24"> </svg>
+          당신이 좋아할만한 웹툰을 찾고있습니다.
         </> : 
         <>
           {!isStart ? 
@@ -99,7 +110,7 @@ export const  ScoopWebtoonRecommend =  () => {
               {db.map((character, i) =>
                 <>
                   <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-                    <ScoopWebtoonRecommendCard webtoon={character} />
+                    <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
                   </SimpleTinderCard>
                 </>
               )}
