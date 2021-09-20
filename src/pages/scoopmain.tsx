@@ -56,14 +56,15 @@ const youtube = {
 export const ScoopMain = () => {
   
   return (
-    <div className="sm:max-w-md mx-auto sm:px-8">
+    <div className="sm:w-9/12 mx-auto sm:px-8">
       <ScoopHeader title={'SCOOP'} />
+      <div className="mt-8 hidden sm:inline-block" style={{backgroundImage: `url(${ScoopImage})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat", height:"250px"}}> </div>
       <div className="text-2xl font-bold mt-8 grid justify-center">
         <div>나에게 맞는 웹툰을</div>
         <div>AI가 추천해드려요.</div>
       </div>
       
-      <div className="mt-8" style={{backgroundImage: `url(${ScoopImage})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat", height:"250px"}}> </div>
+      <div className="mt-8 sm:hidden" style={{backgroundImage: `url(${ScoopImage})`, backgroundSize: '100% 100%', backgroundRepeat:"no-repeat", height:"250px"}}> </div>
       
       <div className="text-md text-gray-700 mt-9 grid justify-center ">'오늘은 뭐보지?' '볼 게 없네.'라고 생각했던</div>
       <div className="text-md text-gray-700  grid justify-center ">분들에게 스쿱하우스가 찾아드립니다.</div>

@@ -4,6 +4,7 @@ import TinderCard from 'react-tinder-card'
 import TestImage from '../images/독립일기.png';
 import styled from 'styled-components';
 import { ScoopWebtoonRecommendCard } from '../components/ScoopWebtoonRecommendCard';
+import { ScoopWebtoonRecommendGuideCard } from '../components/ScoopWebtoonRecommendGuideCard';
 import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopFooter } from '../components/ScoopFooter';
 
@@ -55,6 +56,10 @@ let charactersState = db // This fixes issues with updating characters state for
 export const  ScoopWebtoonRecommend =  () => {
   const characters = db
   const [lastDirection, setLastDirection] = useState()
+  const [isStart, setIsStart] = useState(false);
+  const start = () => {
+    setIsStart(true);
+  }
 
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
@@ -68,13 +73,23 @@ export const  ScoopWebtoonRecommend =  () => {
   return (
     <div className="max-w-11/12 mx-auto">
       <ScoopSubHeader />
-      <div className="text-center text-2xl mt-7 font-bold">웹툰 추천</div>
-        {db.map((character) =>
-          <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-            <ScoopWebtoonRecommendCard webtoon={character} />
-           
-          </SimpleTinderCard>
-        )}
+      <div className="text-center text-xl mt-3 font-bold">웹툰을 평가하고 </div>
+      <div className="text-center text-xl font-bold">AI의 추천을 받으세요!</div>
+      <div className="text-center text-sm mt-3">*웹툰 추천 참여 방법</div>
+      {!isStart ? 
+        <>
+          <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
+          <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
+        </> :
+        <>
+          {db.map((character) =>
+            <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+              <ScoopWebtoonRecommendCard webtoon={character} />
+            
+            </SimpleTinderCard>
+          )}
+        </>
+      }
       {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
       <ScoopFooter />
     </div>
