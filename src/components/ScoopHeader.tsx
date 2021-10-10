@@ -13,6 +13,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Link } from 'react-router-dom'
 
 const solutions = [
   {
@@ -58,10 +59,13 @@ const resources = [
   { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#' },
 ]
 
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
 interface TitleProps {
   title: any
 }
-
 
 export const ScoopHeader: React.FC<TitleProps> = ({
   title
@@ -70,14 +74,24 @@ export const ScoopHeader: React.FC<TitleProps> = ({
     <>
       <div className="hidden md:grid md:grid-cols-12 mt-5"> 
         <div className="col-span-2"></div>
-        <div className="col-span-1 font-bold text-2xl">SCOOP</div>
+        <div className="col-span-1 font-bold text-2xl"><Link to={'/'}>SCOOP</Link></div>
         <div className="col-span-6 grid grid-cols-6 gap-8">
           <div></div>
-          <div className="text-center text-lg">웹툰 추천</div>
-          <div className="text-center text-lg">오늘의 웹툰</div>
-          <div className="text-center text-lg">에디터 추천</div>
-          <div className="text-center text-lg">웹툰 순위</div>
-          <div className="text-center text-lg">문의 하기</div>
+          <div 
+            className={classNames(window.location.pathname === '/recommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+          ><Link to={'/recommend'}>웹툰 추천</Link></div>
+          <div 
+            className={classNames(window.location.pathname === '/todayswebtoon' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+          ><Link to={'/todayswebtoon'}>오늘의 웹툰</Link> </div>
+          <div 
+            className={classNames(window.location.pathname === '/editorRecommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+          ><Link to={'/editorRecommend'}>에디터 추천</Link> </div>
+          <div 
+            className={classNames(window.location.pathname === '/rate' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+          ><Link to={'/rate'}>웹툰 순위</Link> </div>
+          <div 
+            className={classNames(window.location.pathname === '/intro' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+          ><Link to={'/intro'}>문의 하기</Link> </div>
         </div>
         <div className="col-span-1 grid justify-end text-lg">봉봉</div>
         <div className="col-span-2"></div>
