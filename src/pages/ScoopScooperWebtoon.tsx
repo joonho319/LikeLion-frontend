@@ -59,7 +59,7 @@ export const ScoopScooperWebtoon = () => {
   }
 
   return (
-    <div className="mx-auto sm:px-8">
+    <div className="mx-auto">
       {/* <ScoopHeader title={'에디터 추천'} /> */}
       <ScoopSubHeader />
       <div className="md:hidden">

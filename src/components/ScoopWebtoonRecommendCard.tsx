@@ -10,7 +10,7 @@ export const ScoopWebtoonRecommendCard: React.FC<WebtoonCardProps> = ({
   webtoon
 }) => {
   return (
-    <div className="border rounded-xl p-3 w-11/12 mx-auto shadow-md mt-3 mb-20">
+    <div className="border rounded-xl p-3 shadow-md mt-3 mb-20" style={{width: "380px"}}>
       <div>
         <img className="bg-cover rounded-xl w-full"  src={Webtoon} alt=""/>
       </div>

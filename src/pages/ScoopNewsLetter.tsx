@@ -24,7 +24,7 @@ export const ScoopNewsLetter = () => {
   }
 
   return (
-    <div className="mx-auto sm:px-8">
+    <div className="mx-auto">
       <ScoopSubHeader />
       
       <div className="text-2xl font-bold mt-5 grid justify-center">뉴스레터</div>

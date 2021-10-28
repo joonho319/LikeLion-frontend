@@ -40,6 +40,7 @@ const db = [
 const SimpleTinderCard = styled(TinderCard)`
   position: absolute;
   background-color: #fff;
+  
 `;
 
 const TinderCardBackground = styled.div`
@@ -96,52 +97,55 @@ export const  ScoopWebtoonRecommend =  () => {
   }
 
   return (
-    <div className="max-w-11/12 mx-auto">
+    <div>
       <ScoopSubHeader />
-      {isFinish ?
-        <>
-          <svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24"> </svg>
-          {isResult ? '짠': '당신이 좋아할만한 웹툰을 찾고있습니다.'}
-        </> : 
-        <div>
-          {!isStart ? 
-            <div className="flex">
-              <div className="flex-grow"></div>
-              <div className="flex-grow-0 w-11/12 md:hidden">
-                <div className="text-center text-xl md:text-3xl mt-3 md:mt-14 font-bold">웹툰을 평가하고 </div>
-                <div className="text-center text-xl md:text-3xl font-bold">AI의 추천을 받으세요!</div>
-                <div className="text-center text-sm md:text-base mt-3">*웹툰 추천 참여 방법</div>
-                <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
-                <div className="border rounded-3xl bg-red-500 py-2 w-11/12 md:w-1/5 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
-              </div>
-              <div className="hidden md:flex-grow-0 md:inline-block" style={{width:"370px"}}>
-                <div className="text-center text-xl md:text-3xl mt-3 md:mt-14 font-bold">웹툰을 평가하고 </div>
-                <div className="text-center text-xl md:text-3xl font-bold">AI의 추천을 받으세요!</div>
-                <div className="text-center text-sm md:text-base mt-3">*웹툰 추천 참여 방법</div>
-                <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
-                <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
-              </div>
-              <div className="flex-grow"></div>
-            </div>
-             :
-            <>
-              <div className="text-center mt-2 font-bold text-lg">
-                {count} / {db.length}
-              </div>
-              {db.map((character, i) =>
-                <div className="gird mx-auto">
-                  <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-                    <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
-                  </SimpleTinderCard>
+      <div className="max-w-11/12 mx-auto">
+        {isFinish ?
+          <>
+            <svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24"> </svg>
+            {isResult ? '짠': '당신이 좋아할만한 웹툰을 찾고있습니다.'}
+          </> : 
+          <div>
+            {!isStart ? 
+              <div className="flex">
+                <div className="flex-grow"></div>
+                <div className="flex-grow-0 w-11/12 md:hidden">
+                  <div className="text-center text-xl md:text-3xl mt-3 md:mt-14 font-bold">웹툰을 평가하고 </div>
+                  <div className="text-center text-xl md:text-3xl font-bold">AI의 추천을 받으세요!</div>
+                  <div className="text-center text-sm md:text-base mt-3">*웹툰 추천 참여 방법</div>
+                  <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
+                  <div className="border rounded-3xl bg-red-500 py-2 w-11/12 md:w-1/5 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
                 </div>
-              )}
-            </>
-          }
-          {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
-        </div>
-      }
-      
-      <ScoopFooter />
+                <div className="hidden md:flex-grow-0 md:inline-block" style={{width:"370px"}}>
+                  <div className="text-center text-xl md:text-3xl mt-3 md:mt-14 font-bold">웹툰을 평가하고 </div>
+                  <div className="text-center text-xl md:text-3xl font-bold">AI의 추천을 받으세요!</div>
+                  <div className="text-center text-sm md:text-base mt-3">*웹툰 추천 참여 방법</div>
+                  <ScoopWebtoonRecommendGuideCard webtoon={db[0]} /> 
+                  <div className="border rounded-3xl bg-red-500 py-2 w-11/12 mx-auto shadow-md mt-5 mb-20 text-center text-white" onClick={start}>시작!</div>
+                </div>
+                <div className="flex-grow"></div>
+              </div>
+              :
+              <div className="mx-auto">
+                <div className="text-center mt-2 font-bold text-lg">
+                  {count} / {db.length}
+                </div>
+                {db.map((character, i) =>
+                  <div className="gird mx-auto">
+                    <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+                      <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
+                    </SimpleTinderCard>
+                  </div>
+                )}
+              </div>
+            }
+            {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+          </div>
+        }
+        
+        <ScoopFooter />
+      </div>
+
     </div>
   )
 }

@@ -72,34 +72,47 @@ export const ScoopHeader: React.FC<TitleProps> = ({
 }) => { 
   return (
     <>
-      <div className="hidden md:grid md:grid-cols-12 mt-5"> 
-        <div className="col-span-2"></div>
-        <div className="col-span-1 font-bold text-2xl"><Link to={'/'}>SCOOP</Link></div>
-        <div className="col-span-6 grid grid-cols-6 gap-8">
-          <div></div>
-          <div 
-            className={classNames(window.location.pathname === '/recommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
-          ><Link to={'/recommend'}>웹툰 추천</Link></div>
-          <div 
-            className={classNames(window.location.pathname === '/todayswebtoon' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
-          ><Link to={'/todayswebtoon'}>오늘의 웹툰</Link> </div>
-          <div 
-            className={classNames(window.location.pathname === '/editorRecommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
-          ><Link to={'/editorRecommend'}>에디터 추천</Link> </div>
-          <div 
-            className={classNames(window.location.pathname === '/rate' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
-          ><Link to={'/rate'}>웹툰 순위</Link> </div>
-          <div 
-            className={classNames(window.location.pathname === '/intro' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
-          ><Link to={'/intro'}>문의 하기</Link> </div>
+      <div className="hidden lg:flex mt-5"> 
+        <div className="lg:flex-1"></div>
+        <div className="lg:flex-shrink-0 w-8/12">
+          <div className="flex justify-around items-center">
+            <div className="font-bold text-2xl col-span-4 "><Link to={'/'}>SCOOP</Link></div>
+            <div className="flex  gap-10 ">
+              <div 
+                className={classNames(window.location.pathname === '/recommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+              ><Link to={'/recommend'}>웹툰 추천</Link></div>
+              <div 
+                className={classNames(window.location.pathname === '/todayswebtoon' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+              ><Link to={'/todayswebtoon'}>오늘의 웹툰</Link> </div>
+              <div 
+                className={classNames(window.location.pathname === '/editorRecommend' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+              ><Link to={'/editorRecommend'}>에디터 추천</Link> </div>
+              <div 
+                className={classNames(window.location.pathname === '/rate' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+              ><Link to={'/rate'}>웹툰 순위</Link> </div>
+              <div 
+                className={classNames(window.location.pathname === '/intro' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
+              ><Link to={'/intro'}>문의 하기</Link> </div>
+            </div>
+            <div className="col-span-1 grid justify-items-end text-lg">
+              <Link to={'/login'}>
+                로그인
+              </Link>
+            </div>
+            
+          </div>
         </div>
-        <div className="col-span-1 grid justify-end text-lg">봉봉</div>
-        <div className="col-span-2"></div>
-        <div className="col-span-1"></div>
-        <div className="col-span-10 mt-5 bg-black" style={{height:"1px"}}></div>
-        <div className="col-span-1"></div>
+        <div className="lg:flex-1"></div>
       </div>
-      <Disclosure as="nav" className="bg-white shadow mx-auto  md:hidden">
+      <div className="lg:flex hidden">
+        <div className="lg:flex-1"></div>
+        <div className="lg:flex-shrink-0" style={{width:"1200px"}}>
+          <div className="w-full  mt-5 bg-black" style={{height:"1px"}}></div>
+        </div>
+        <div className="lg:flex-1"></div>
+
+      </div>
+      <Disclosure as="nav" className="bg-white shadow mx-auto  lg:hidden">
         {({ open }) => (
           <>
             <div className="max-w-lg mx-auto lg:px-8">

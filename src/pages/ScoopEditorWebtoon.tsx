@@ -53,12 +53,12 @@ export const ScoopEditorWebtoon = () => {
   }
 
   return (
-    <div className="mx-auto sm:px-8">
+    <div className="mx-auto">
       {/* <ScoopHeader title={'에디터 추천'} /> */}
       <ScoopSubHeader />
 
       {/* 모바일 */}
-      <div className="w-11/12 mx-auto md:hidden">
+      <div className="w-11/12 mx-auto lg:hidden">
         <div className="text-lg font-bold mt-7">스쿠퍼 in 스쿱하우스</div>
         <div className="mb-10 mt-5 grid grid-cols-4 gap-4">
           <ScoopScooperCard scooper={scooper1} />
@@ -100,7 +100,7 @@ export const ScoopEditorWebtoon = () => {
       </div>
 
       {/* 데스크탑 */}
-      <div className="w-8/12 mx-auto hidden md:grid">
+      <div className=" mx-auto hidden lg:grid" style={{width:"1100px"}}>
         <div className="flex flex-col justify-center text-4xl mt-10  ">
           <div className="grid justify-center font-extrabold">스쿱이 추천하는</div>
           <div className="grid justify-center mt-3 font-extrabold">오늘의 웹툰</div>
