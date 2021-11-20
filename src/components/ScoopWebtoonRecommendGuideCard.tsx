@@ -13,9 +13,13 @@ export const ScoopWebtoonRecommendGuideCard: React.FC<WebtoonCardProps> = ({
     <div>
       <div className="border rounded-xl p-3 w-11/12 mx-auto shadow-md mt-3 mb-5">
         <div>
-          <div className="bg-cover rounded-xl w-full bg-gray-400" style={{height:"270px"}}></div>
+          <div className="bg-cover rounded-xl w-full bg-gray-400 flex flex-col-reverse" style={{height:"270px"}}>
+            <div className="">
+              <div className="bg-green-400 rounded-b-xl text-white text-center flex items-center justify-center text-sm font-semibold" style={{height:"32px"}}>웹툰 보러 가기 </div>
+            </div>
+          </div>
         </div>
-        <div className="grid justify-center font-bold text-2xl mt-3"  >스쿱게임</div>
+        <div className="grid justify-center font-bold text-2xl mt-3"  >스쿱 게임</div>
         <div className="grid justify-center text-gray-700 text-base mx-auto w-2/3 mt-3">10개 웹툰을 평가하면,</div>
         <div className="grid justify-center text-gray-700 text-base mx-auto w-2/3 ">내게 맞는 웹툰을 찾아드려요.</div>
       </div>

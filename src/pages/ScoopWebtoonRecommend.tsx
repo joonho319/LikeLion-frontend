@@ -103,7 +103,20 @@ export const  ScoopWebtoonRecommend =  () => {
         {isFinish ?
           <>
             <svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24"> </svg>
-            {isResult ? '짠': '당신이 좋아할만한 웹툰을 찾고있습니다.'}
+            {isResult ? 
+              <div className="flex">
+                <div className="flex-1"></div>
+                <div className="flex-shrink-0">
+                  <div className="text-center text-4xl font-bold mt-5">AI가 분석한</div>
+                  <div className="text-center text-4xl font-bold mt-2">당신이 좋아할 웹툰입니다.</div>
+                  <ScoopWebtoonRecommendCard webtoon={db[0]} />
+                </div>
+                <div className="flex-1"></div>
+                
+              </div>
+               : 
+              '당신이 좋아할만한 웹툰을 찾고있습니다.'
+            }
           </> : 
           <div>
             {!isStart ? 
@@ -126,17 +139,19 @@ export const  ScoopWebtoonRecommend =  () => {
                 <div className="flex-grow"></div>
               </div>
               :
-              <div className="mx-auto">
+              <div className="mx-auto ">
                 <div className="text-center mt-2 font-bold text-lg">
                   {count} / {db.length}
                 </div>
-                {db.map((character, i) =>
-                  <div className="gird mx-auto">
-                    <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-                      <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
-                    </SimpleTinderCard>
-                  </div>
-                )}
+                <div className="" style={{marginLeft:"39%"}}>
+                  {db.map((character, i) =>
+                    <div className="gird mx-auto">
+                      <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+                        <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
+                      </SimpleTinderCard>
+                    </div>
+                  )}
+                </div>
               </div>
             }
             {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}

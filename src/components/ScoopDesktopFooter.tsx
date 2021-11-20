@@ -1,6 +1,8 @@
+import { useHistory } from "react-router"
 
 
 export const ScoopDesktopFooter = () => {
+  const history = useHistory();
   return (
     <div className="w-8/12 mx-auto hidden md:grid mb-16"> 
       <div className=" bg-gray-600" style={{height:"1px"}}></div>
@@ -14,9 +16,9 @@ export const ScoopDesktopFooter = () => {
           <div className="mt-10">2021 @ All rights reserved by scoop house</div>
         </div>
         <div className="grid grid-cols-3 mt-16 text-xl font-bold">
-          <div>회사소개</div>
-          <div>스쿠퍼로 신청하기</div>
-          <div>자주하는 질문</div>
+          <div onClick={()=> history.push('/intro')}>회사소개</div>
+          <div onClick={()=> history.push('/newsletter')}>스쿠퍼로 신청하기</div>
+          <div onClick={()=> history.push('/intro')}>자주하는 질문</div>
         </div>
       </div>
     </div>
