@@ -1,17 +1,42 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { authTokenVar, isLoggedInVar } from '../apollo';
 import { ScoopFooter } from '../components/ScoopFooter';
 import { ScoopHeader } from '../components/ScoopHeader';
+import { LOCALSTORAGE_TOKEN } from '../constant';
+import { createAccountMutation, createAccountMutationVariables } from '../__generated__/createAccountMutation';
+
+export const CREATEACCOUNT_MUTATION = gql`
+  mutation createAccountMutation($email: String!, $password: String!, $name: String!) {
+    createAccount(input: {
+      email: $email,
+      password: $password,
+      name: $name,
+    }) {
+      ok,
+      token,
+      user {
+        role
+        email
+        name
+      },
+      error
+    } 
+  }
+`;
 
 interface IForm {
   password: string;
   email: string;
   passwordcheck: string;
   name: string;
-  birth: string;
+  // birth: string;
 }
 
 export const ScoopSignUp = () => {
+  const history = useHistory();
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
 
   const onSubmit = () => {
@@ -21,6 +46,24 @@ export const ScoopSignUp = () => {
   const inValid = () => {
     console.log(errors)
   }
+  const onCompleted = (data: createAccountMutation) => {
+    const {
+      createAccount: { ok, token, user, error },
+    } = data;
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      localStorage.setItem('role', String(user?.role))
+      localStorage.setItem('email', String(user?.email))
+      localStorage.setItem('name', String(user?.name))
+      authTokenVar(token);
+      isLoggedInVar(true);
+      history.push('/')
+    } 
+  };
+  const [createAccountMutation, { loading, data: createAccountMutationResult }] 
+    = useMutation<createAccountMutation, createAccountMutationVariables>(
+      CREATEACCOUNT_MUTATION, 
+      { onCompleted});
   return (
     <div>
 
@@ -46,7 +89,7 @@ export const ScoopSignUp = () => {
               placeholder="이름을 입력하세요" 
             />
           </div>
-          <div className="w-11/12 mx-auto">
+          {/* <div className="w-11/12 mx-auto">
             <input 
               {...register("birth", {
                 required: "생년월일을 입력해주세요",
@@ -58,7 +101,7 @@ export const ScoopSignUp = () => {
               className="w-full mx-auto border-2 border-gray-300 mt-4 py-2 px-2 rounded-md text-sm text-gray-700"
               placeholder="생년월일을 입력하세요" 
             />
-          </div>
+          </div> */}
           <div className="w-11/12 mx-auto">
             <input 
               {...register("email", {

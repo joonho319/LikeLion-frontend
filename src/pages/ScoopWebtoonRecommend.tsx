@@ -107,8 +107,8 @@ export const  ScoopWebtoonRecommend =  () => {
               <div className="flex">
                 <div className="flex-1"></div>
                 <div className="flex-shrink-0">
-                  <div className="text-center text-4xl font-bold mt-5">AI가 분석한</div>
-                  <div className="text-center text-4xl font-bold mt-2">당신이 좋아할 웹툰입니다.</div>
+                  <div className="text-center text-2xl md:text-4xl font-bold">AI가 분석한</div>
+                  <div className="text-center text-2xl md:text-4xl font-bold mt-2">당신이 좋아할 웹툰입니다.</div>
                   <ScoopWebtoonRecommendCard webtoon={db[0]} />
                 </div>
                 <div className="flex-1"></div>
@@ -118,7 +118,7 @@ export const  ScoopWebtoonRecommend =  () => {
               '당신이 좋아할만한 웹툰을 찾고있습니다.'
             }
           </> : 
-          <div>
+          <div className="w-screen">
             {!isStart ? 
               <div className="flex">
                 <div className="flex-grow"></div>
@@ -139,11 +139,11 @@ export const  ScoopWebtoonRecommend =  () => {
                 <div className="flex-grow"></div>
               </div>
               :
-              <div className="mx-auto ">
+              <div className="">
                 <div className="text-center mt-2 font-bold text-lg">
                   {count} / {db.length}
                 </div>
-                <div className="" style={{marginLeft:"39%"}}>
+                <div className="" style={{marginLeft:"calc(50% - 175px)"}}>
                   {db.map((character, i) =>
                     <div className="gird mx-auto">
                       <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>

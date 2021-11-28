@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ScoopFooter } from '../components/ScoopFooter';
 import { ScoopHeader } from '../components/ScoopHeader';
 
+
 interface IForm {
   password: string;
   email: string;

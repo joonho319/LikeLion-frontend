@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { ScoopMain } from "../pages/scoopmain";
+// import { Header } from "../components/header";
 import { ScoopIntro } from "../pages/ScoopIntro";
 import { ScoopNewsLetter } from '../pages/ScoopNewsLetter';
 import { ScoopWebtoonRecommend } from '../pages/ScoopWebtoonRecommend';
