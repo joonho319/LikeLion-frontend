@@ -76,7 +76,7 @@ export const  ScoopTodayWebtoonRecommend =  () => {
         <div className="flex md:hidden mt-5"> 
           <div className="md:flex-1"></div>
           <div className="md:flex-shrink-0 ">
-            <div className="" style={{marginLeft:"calc(50% - 175px)"}}>
+            <div className="" style={{marginLeft:"calc(50% - 170px)"}}>
               {db.map((character) =>
                 <div className="w-screen mx-auto">
                   <ScoopWebtoonRecommendCard webtoon={character} />

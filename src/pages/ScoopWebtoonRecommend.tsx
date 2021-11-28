@@ -143,7 +143,7 @@ export const  ScoopWebtoonRecommend =  () => {
                 <div className="text-center mt-2 font-bold text-lg">
                   {count} / {db.length}
                 </div>
-                <div className="" style={{marginLeft:"calc(50% - 175px)"}}>
+                <div className="" style={{marginLeft:"calc(50% - 170px)"}}>
                   {db.map((character, i) =>
                     <div className="gird mx-auto">
                       <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
