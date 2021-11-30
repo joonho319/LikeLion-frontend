@@ -7,7 +7,15 @@ import { ScoopWebtoonRecommendCard } from '../components/ScoopWebtoonRecommendCa
 import { ScoopWebtoonRecommendGuideCard } from '../components/ScoopWebtoonRecommendGuideCard';
 import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopFooter } from '../components/ScoopFooter';
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { ScoopHeader } from '../components/ScoopHeader';
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: black;
+`;
 
 const db = [
   {
@@ -107,15 +115,18 @@ export const  ScoopWebtoonRecommend =  () => {
               <div className="flex">
                 <div className="flex-1"></div>
                 <div className="flex-shrink-0">
-                  <div className="text-center text-2xl md:text-4xl font-bold">AI가 분석한</div>
-                  <div className="text-center text-2xl md:text-4xl font-bold mt-2">당신이 좋아할 웹툰입니다.</div>
+                  <div className="text-center text-2xl md:text-3xl font-bold">AI가 분석한</div>
+                  <div className="text-center text-2xl md:text-3xl font-bold mt-2 md:mb-16">당신이 좋아할 웹툰입니다.</div>
                   <ScoopWebtoonRecommendCard webtoon={db[0]} />
                 </div>
                 <div className="flex-1"></div>
                 
               </div>
                : 
-              '당신이 좋아할만한 웹툰을 찾고있습니다.'
+               <div className="mt-20">
+                <ClipLoader color={'ffffff'} loading={true} css={override} size={90} />
+                <div className="text-center mt-10">좋아할 만한 웹툰을 찾고 있습니다.</div> 
+               </div>
             }
           </> : 
           <div className="w-screen">
