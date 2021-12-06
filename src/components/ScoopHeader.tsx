@@ -90,7 +90,7 @@ export const ScoopHeader: React.FC<TitleProps> = ({
               <div 
                 className={classNames(window.location.pathname === '/rate' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
               ><Link to={'/rate'}>웹툰 순위</Link> </div>
-              <div className="text-center text-lg"><a href={"https://compassionate-stonebraker-179b2c.netlify.app/"}>NFT 몰</a></div>
+              <div className="text-center text-lg"><a href={"https://compassionate-stonebraker-179b2c.netlify.app/"}>스쿱버스</a></div>
             </div>
             <div className="col-span-1 grid justify-items-end text-lg">
               <Link to={'/login'}>
@@ -218,7 +218,7 @@ export const ScoopHeader: React.FC<TitleProps> = ({
                   href="https://compassionate-stonebraker-179b2c.netlify.app/"
                   className="border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
-                  NFT 몰
+                  스쿱버스
                 </a>
                 <div className="w-full h-px bg-gray-400"></div>
                 <a

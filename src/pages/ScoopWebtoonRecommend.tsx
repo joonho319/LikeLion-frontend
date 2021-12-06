@@ -21,27 +21,32 @@ const db = [
   {
     name: '독립일기',
     url: '../images/독립일기.png',
-    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기'
+    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기',
+    src: 'https://comic.naver.com/webtoon/list?titleId=748105&weekday=thu'
   },
   {
     name: '싸움독학',
     url: '../images/scoopImage.png',
-    description: '힘없고 가진거 하나 없이 맞고만 살던 나였는데... 우연히 비밀의 뉴튜브를 발견하게 되고 갑자기 떼돈을 벌었다.'
+    description: '힘없고 가진거 하나 없이 맞고만 살던 나였는데... 우연히 비밀의 뉴튜브를 발견하게 되고 갑자기 떼돈을 벌었다.',
+    src: 'https://comic.naver.com/webtoon/list?titleId=748105&weekday=thu'
   },
   {
     name: '독립일기',
     url: '../images/독립일기.png',
-    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기'
+    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기',
+    src: 'https://comic.naver.com/webtoon/list?titleId=748105&weekday=thu'
   },
   {
     name: '싸움독학',
     url: '../images/scoopImage.png',
-    description: '힘없고 가진거 하나 없이 맞고만 살던 나였는데... 우연히 비밀의 뉴튜브를 발견하게 되고 갑자기 떼돈을 벌었다.'
+    description: '힘없고 가진거 하나 없이 맞고만 살던 나였는데... 우연히 비밀의 뉴튜브를 발견하게 되고 갑자기 떼돈을 벌었다.',
+    src: 'https://comic.naver.com/webtoon/list?titleId=748105&weekday=thu'
   },
   {
     name: '독립일기',
     url: '../images/독립일기.png',
-    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기'
+    description: '처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기',
+    src: 'https://comic.naver.com/webtoon/list?titleId=748105&weekday=thu'
   }
 ]
 
@@ -95,8 +100,8 @@ export const  ScoopWebtoonRecommend =  () => {
   const swiped = (direction: any, nameToDelete: any) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction);
-      handleIncrement();
-      console.log(count)
+    handleIncrement();
+    console.log(count)
     
   }
 
@@ -163,8 +168,14 @@ export const  ScoopWebtoonRecommend =  () => {
                     </div>
                   )}
                 </div>
+                <div className='buttons'>
+                  <button  onClick={() => swiped('left','character.name')}>Swipe left!</button>
+                  <button  onClick={() => swiped('right','character.name')}>Swipe right!</button>
+                </div>
               </div>
+              
             }
+            
             {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
           </div>
         }

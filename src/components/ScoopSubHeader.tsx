@@ -37,7 +37,7 @@ export const ScoopSubHeader = () => {
               <div 
                 className={classNames(window.location.pathname === '/rate' ? 'text-blue-500' : 'text-black', 'text-center text-lg')}
               ><Link to={'/rate'}>웹툰 순위</Link> </div>
-              <div><a href={"https://compassionate-stonebraker-179b2c.netlify.app/"}>NFT 몰</a></div>
+              <div><a href={"https://compassionate-stonebraker-179b2c.netlify.app/"}>스쿱버스</a></div>
             </div>
             <div className="col-span-1 grid justify-items-end text-lg">
               <Link to={'/login'}>
