@@ -14,6 +14,8 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
+import { isLoggedInVar } from '../apollo'
+import { useReactiveVar } from '@apollo/client'
 
 const solutions = [
   {
@@ -70,6 +72,18 @@ interface TitleProps {
 export const ScoopHeader: React.FC<TitleProps> = ({
   title
 }) => { 
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('directpage');
+    isLoggedInVar(false)
+    alert('로그아웃 되었습니다.')
+  }
+  
+
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
     <>
       <div className="hidden lg:flex mt-5"> 
@@ -93,9 +107,14 @@ export const ScoopHeader: React.FC<TitleProps> = ({
               <div className="text-center text-lg"><a href={"https://compassionate-stonebraker-179b2c.netlify.app/"}>스쿱버스</a></div>
             </div>
             <div className="col-span-1 grid justify-items-end text-lg">
-              <Link to={'/login'}>
-                로그인
-              </Link>
+              {isLoggedIn ? 
+                <Link to={'/logout'} onClick={logout}>
+                  로그아웃
+                </Link>:
+                <Link to={'/login'}>
+                  로그인
+                </Link>
+              }
             </div>
             
           </div>

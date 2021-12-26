@@ -1,7 +1,12 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { authTokenVar, isLoggedInVar } from '../apollo';
 import { ScoopFooter } from '../components/ScoopFooter';
 import { ScoopHeader } from '../components/ScoopHeader';
+import { LOCALSTORAGE_TOKEN } from '../constant';
+import { loginMutation, loginMutationVariables } from '../__generated__/loginMutation';
 
 
 interface IForm {
@@ -9,12 +14,53 @@ interface IForm {
   email: string;
 }
 
-export const ScoopLogin = () => {
-  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+export const LOGIN_MUTATION = gql`
+  mutation loginMutation($loginInput: LoginInput!) {
+    login(input: $loginInput) {
+      ok,
+      token,
+      user {
+        role
+        email
+        name
+      },
+      error
+    }
+  }
+`;
 
+export const ScoopLogin = () => {
+  const history = useHistory();
+  const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+  const onCompleted = (data: loginMutation) => {
+    const {
+      login: { ok, token, user, error },
+    } = data;
+    if (ok && token) {
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      localStorage.setItem('role', String(user?.role))
+      localStorage.setItem('email', String(user?.email))
+      localStorage.setItem('name', String(user?.name))
+      authTokenVar(token);
+      isLoggedInVar(true);
+      
+        history.push('/')
+      
+    } 
+  };
+  const [ loginMutation, { data: loginMutationResult, loading } ] = useMutation<loginMutation, loginMutationVariables>(LOGIN_MUTATION, { onCompleted});
   const onSubmit = () => {
-    const { email, password } = getValues();
-    console.log(email, password, "df")
+    if(!loading) {
+      const { email, password } = getValues();
+      loginMutation({
+        variables: {
+          loginInput: {
+            email,
+            password,
+          }
+        }
+      });
+    }
   }
   const inValid = () => {
     console.log(errors)

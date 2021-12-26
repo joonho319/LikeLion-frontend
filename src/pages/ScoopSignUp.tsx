@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { authTokenVar, isLoggedInVar } from '../apollo';
@@ -37,11 +38,22 @@ interface IForm {
 
 export const ScoopSignUp = () => {
   const history = useHistory();
+  const [ passwordsamecheck, setPasswordsamecheck ] = useState(true);
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
 
   const onSubmit = () => {
-    const { email, password } = getValues();
-    console.log(email, password, "df")
+    const { email,name, password, passwordcheck } = getValues();
+    if(password !== passwordcheck) {
+      setPasswordsamecheck(false);
+      return;
+    }
+    createAccountMutation({
+      variables: {
+        email,
+        password,
+        name
+      }
+    });
   }
   const inValid = () => {
     console.log(errors)
@@ -134,8 +146,8 @@ export const ScoopSignUp = () => {
                 required: "비밀번호을 재입력해주세요",
                 // validate: (password) => password.includes("gmail.com")
               })}
-              type="passwordcheck" 
-              name="password" 
+              type="password" 
+              name="passwordcheck" 
               required 
               className="w-full mx-auto border-2 border-gray-300 mt-4 py-2 px-2 rounded-md text-sm text-gray-700"
               placeholder="비밀번호를 재입력하세요" 

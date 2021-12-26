@@ -10,33 +10,70 @@ import { ScoopHeader } from '../components/ScoopHeader';
 import { useForm } from 'react-hook-form';
 import { ScoopDesktopAuthorYoutubeCard } from '../components/ScoopDesktopAuthorYoutubeCard';
 import { ScoopDesktopFooter } from '../components/ScoopDesktopFooter';
+import Webtoon from '../images/독립일기.png';
+import YoutubeImage from '../images/play.png';
 
 interface IForm {
   name: string;
   email: string;
 }
 
+const categories = [
+  {
+    name: 'New Arrivals',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
+  },
+  {
+    name: 'Productivity',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg',
+  },
+  {
+    name: 'Workspace',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg',
+  },
+  {
+    name: 'Accessories',
+    href: '#',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
+  },
+  { name: 'Sale', href: '#', imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg' },
+]
+
 const webtoons = [
   {
-    src: '',
     title: '대학일기',
-    platform: '네이버 웹툰'
+    author: '자까',
+    platform: '네이버 웹툰',
+    image: Webtoon
   },
   {
-    src: '',
     title: '대학일기',
-    platform: '네이버 웹툰'
+    author: '자까',
+    platform: '네이버 웹툰',
+    image: Webtoon
   },
   {
-    src: '',
     title: '대학일기',
-    platform: '네이버 웹툰'
+    author: '자까',
+    platform: '네이버 웹툰',
+    image: Webtoon
   },
   {
-    src: '',
     title: '대학일기',
-    platform: '네이버 웹툰'
+    author: '자까',
+    platform: '네이버 웹툰',
+    image: Webtoon
   },
+  {
+    title: '대학일기',
+    author: '자까',
+    platform: '네이버 웹툰',
+    image: Webtoon
+  },
+  
 ]
 
 const webtoon = {
@@ -50,11 +87,32 @@ const author = {
   name: '자까',
   platform: '네이버 웹툰'
 }
-const youtube = {
-  src: '',
-  title: '[인생84] EP.1 새로운 출발',
-  author: '인생84'
-}
+const youtube = [
+  {
+    src: '',
+    title: '[인생84] EP.1 새로운 출발',
+    author: '인생84',
+    image: YoutubeImage
+  },
+  {
+    src: '',
+    title: '[인생84] EP.2 새로운 출발',
+    author: '인생84',
+    image: YoutubeImage
+  },
+  {
+    src: '',
+    title: '[인생84] EP.3 새로운 출발',
+    author: '인생84',
+    image: YoutubeImage
+  },
+  {
+    src: '',
+    title: '[인생84] EP.4 새로운 출발',
+    author: '인생84',
+    image: YoutubeImage
+  },
+]
 
 
 export const ScoopMain = () => {
@@ -82,14 +140,19 @@ export const ScoopMain = () => {
       <div className="text-md text-gray-700  grid justify-center lg:hidden">분들에게 스쿱하우스가 찾아드립니다.</div>
       <div className="rounded-3xl bg-red-500 p-2 mt-9 text-center text-white w-11/12 mx-auto lg:hidden"><Link to={'/recommend'}>웹툰 추천받기</Link></div>
       
-      <div className="lg:hidden">
-        <div className="w-11/12 mx-auto text-lg font-bold mt-10 sm:hidden lg:hidden ">스쿱 에디터's 추천</div>
-        <div className="mb-10 w-11/12 mx-auto mt-3 grid grid-cols-2 gap-4">
-          <ScoopWebtoonCard webtoon={webtoon} />
-          <ScoopWebtoonCard webtoon={webtoon} />
-        </div>  
+      <div className="">
 
-        <div className="w-11/12 mx-auto text-lg font-bold mt-10">뉴스레터 받기</div>
+        <section aria-labelledby="category-heading" className="pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">
+          <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
+            <h2 id="category-heading" className="text-xl font-extrabold tracking-tight text-gray-900">
+              스쿱 에디터's 추천
+            </h2>
+          </div>
+        </section>
+        <ScoopWebtoonCard webtoons={webtoons} />
+        {/* <ScoopWebtoonCard webtoons={webtoons} /> */}
+
+        <div className="block w-11/12 mx-auto text-lg font-bold mt-10">뉴스레터 받기</div>
         <div className="w-11/12 mx-auto text-xs text-gray-800 mt-3">매주 1회 에디터가 엄선한 웹툰, 웹소설을 이메일로 보내드려요.</div>
         <form className="" onSubmit={handleSubmit(onSubmit, inValid)}>
           <div className="w-11/12 mx-auto">
@@ -128,22 +191,28 @@ export const ScoopMain = () => {
           <ScoopAuthorCard author={author} />
         </div> 
 
-        <div className="w-11/12 mx-auto text-lg font-bold mt-10">이번주에 추천된 작품이에요.</div>
-        <div className="mb-10 w-11/12 mx-auto mt-3 grid grid-cols-2 gap-4">
-          <ScoopWebtoonCard webtoon={webtoon} />
-          <ScoopWebtoonCard webtoon={webtoon} />
-        </div> 
+        {/* 이번주 추천 작품 */}
+        <section aria-labelledby="category-heading" className="pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">
+          <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
+            <h2 id="category-heading" className="text-xl font-extrabold tracking-tight text-gray-900">
+              이번주에 추천된 작품이에요.
+            </h2>
+          </div>
+        </section>
+        <ScoopWebtoonCard webtoons={webtoons} />
+    
+        {/* 유튜브 작품 모음 */}
+        <ScoopAuthorYoutubeCard youtubes={youtube} />
 
-        <div className="w-11/12 mx-auto text-lg font-bold mt-10">웹툰 작가 유튜부 모음</div>
-        <div className="mb-10 w-11/12 mx-auto mt-3 grid grid-cols-1 gap-4">
-          <ScoopAuthorYoutubeCard Youtube={youtube} />
-        </div>   
-
-        <div className="w-11/12 mx-auto text-lg font-bold mt-10">AI가 제 멋대로 추천해봐요.</div>
-        <div className="w-11/12 mx-auto mt-3 grid grid-cols-2 gap-4">
-          <ScoopWebtoonCard webtoon={webtoon} />
-          <ScoopWebtoonCard webtoon={webtoon} />
-        </div>   
+        {/* AI추천 모음 */}
+        <section aria-labelledby="category-heading" className="pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">
+          <div className="px-4 sm:px-6 sm:flex sm:items-center sm:justify-between lg:px-8 xl:px-0">
+            <h2 id="category-heading" className="text-xl font-extrabold tracking-tight text-gray-900">
+              AI가 제 멋대로 추천해봐요.
+            </h2>
+          </div>
+        </section>
+        <ScoopWebtoonCard webtoons={webtoons} />
 
         <div className="w-11/12 mx-auto text-lg font-bold mt-10">스쿠퍼가 되고 싶나요?</div>
         <div className="w-11/12 mx-auto text-xs text-gray-800 mt-2 ">웹툰을 추천하는 스쿠퍼가 되면 리워드를 드립니다.</div>
@@ -153,7 +222,7 @@ export const ScoopMain = () => {
       </div>
 
       {/* 데스크탑 */}
-      <div className="hidden lg:flex ">
+      {/* <div className="hidden lg:flex ">
         <div className="lg:flex-1"></div>
         <div className="lg:flex-shrink-0">
           <div className="flex">
@@ -167,13 +236,8 @@ export const ScoopMain = () => {
             </div>
           </div>
           <div className="flex-shrink-0 text-2xl font-bold hidden lg:inline-block">스쿱 에디터's 추천</div>
-          <div className="mb-10 flex-shrink-0 grid lg:grid-cols-5 gap-4">
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-          </div> 
+          
+          <ScoopWebtoonCard webtoons={webtoons}/>
           <div className=" text-2xl font-bold hidden lg:inline-block">웹툰 작가가 궁금해요</div>
           <div className="mb-10 col-span-8 grid grid-cols-6 gap-4">
             <ScoopAuthorCard author={author} />
@@ -190,7 +254,6 @@ export const ScoopMain = () => {
             <input 
               {...register("name", {
                 required: "이메일을 입력해주세요",
-                // validate: (name) => name.includes("gmail.com")
               })}
               type="name" 
               name="name" 
@@ -203,7 +266,6 @@ export const ScoopMain = () => {
             <input 
               {...register("email", {
                 required: "비밀번호를 입력해주세요",
-                // validate: (email) => email.includes("gmail.com")
               })}
               type="email" 
               name="email" 
@@ -214,13 +276,7 @@ export const ScoopMain = () => {
             <div className="rounded-3xl bg-red-500 p-2 mt-5 text-center text-white mx-auto "><Link to={'/recommend'}>뉴스레터 구독하기</Link></div>
           </div>
           <div className="mx-auto text-2xl font-bold mt-20 mb-5">이번 주에 추천된 작품이에요</div>
-          <div className="mx-auto grid grid-cols-5 gap-4">
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-          </div> 
+          <ScoopWebtoonCard webtoons={webtoons}/>
 
           <div className="mx-auto text-2xl font-bold mt-20">웹툰 작가 유튜부 모음</div>
           <div className="mb-10 mx-auto mt-3 grid grid-cols-4 gap-4">
@@ -231,13 +287,7 @@ export const ScoopMain = () => {
           </div>  
 
           <div className="mx-auto text-2xl font-bold mt-20 mb-5">AI가 제멋대로 추천해봐요</div>
-          <div className="mx-auto grid grid-cols-5 gap-4">
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-            <ScoopWebtoonCard webtoon={webtoon} />
-          </div> 
+          <ScoopWebtoonCard webtoons={webtoons}/>
 
           <div className="mx-auto text-2xl font-bold mt-10">스쿠퍼가 되고 싶나요?</div>
           <div className="mx-auto text-lg text-gray-800 mt-2 ">웹툰을 추천하는 스쿠퍼가 되면 리워드를 드립니다.</div>
@@ -249,7 +299,7 @@ export const ScoopMain = () => {
 
 
         
-      </div>
+      </div> */}
       <div className="hidden lg:grid">
         
         

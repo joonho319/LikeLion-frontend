@@ -14,6 +14,11 @@ export enum UserRole {
   user = "user",
 }
 
+export interface LoginInput {
+  email: string;
+  password: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
