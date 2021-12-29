@@ -16,6 +16,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 import { isLoggedInVar } from '../apollo'
 import { useReactiveVar } from '@apollo/client'
+import { useMe } from '../hooks/useMe'
 
 const solutions = [
   {
@@ -72,6 +73,7 @@ interface TitleProps {
 export const ScoopHeader: React.FC<TitleProps> = ({
   title
 }) => { 
+  const { data } = useMe();
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -82,6 +84,14 @@ export const ScoopHeader: React.FC<TitleProps> = ({
     alert('로그아웃 되었습니다.')
   }
   
+  if(!data) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('directpage');
+    isLoggedInVar(false);
+  }
 
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (

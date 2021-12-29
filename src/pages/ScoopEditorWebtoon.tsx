@@ -5,7 +5,8 @@ import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopScooperWebtoonCard } from '../components/ScoopScooperWebtoonCard';
 import { ScoopDesktopFooter } from '../components/ScoopDesktopFooter';
 import { useForm } from 'react-hook-form';
-
+import { ScoopAuthorCard } from '../components/ScoopAuthorCard';
+import {author} from './scoopmain';
 const scooper1 = {
   src: '',
   name: '바닐라',
@@ -60,12 +61,13 @@ export const ScoopEditorWebtoon = () => {
       {/* 모바일 */}
       <div className="w-11/12 mx-auto lg:hidden">
         <div className="text-lg font-bold mt-7">스쿠퍼 in 스쿱하우스</div>
-        <div className="mb-10 mt-5 grid grid-cols-4 gap-4">
+        <ScoopAuthorCard authors={author} />
+        {/* <div className="mb-10 mt-5 grid grid-cols-4 gap-4">
           <ScoopScooperCard scooper={scooper1} />
           <ScoopScooperCard scooper={scooper2} />
           <ScoopScooperCard scooper={scooper3} />
           <ScoopScooperCard scooper={scooper4} />
-        </div> 
+        </div>  */}
 
         <div className="grid grid-cols-2 mt-5 ">
           <div className="text-lg font-bold">

@@ -1,9 +1,11 @@
 import { useReactiveVar } from "@apollo/client";
 import { Link } from "react-router-dom"
 import { isLoggedInVar } from "../apollo"
+import { useMe } from "../hooks/useMe";
 
 
 export const ScoopFooter = () => {
+  // const { data } = useMe();
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
     <div className="w-screen mx-auto md:hidden">
