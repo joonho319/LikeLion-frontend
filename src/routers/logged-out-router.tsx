@@ -10,12 +10,20 @@ import { ScoopEditorWebtoon } from '../pages/ScoopEditorWebtoon';
 import { ScoopScooperWebtoon } from '../pages/ScoopScooperWebtoon';
 import { ScoopLogin } from '../pages/ScoopLogin';
 import { ScoopSignUp } from '../pages/ScoopSignUp';
+import { ScoopEditorWebtoonDetail } from '../pages/ScoopEditorWebtoonDetail';
+import { ScoopAdmin } from '../pages/ScoopAdmin';
 
 export const LoggedOutRouter = () => {
 
   return (
     <Router>
       <Switch>
+        <Route path="/admin">
+          <ScoopAdmin />
+        </Route>
+        <Route path="/detail">
+          <ScoopEditorWebtoonDetail />
+        </Route>
         <Route path="/scoopmain">
           <ScoopMain />
         </Route>

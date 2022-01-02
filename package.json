@@ -7,7 +7,7 @@
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.3",
     "@tailwindcss/aspect-ratio": "^0.2.1",
-    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/forms": "^0.3.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -53,7 +53,7 @@
   "scripts": {
     "tailwind:prodbuild": "NODE_ENV=production npm run tailwind:build",
     "tailwind:build": "NODE_ENV=production tailwind build ./src/styles/tailwind.css -o ./src/styles/style.css",
-    "start": "npm run apollo:codegen & npm run tailwind:build & react-scripts start",
+    "start": " npm run tailwind:build & react-scripts start",
     "apollo:codegen": "rimraf src/__generated__ && apollo client:codegen src/__generated__ --target=typescript --outputFlat",
     "build": "CI=false react-scripts build",
     "prebuild": "npm run tailwind:build",
