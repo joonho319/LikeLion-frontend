@@ -66,6 +66,7 @@ export const ScoopCreateWebtoon = () => {
     } = data;
     if (ok) {
       alert('웹툰정보가 등록되었습니다.')
+      window.location.reload();
     } else {
       alert(error)
     }
