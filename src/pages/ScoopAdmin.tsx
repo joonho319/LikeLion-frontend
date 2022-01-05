@@ -15,17 +15,13 @@ const navigation = [
   { name: 'Reports', icon: ChartBarIcon, href: '#', current: false },
 ]
 
-function classNames(...classes:any[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export const ScoopAdmin = () => {
   const [category, setCategory] = useState('1');
   const history = useHistory();
   return (
     <div className="flex ">
       <div className="flex-none bg-gray-800 text-white text-lg" style={{width:"300px", height:"100vh"}}>
-        <div className="mt-24 text-center py-5 bg-green-700 cursor-pointer" onClick={() => history.push('/')}>홈으로 돌아가기</div>
+        <div className="mt-24 text-center py-5 bg-blue-700 cursor-pointer" onClick={() => history.push('/')}>홈으로 돌아가기</div>
         <div className="mt-24 text-center py-5 bg-green-700 cursor-pointer" onClick={() => setCategory('1')}>웹툰 컨텐츠 정보 업로드</div>
         <div className="mt-10 text-center py-5 bg-green-700 cursor-pointer" onClick={() => setCategory('2')}>뉴스레터 정보 올리기</div>
         <div className="mt-10 text-center py-5 bg-green-700 cursor-pointer" onClick={() => setCategory('3')}>웹툰작가 인스타, 유튜브 올리기</div>
