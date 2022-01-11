@@ -8,15 +8,52 @@ import { ScoopWebtoonCard } from '../components/ScoopWebtoonCard';
 import ScoopImage from '../images/scoopImage.png';
 import { ScoopHeader } from '../components/ScoopHeader';
 import { useForm } from 'react-hook-form';
+import { TodayWebtoonVar, EditorRecommendVar } from '../apollo';
 import { ScoopDesktopAuthorYoutubeCard } from '../components/ScoopDesktopAuthorYoutubeCard';
 import { ScoopDesktopFooter } from '../components/ScoopDesktopFooter';
 import Webtoon from '../images/독립일기.png';
 import YoutubeImage from '../images/play.png';
+import gql from 'graphql-tag';
+import { useQuery, useReactiveVar } from '@apollo/client';
+import { getTodayWebtoon } from '../__generated__/getTodayWebtoon';
+import { getEditorRecommend } from '../__generated__/getEditorRecommend';
+import { ScoopEditorWebtoonCard } from '../components/ScoopEditorWebtoonCard';
 
 interface IForm {
   name: string;
   email: string;
 }
+
+export const GET_ALL_QUERY = gql`
+  query getTodayWebtoon {
+    getTodayWebtoon { 
+      ok
+      todaywebtoon {
+        id
+        title
+        thumbnail
+        author
+        platform
+        src
+      }
+    }
+  }
+`;
+
+export const GET_EDITOR_RECOMMEND_QUERY = gql`
+  query getEditorRecommend {
+    getEditorRecommend { 
+      ok
+      editorRecommend {
+        id
+        name
+        title
+        thumbnail
+        html
+      }
+    }
+  }
+`;
 
 const categories = [
   {
@@ -153,7 +190,41 @@ const youtube = [
 
 
 export const ScoopMain = () => {
+  const todaywebtoon = useReactiveVar(TodayWebtoonVar);
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+
+  const onAllCompleted = (data: any) => {
+    console.log(data)
+    const {
+      getTodayWebtoon: { ok, todaywebtoon },
+    } = data;
+    if (ok && todaywebtoon) {
+
+      TodayWebtoonVar(todaywebtoon);
+      localStorage.setItem('Todaywebtoon', JSON.stringify(todaywebtoon));
+
+        console.log("content", todaywebtoon)
+    }
+  };
+
+  const onEditorRecommendCompleted = (data: any) => {
+    const {
+      getEditorRecommend: { ok, editorRecommend },
+    } = data;
+    if (ok && editorRecommend) {
+
+      EditorRecommendVar(editorRecommend);
+      localStorage.setItem('EditorRecommend', JSON.stringify(editorRecommend));
+
+        console.log("editor: ", editorRecommend)
+    }
+  };
+
+  const { data, loading } = useQuery<getTodayWebtoon>(GET_ALL_QUERY, { onCompleted: onAllCompleted});
+  const { data: editorRecommendData, loading: editorLoading } = useQuery<getEditorRecommend>(GET_EDITOR_RECOMMEND_QUERY, { onCompleted: onEditorRecommendCompleted});
+
+  const todaywebtoons = localStorage.getItem('Todaywebtoon');
+  const editorRecommends = localStorage.getItem('EditorRecommend');
 
   const onSubmit = () => {
     const { email, name } = getValues();
@@ -202,7 +273,8 @@ export const ScoopMain = () => {
             </h2>
           </div>
         </section>
-        <ScoopWebtoonCard webtoons={webtoons} />
+        {editorRecommends && <ScoopEditorWebtoonCard webtoons={JSON.parse(editorRecommends)} />}
+        {/* <ScoopWebtoonCard webtoons={webtoons} /> */}
         {/* <ScoopWebtoonCard webtoons={webtoons} /> */}
 
         <section aria-labelledby="category-heading" className="pt-12 w-11/12 xl:max-w-7xl mx-auto xl:px-8">
@@ -258,7 +330,7 @@ export const ScoopMain = () => {
             </h2>
           </div>
         </section>
-        <ScoopWebtoonCard webtoons={webtoons} />
+        {todaywebtoons && <ScoopWebtoonCard webtoons={JSON.parse(todaywebtoons)} />}
     
         {/* 유튜브 작품 모음 */}
         <ScoopAuthorYoutubeCard youtubes={youtube} />
@@ -271,7 +343,8 @@ export const ScoopMain = () => {
             </h2>
           </div>
         </section>
-        <ScoopWebtoonCard webtoons={webtoons} />
+        {todaywebtoons && <ScoopWebtoonCard webtoons={JSON.parse(todaywebtoons)} />}
+        {/* <ScoopWebtoonCard webtoons={webtoons} /> */}
 
         <div className="w-11/12 xl:px-8 xl:max-w-7xl mx-auto">
           <div className="text-lg font-bold mt-10">스쿠퍼가 되고 싶나요?</div>

@@ -1,4 +1,6 @@
+import { gql, useMutation } from '@apollo/client';
 import { useForm } from 'react-hook-form';
+import { createRecommendMutation, createRecommendMutationVariables } from '../__generated__/createRecommendMutation';
 
 interface IForm {
   title: string;
@@ -7,16 +9,56 @@ interface IForm {
 
 }
 
+export const CREATE_RECOMMEND_MUTATION = gql`
+  mutation createRecommendMutation($title: String!, $name: String!, $html: String!) {
+    createRecommend(input: {
+      title: $title,
+      name: $name,
+      html: $html
+    }) {
+      ok,
+      error
+    } 
+  }
+`;
+
+
 export const ScoopCreateNewsletter = () => {
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
 
-  const onSubmit = () => {
+  const onCompleted = (data: createRecommendMutation) => {
+    const {
+      createRecommend: { ok, error },
+    } = data;
+    if (ok) {
+      alert('웹툰정보가 등록되었습니다.')
+      window.location.reload();
+    } else {
+      alert(error)
+    }
+  };
+
+  const onSubmit = async () => {
     const { title, name, html } = getValues();
-    console.log(title, "df")
+
+    createRecommendMutation({
+      variables: {
+        title,
+        name,
+        html
+      }
+    });
+    //mutation (upload) ==> thumbnail: url
   }
+
   const inValid = () => {
     console.log(errors)
   }
+  const [createRecommendMutation, { loading, data: createRecommendMutationResult }] 
+    = useMutation<createRecommendMutation, createRecommendMutationVariables>(
+      CREATE_RECOMMEND_MUTATION, 
+      { onCompleted});
+
   return (
     <form className="mt-5" onSubmit={handleSubmit(onSubmit, inValid)}>
       <div className=" mx-auto">

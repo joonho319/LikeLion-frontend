@@ -21,7 +21,7 @@ export const LoggedOutRouter = () => {
         <Route path="/admin">
           <ScoopAdmin />
         </Route>
-        <Route path="/detail">
+        <Route path="/editorRecommend/:id">
           <ScoopEditorWebtoonDetail />
         </Route>
         <Route path="/scoopmain">

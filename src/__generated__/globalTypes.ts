@@ -14,6 +14,10 @@ export enum UserRole {
   user = "user",
 }
 
+export interface GetEditorRecommendIntput {
+  id: number;
+}
+
 export interface LoginInput {
   email: string;
   password: string;

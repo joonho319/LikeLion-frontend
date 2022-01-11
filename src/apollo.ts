@@ -4,9 +4,14 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { LOCALSTORAGE_TOKEN } from './constant';
 
 const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
+const TodayWebtoon = localStorage.getItem('TodayWebtoon');
+const EditorRecommend = localStorage.getItem('EditorRecommendWebtoon');
 
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
+
+export const TodayWebtoonVar = makeVar(TodayWebtoon);
+export const EditorRecommendVar = makeVar(EditorRecommend);
 
 const httpLink = createHttpLink({
   uri:

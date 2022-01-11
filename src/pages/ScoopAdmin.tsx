@@ -41,7 +41,7 @@ export const ScoopAdmin = () => {
         }
         { category ==='3' &&
           <div className="p-10">
-            <div>웹툰 작기 정보 업로드</div>
+            <div>웹툰 작가 정보 업로드</div>
             <ScoopCreateAuthor />
           </div>
         }

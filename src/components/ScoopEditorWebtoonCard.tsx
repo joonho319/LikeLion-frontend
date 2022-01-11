@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 
 import Webtoon from '../images/독립일기.png';
 
@@ -8,9 +9,10 @@ interface WebtoonCardProps {
 
 
 
-export const ScoopWebtoonCard: React.FC<WebtoonCardProps> = ({
+export const ScoopEditorWebtoonCard: React.FC<WebtoonCardProps> = ({
   webtoons
 }) => {
+  const history = useHistory();
   return (
     // <div className="w-1/2 relative rounded-3xl" style={{height:"200px"}}>
     //   <div style={{backgroundImage: `url(${Webtoon})`, backgroundSize: 'cover', backgroundRepeat:"no-repeat", height:"150px"}} 
@@ -31,19 +33,20 @@ export const ScoopWebtoonCard: React.FC<WebtoonCardProps> = ({
               {webtoons.map((category) => (
                 <div
                   key={category.name}
-                  className="relative w-44 sm:h-56 rounded-2xl p-3 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto"
+                  className="relative w-44 sm:h-56 rounded-2xl p-3 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto bg-gray-300"
                   style={{border: "1px solid gray"}}
+                  onClick={() =>history.push(`/editorRecommend/${category.id}`)}
                 >
                   <div aria-hidden="true" className="absolute inset-0">
                     <img src={category.thumbnail} alt="" className="w-96 object-center object-fill " style={{height:"70%"}}/>
                   </div>
                   <div className="xl:hidden">
                     <div className="mt-auto text-center text-lg font-bold text-gray" style={{marginTop:"98%"}}>{category.title}</div>
-                    <div className="mt-auto text-center text-sm  text-gray" >{category.platform}</div>
+                    <div className="mt-auto text-center text-sm  text-gray" >{category.name}</div>
                   </div>
                   <div className="hidden xl:block">
                     <div className="mt-auto text-center text-lg font-bold text-gray" style={{marginTop:"77%"}}>{category.title}</div>
-                    <div className="mt-auto text-center text-sm  text-gray" >{category.platform}</div>
+                    <div className="mt-auto text-center text-sm  text-gray" >{category.name}</div>
                   </div>
                   
                 </div>
@@ -54,21 +57,6 @@ export const ScoopWebtoonCard: React.FC<WebtoonCardProps> = ({
       </div>
     </section>
     
-      /* <div style={{backgroundImage: `url(${Webtoon})`, backgroundSize: '100% 70%', backgroundRepeat:"no-repeat", width:"100%", height:"260px"}} 
-        className="group p-4 rounded-2xl border hidden md:inline-block"
-      >
-        <div className="grid justify-center font-bold text-2xl" style={{marginTop: "173px"}}  >{webtoon.title}</div>
-        <div className="grid justify-center text-gray-700 text-base ">{webtoon.platform}</div>
-      </div>
-
-
-      <div style={{backgroundImage: `url(${Webtoon})`, backgroundSize: '100% 70%', backgroundRepeat:"no-repeat", width:"100%", height:"200px"}} 
-        className="group p-4 rounded-2xl border md:hidden"
-      >
-        <div className="grid justify-center font-bold text-lg" style={{marginTop: "132px"}}  >{webtoon.title}</div>
-        <div className="grid justify-center text-gray-700 text-xs">{webtoon.platform}</div>
-      </div> */
-    // </>
    
   )
 }

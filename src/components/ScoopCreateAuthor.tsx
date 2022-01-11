@@ -1,22 +1,98 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
+import { createAuthorMutation, createAuthorMutationVariables } from '../__generated__/createAuthorMutation';
+
+export const CREATE_AUTHOR_MUTATION = gql`
+  mutation createAuthorMutation($name: String!, $youtube: String!, $youtubeSrc: String!, $youtubeImage: String!, $instagram: String!, $instagramImage: String!) {
+    createAuthor(input: {
+      name: $name,
+      youtube: $youtube,
+      youtubeSrc: $youtubeSrc,
+      youtubeImage: $youtubeImage,
+      instagram: $instagram,
+      instagramImage: $instagramImage,
+    }) {
+      ok,
+      error
+    } 
+  }
+`;
 
 interface IForm {
-  title: string;
   name: string;
-  channel: string;
-  channelImage: string;
+  youtube: string;
+  youtubeSrc: string;
+  youtubeImage: FileList;
   instagram: string;
+  instagramImage: FileList;
 }
 
 export const ScoopCreateAuthor = () => {
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
 
-  const onSubmit = () => {
-    const { title, name, channel, channelImage, instagram } = getValues();
+  const onSubmit = async () => {
+    const { name, youtube, youtubeImage, youtubeSrc, instagram, instagramImage } = getValues();
+  
+    let youtubeImages = '' ;
+    if(youtubeImage.length) {
+      const actualFile = youtubeImage[0];
+      const formBody = new FormData();
+      formBody.append("file", actualFile);
+      const { url: youtubeI } = await (await fetch('http://localhost:4000/uploads', {
+        method: "POST",
+        body: formBody
+      })).json();
+      youtubeImages= youtubeI
+    } 
+
+    let instagramImages = '';
+    if(instagramImage.length) {
+      const actualFiles = instagramImage[0];
+      const formInsta = new FormData();
+      formInsta.append("file", actualFiles);
+      const { url: instagramI } = await (await fetch('http://localhost:4000/uploads', {
+        method: "POST",
+        body: formInsta
+      })).json();
+      instagramImages = instagramI;
+      console.log(instagramI)
+    }
+
+    createAuthorMutation({
+      variables: {
+        name,
+        youtube,
+        youtubeImage: youtubeImages,
+        youtubeSrc,
+        instagram,
+        instagramImage: instagramImages
+      }
+    });
+    //mutation (upload) ==> thumbnail: url
   }
+
   const inValid = () => {
     console.log(errors)
   }
+
+  const onCompleted = (data: createAuthorMutation) => {
+    const {
+      createAuthor: { ok, error },
+    } = data;
+    if (ok) {
+      alert('웹툰작가 정보가 등록되었습니다.')
+      window.location.reload();
+    } else {
+      alert(error)
+    }
+  };
+
+  const [createAuthorMutation, { loading, data: createAuthorMutationResult }] 
+    = useMutation<createAuthorMutation, createAuthorMutationVariables>(
+      CREATE_AUTHOR_MUTATION, 
+      { onCompleted});
+
   return (
     <form className="mt-5" onSubmit={handleSubmit(onSubmit, inValid)}>
       <div className=" mx-auto">
@@ -32,55 +108,51 @@ export const ScoopCreateAuthor = () => {
         />
       </div>
       <div className="mx-auto">
-        <input 
-          {...register("title", {
-            required: "뉴스레터 제목을 입력해주세요",
-            // validate: (title) => title.includes("gmail.com")
-          })}
-          type="title" 
-          name="title" 
-          required 
+        <input
+          {...register("youtube")} 
+          type="youtube" 
+          name="youtube"  
           className="w-full mx-auto border-2 border-gray-300 mt-5 py-2 px-2 rounded-md text-base text-gray-900"
-          placeholder="뉴스레터 제목을 입력해주세요" 
+          placeholder="유튜브 채널명을 입력해주세요" 
         />
       </div>
       <div className="mx-auto">
         <input 
-          {...register("channel", {
-            required: "채널명을 입력해주세요",
-            // validate: (channel) => channel.includes("gmail.com")
-          })}
-          type="channel" 
-          name="channel" 
-          required 
+          {...register("youtubeSrc")}
+          type="youtubeSrc" 
+          name="youtubeSrc"  
           className="w-full mx-auto border-2 border-gray-300 mt-5 py-2 px-2 rounded-md text-base text-gray-900"
-          placeholder="채널명을 입력해주세요" 
+          placeholder="유튜브 채널 주소를 입력해주세요" 
+        />
+      </div>
+      <div className="mx-auto">
+        <div className="mt-5">유튜브 채널 이미지</div>
+        <input 
+          {...register("youtubeImage")}
+          type="file" 
+          name="youtubeImage" 
+          accept="image/*" 
+          className="w-full mx-auto border-2 border-gray-300 py-2 px-2 rounded-md text-base text-gray-900"
         />
       </div>  
-      {/* <div className="mx-auto">
-        <input 
-          {...register("channel image", {
-            required: "channel image 코드 입력해주세요",
-            // validate: (channel image) => channel image.includes("gmail.com")
-          })}
-          type="channel image" 
-          name="channel image" 
-          required 
-          className="w-full mx-auto border-2 border-gray-300 mt-5 py-2 px-2 rounded-md text-base text-gray-900"
-          placeholder="channel image 아이디를 입력해주세요  " 
-        />
-      </div>      */}
       <div className="mx-auto">
         <input 
-          {...register("instagram", {
-            required: "채널명을 입력해주세요",
-            // validate: (instagram) => instagram.includes("gmail.com")
-          })}
+          {...register("instagram")}
           type="instagram" 
-          name="instagram" 
-          required 
+          name="instagram"  
           className="w-full mx-auto border-2 border-gray-300 mt-5 py-2 px-2 rounded-md text-base text-gray-900"
           placeholder="인스타그램 주소를 입력해주세요" 
+        />
+      </div>  
+      <div className="mx-auto">
+        <div className="mt-5">인스타그램 프로필 이미지</div>
+        <input 
+          {...register("instagramImage")}
+          type="file" 
+          name="instagramImage" 
+          accept="image/*" 
+          className="w-full mx-auto border-2 border-gray-300  py-2 px-2 rounded-md text-base text-gray-900"
+          placeholder="인스타그램 이미지을 입력해주세요" 
         />
       </div>  
       <div className="mx-auto mb-20">
