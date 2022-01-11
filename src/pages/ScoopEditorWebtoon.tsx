@@ -5,8 +5,14 @@ import { ScoopSubHeader } from '../components/ScoopSubHeader';
 import { ScoopScooperWebtoonCard } from '../components/ScoopScooperWebtoonCard';
 import { ScoopDesktopFooter } from '../components/ScoopDesktopFooter';
 import { useForm } from 'react-hook-form';
+import {  VanillaRecommendVar, MintchoRecommendVar } from '../apollo';
 import { ScoopAuthorCard } from '../components/ScoopAuthorCard';
 import {author} from './scoopmain';
+import { ScoopEditorWebtoonCard } from '../components/ScoopEditorWebtoonCard';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import { getVanillaRecommend } from '../__generated__/getVanillaRecommend';
+import { getMintchoRecommend } from '../__generated__/getMintchoRecommend';
 const scooper1 = {
   src: '',
   name: '바닐라',
@@ -37,6 +43,36 @@ const webtoon2 = {
   date: '2021.03.02'
 }
 
+export const GET_VANILLA_RECOMMEND_QUERY = gql`
+  query getVanillaRecommend {
+    getVanillaRecommend { 
+      ok
+      editorRecommend {
+        id
+        name
+        title
+        thumbnail
+        html
+      }
+    }
+  }
+`;
+
+export const GET_MINTCHO_RECOMMEND_QUERY = gql`
+  query getMintchoRecommend {
+    getMintchoRecommend { 
+      ok
+      editorRecommend {
+        id
+        name
+        title
+        thumbnail
+        html
+      }
+    }
+  }
+`;
+
 interface IForm {
   name: string;
   email: string;
@@ -44,6 +80,34 @@ interface IForm {
 
 export const ScoopEditorWebtoon = () => {
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
+
+  const onvanillaRecommendCompleted = (data: any) => {
+    const {
+      getVanillaRecommend: { ok, editorRecommend },
+    } = data;
+    if (ok && editorRecommend) {
+
+      VanillaRecommendVar(editorRecommend);
+      localStorage.setItem('VanillaRecommend', JSON.stringify(editorRecommend));
+
+    }
+  };
+
+  const onmintchoRecommendCompleted = (data: any) => {
+    const {
+      getMintchoRecommend: { ok, editorRecommend },
+    } = data;
+    if (ok && editorRecommend) {
+
+      MintchoRecommendVar(editorRecommend);
+      localStorage.setItem('MintchoRecommend', JSON.stringify(editorRecommend));
+
+    }
+  };
+  const { data: vanillaRecommendData, loading: vanillaLoading } = useQuery<getVanillaRecommend>(GET_VANILLA_RECOMMEND_QUERY, { onCompleted: onvanillaRecommendCompleted});
+  const { data: mintchoRecommendData, loading: mintchoLoading } = useQuery<getMintchoRecommend>(GET_MINTCHO_RECOMMEND_QUERY, { onCompleted: onmintchoRecommendCompleted});
+  const MintchoRecommends = localStorage.getItem('MintchoRecommend');
+  const VanillaRecommends = localStorage.getItem('VanillaRecommend');
 
   const onSubmit = () => {
     const { email, name } = getValues();
@@ -77,12 +141,13 @@ export const ScoopEditorWebtoon = () => {
             더보기 {'>'}
           </div>
         </div>
-        <div className="mb-10 mt-3 grid grid-cols-2 gap-4">
+        {VanillaRecommends && <ScoopEditorWebtoonCard webtoons={JSON.parse(VanillaRecommends)} />}
+        {/* <div className="mb-10 mt-3 grid grid-cols-2 gap-4">
           <ScoopScooperWebtoonCard webtoon={webtoon1} />
           <ScoopScooperWebtoonCard webtoon={webtoon2} />
           <ScoopScooperWebtoonCard webtoon={webtoon1} />
           <ScoopScooperWebtoonCard webtoon={webtoon2} />
-        </div> 
+        </div>  */}
 
         <div className="grid grid-cols-2 mt-5 ">
           <div className="text-lg font-bold">
@@ -92,12 +157,13 @@ export const ScoopEditorWebtoon = () => {
             더보기 {'>'}
           </div>
         </div>
-        <div className="mb-20 mt-3 grid grid-cols-2 gap-4 ">
+        {MintchoRecommends && <ScoopEditorWebtoonCard webtoons={JSON.parse(MintchoRecommends)} />}
+        {/* <div className="mb-20 mt-3 grid grid-cols-2 gap-4 ">
           <ScoopScooperWebtoonCard webtoon={webtoon1} />
           <ScoopScooperWebtoonCard webtoon={webtoon2} />
           <ScoopScooperWebtoonCard webtoon={webtoon1} />
           <ScoopScooperWebtoonCard webtoon={webtoon2} />
-        </div>  
+        </div>   */}
 
       </div>
 
