@@ -303,7 +303,8 @@ export const ScoopMain = () => {
         {todaywebtoons && <ScoopWebtoonCard webtoons={JSON.parse(todaywebtoons)} />}
     
         {/* 유튜브 작품 모음 */}
-        <ScoopAuthorYoutubeCard youtubes={youtube} />
+        {author && <ScoopAuthorYoutubeCard youtubes={JSON.parse(author)} />}
+        {/* <ScoopAuthorYoutubeCard youtubes={youtube} /> */}
 
         {/* AI추천 모음 */}
         <section aria-labelledby="category-heading" className="pt-12 xl:max-w-7xl xl:mx-auto xl:px-8">

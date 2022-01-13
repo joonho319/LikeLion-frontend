@@ -28,9 +28,9 @@ export const ScoopEditorWebtoonCard: React.FC<WebtoonCardProps> = ({
 
       <div className="mt-4 flow-root">
         <div className="-my-2">
-          <div className="box-content py-2 relative h-56 overflow-x-auto xl:overflow-visible">
+          <div className="box-content py-2 relative h-56 overflow-x-auto ">
             <div className="absolute min-w-screen-xl px-4 flex space-x-3 sm:px-6 lg:px-8 xl:relative xl:px-0 xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
-              {webtoons.map((category) => (
+              {webtoons.filter((v,i) => i<5).map((category) => (
                 <div
                   key={category.name}
                   className="relative w-44 sm:h-56 rounded-2xl p-3 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto bg-gray-300"
