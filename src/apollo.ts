@@ -6,6 +6,7 @@ import { LOCALSTORAGE_TOKEN } from './constant';
 const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 const TodayWebtoon = localStorage.getItem('TodayWebtoon');
 const EditorRecommend = localStorage.getItem('EditorRecommendWebtoon');
+const Author = localStorage.getItem('Author');
 const VanillaRecommend = localStorage.getItem('VanillaRecommendWebtoon');
 const MintchoRecommend = localStorage.getItem('MintchoRecommendWebtoon');
 
@@ -14,6 +15,8 @@ export const authTokenVar = makeVar(token);
 
 export const TodayWebtoonVar = makeVar(TodayWebtoon);
 export const EditorRecommendVar = makeVar(EditorRecommend);
+export const AuthorVar = makeVar(Author);
+
 export const VanillaRecommendVar = makeVar(VanillaRecommend);
 export const MintchoRecommendVar = makeVar(MintchoRecommend);
 

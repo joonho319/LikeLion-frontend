@@ -8,7 +8,7 @@ import { ScoopWebtoonCard } from '../components/ScoopWebtoonCard';
 import ScoopImage from '../images/scoopImage.png';
 import { ScoopHeader } from '../components/ScoopHeader';
 import { useForm } from 'react-hook-form';
-import { TodayWebtoonVar, EditorRecommendVar } from '../apollo';
+import { TodayWebtoonVar, EditorRecommendVar, AuthorVar } from '../apollo';
 import { ScoopDesktopAuthorYoutubeCard } from '../components/ScoopDesktopAuthorYoutubeCard';
 import { ScoopDesktopFooter } from '../components/ScoopDesktopFooter';
 import Webtoon from '../images/독립일기.png';
@@ -18,6 +18,7 @@ import { useQuery, useReactiveVar } from '@apollo/client';
 import { getTodayWebtoon } from '../__generated__/getTodayWebtoon';
 import { getEditorRecommend } from '../__generated__/getEditorRecommend';
 import { ScoopEditorWebtoonCard } from '../components/ScoopEditorWebtoonCard';
+import { getAllAuthor } from '../__generated__/getAllAuthor';
 
 interface IForm {
   name: string;
@@ -55,69 +56,22 @@ export const GET_EDITOR_RECOMMEND_QUERY = gql`
   }
 `;
 
-const categories = [
-  {
-    name: 'New Arrivals',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
-  },
-  {
-    name: 'Productivity',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg',
-  },
-  {
-    name: 'Workspace',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg',
-  },
-  {
-    name: 'Accessories',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
-  },
-  { name: 'Sale', href: '#', imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg' },
-]
+export const GET_AUTHOR_RECOMMEND_QUERY = gql`
+  query getAllAuthor {
+    getAllAuthor { 
+      ok
+      author {
+        name
+        youtube
+        youtubeSrc
+        youtubeImage
+        instagram
+        instagramImage
+      }
+    }
+  }
+`;
 
-const webtoons = [
-  {
-    title: '대학일기',
-    author: '자까',
-    platform: '네이버 웹툰',
-    image: Webtoon
-  },
-  {
-    title: '대학일기',
-    author: '자까',
-    platform: '네이버 웹툰',
-    image: Webtoon
-  },
-  {
-    title: '대학일기',
-    author: '자까',
-    platform: '네이버 웹툰',
-    image: Webtoon
-  },
-  {
-    title: '대학일기',
-    author: '자까',
-    platform: '네이버 웹툰',
-    image: Webtoon
-  },
-  {
-    title: '대학일기',
-    author: '자까',
-    platform: '네이버 웹툰',
-    image: Webtoon
-  },
-  
-]
-
-const webtoon = {
-    src: '',
-    title: '대학일기',
-    platform: '네이버 웹툰'
-}
 
 export const author = [
   {
@@ -220,11 +174,26 @@ export const ScoopMain = () => {
     }
   };
 
+  const onAuthorCompleted = (data: any) => {
+    const {
+      getAllAuthor: { ok, author },
+    } = data;
+    if (ok && author) {
+
+      EditorRecommendVar(author);
+      localStorage.setItem('Author', JSON.stringify(author));
+
+        console.log("author: ", author)
+    }
+  };
+
   const { data, loading } = useQuery<getTodayWebtoon>(GET_ALL_QUERY, { onCompleted: onAllCompleted});
   const { data: editorRecommendData, loading: editorLoading } = useQuery<getEditorRecommend>(GET_EDITOR_RECOMMEND_QUERY, { onCompleted: onEditorRecommendCompleted});
+  const { data: authorData, loading: authorLoading } = useQuery<getAllAuthor>(GET_AUTHOR_RECOMMEND_QUERY, { onCompleted: onAuthorCompleted});
 
   const todaywebtoons = localStorage.getItem('Todaywebtoon');
   const editorRecommends = localStorage.getItem('EditorRecommend');
+  const author = localStorage.getItem('Author');
 
   const onSubmit = () => {
     const { email, name } = getValues();
@@ -319,7 +288,8 @@ export const ScoopMain = () => {
             </h2>
           </div>
         </section>
-        <ScoopAuthorCard authors={author} />
+        {author && <ScoopAuthorCard authors={JSON.parse(author)} />}
+        {/* <ScoopAuthorCard authors={author} /> */}
 
 
         {/* 이번주 추천 작품 */}

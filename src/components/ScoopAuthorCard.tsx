@@ -19,20 +19,22 @@ export const ScoopAuthorCard: React.FC<WebtoonAuthorCardProps> = ({
           <div className="box-content py-2 relative  overflow-x-auto xl:overflow-visible" style={{height:"140px"}}>
             <div className="absolute min-w-screen-xl px-4 flex space-x-3 sm:px-6 lg:px-8 xl:relative xl:px-0 xl:space-x-0 xl:grid xl:grid-cols-8 xl:gap-x-8">
               {authors.map((author) => (
-                <div
+                <a
                   key={author.name}
                   className="relative flex flex-col overflow-hidden hover:opacity-75 xl:w-auto"
                   style={{width:"110px", height:"140px"}}
+                  href={author.instagram}
+                  target="_blank"
                 >
                   <div aria-hidden="true" className="absolute inset-0">
-                    <img src={author.image} alt="" className="object-center object-cover rounded-full" style={{width:"110px", height:"110px"}} />
+                    <img src={author.instagramImage} alt="" className="object-center object-cover rounded-full border-2" style={{width:"110px", height:"110px"}} />
                     <div className="mt-2 text-center text-sm  text-black" >{author.name}</div>
                   </div>
                   {/* <div className="">
                     <div className="mt-auto text-center text-sm  text-black" >{author.name}</div>
                   </div> */}
                   
-                </div>
+                </a>
               ))}
             </div>
           </div>
