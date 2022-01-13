@@ -128,10 +128,10 @@ export const ScoopEditorWebtoon = () => {
           <div className="grid justify-center mt-3 font-extrabold">오늘의 웹툰</div>
           <div className="grid justify-center mt-10 text-xl font-normal text-gray-600">우리가 떠 먹여 드릴게요.</div>
         </div>
-        <div className="text-lg font-bold mt-7 px-8">스쿠퍼 in 스쿱하우스</div>
+        <div className="text-lg font-bold mt-7 px-6 sm:px-8">스쿠퍼 in 스쿱하우스</div>
         <ScoopAuthorCard authors={author} />
 
-        <div className="grid grid-cols-2 mt-20 px-8">
+        <div className="grid grid-cols-2 mt-20 px-6 sm:px-8">
           <div className="text-lg font-bold">
             바닐라's 추천
           </div>
@@ -141,7 +141,7 @@ export const ScoopEditorWebtoon = () => {
         </div>
         {VanillaRecommends && <ScoopEditorWebtoonCard webtoons={JSON.parse(VanillaRecommends)} />}
 
-        <div className="grid grid-cols-2 mt-20 px-8">
+        <div className="grid grid-cols-2 mt-20 px-6 sm:px-8">
           <div className="text-lg font-bold">
             민트초코's 추천
           </div>
