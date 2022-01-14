@@ -29,10 +29,11 @@ export const ScoopAuthorYoutubeCard: React.FC<YoutubeCardProps> = ({
           <div className="box-content py-2 relative h-56 overflow-x-auto xl:overflow-visible">
             <div className="absolute min-w-screen-xl px-4 flex space-x-3 sm:px-6 lg:px-8 xl:relative xl:px-0 xl:space-x-0 xl:grid xl:grid-cols-5 xl:gap-x-8">
               {youtubes.filter((v,i) => v.youtube.length >0).map((youtube) => (
-                <div
+                <a
                   key={youtube.name}
                   className="relative w-60 rounded-2xl p-3 flex flex-col overflow-hidden hover:opacity-75 xl:w-auto"
                   style={{border: "1px solid gray", height:"170px"}}
+                  href={youtube.youtubeSrc}
                 >
                   <div aria-hidden="true" className="absolute inset-0">
                     <img src={youtube.youtubeImage} alt="" className="w-96 object-center object-fill bg-gray-400" style={{height:"60%"}}/>
@@ -47,7 +48,7 @@ export const ScoopAuthorYoutubeCard: React.FC<YoutubeCardProps> = ({
                   </div>
                   {/* <div className="text-center text-base font-bold text-gray" style={{marginTop: "40%"}}>{youtube.title}</div>
                     <div className="text-center text-sm  text-gray" >{youtube.author}</div> */}
-                </div>
+                </a>
               ))}
             </div>  
           </div>
