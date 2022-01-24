@@ -164,6 +164,12 @@ export const  ScoopWebtoonRecommend =  () => {
                     <div className="gird mx-auto">
                       <SimpleTinderCard key={character.name}  onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
                         <ScoopWebtoonRecommendCard key={character.name} webtoon={character} />
+                        {lastDirection && 
+                          lastDirection === 'left' ? 
+                          <div className="z-40 rounded-lg border-red-500 text-red-500">싫어요</div>: 
+                          // <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />
+                          <div className="z-40 rounded-lg border-green-500 text-green-500">좋아요</div>
+                        }
                       </SimpleTinderCard>
                     </div>
                   )}
@@ -176,7 +182,12 @@ export const  ScoopWebtoonRecommend =  () => {
               
             }
             
-            {lastDirection ? <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+            {lastDirection && 
+            lastDirection === 'left' ? 
+            <div className="z-40 rounded-lg border-red-500 text-red-500">싫어요</div>: 
+            // <h2 className='infoText mt-40'>You swiped {lastDirection}</h2> : <h2 className='infoText' />
+            <div className="z-40 rounded-lg border-green-500 text-green-500">좋아요</div>
+            }
           </div>
         }
         

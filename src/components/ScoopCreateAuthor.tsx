@@ -39,7 +39,7 @@ export const ScoopCreateAuthor = () => {
       const actualFile = youtubeImage[0];
       const formBody = new FormData();
       formBody.append("file", actualFile);
-      const { url: youtubeI } = await (await fetch('http://localhost:4000/uploads', {
+      const { url: youtubeI } = await (await fetch( process.env.NODE_ENV ==='production' ? 'https://scoop-house-backend.herokuapp.com' :'http://localhost:4000/uploads', {
         method: "POST",
         body: formBody
       })).json();
@@ -51,7 +51,7 @@ export const ScoopCreateAuthor = () => {
       const actualFiles = instagramImage[0];
       const formInsta = new FormData();
       formInsta.append("file", actualFiles);
-      const { url: instagramI } = await (await fetch('http://localhost:4000/uploads', {
+      const { url: instagramI } = await (await fetch( process.env.NODE_ENV ==='production' ? 'https://scoop-house-backend.herokuapp.com' :'http://localhost:4000/uploads', {
         method: "POST",
         body: formInsta
       })).json();
