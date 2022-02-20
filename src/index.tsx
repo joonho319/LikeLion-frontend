@@ -6,15 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async';
 import "./styles/style.css";
 import './App.css'
-import { client } from './apollo';
  
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
       <HelmetProvider>
         <App />
       </HelmetProvider>
-    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
